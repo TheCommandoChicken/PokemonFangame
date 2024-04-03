@@ -1,0 +1,13 @@
+res://default_env.tres
+res://test.tscn
+res://script/base_pokemon.gd
+res://script/effect_calculation.gd
+res://script/pokemon.gd
+res://script/text_box.gd
+res://scene/pokemon.tscn
+res://resource/pokemon/battle/animation/bulbasaur_eyes.tres
+res://resource/pokemon/battle/animation/bulbasaur_head.tres
+res://resource/pokemon/battle/animation/ivysaur_head.tres
+res://resource/pokemon/battle/animation/ivysaur_eyes.tres
+res://resource/pokemon/battle/animation/ivysaur_front.tres
+res://resource/pokemon/battle/animation/bulbasaur_front.tres

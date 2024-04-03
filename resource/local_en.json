@@ -1,0 +1,18 @@
+{
+  "battle.move_used": "@@POKEMON@@ used @@MOVE@@!",
+  "battle.opposing_pokemon": "The opposing @@POKEMON@@",
+  "battle.wild_pokemon": "The wild @@POKEMON@@",
+  "battle.super_effective": "It's super effective!",
+  "battle.ineffective": "It's not very effective...",
+  "battle.no_effect": "It doesn't affect @@TARGET@@.",
+  "battle.miss": "@@TARGET@@ evaded the attack!",
+  "battle.critical_hit": "A critical hit!",
+  "battle.status.burn": "@@POKEMON@@ was burned.",
+  "battle.status.paralyze": "@@POKEMON@@ was paralyzed.",
+  "battle.status.poison": "@@POKEMON@@ was poisoned.",
+  "battle.status.sleep": "@@POKEMON@@ fell asleep.",
+  "battle.status.confused": "@@POKEMON@@ became confused.",
+  "battle.status.freeze": "@@POKEMON@@ was frozen solid.",
+  "battle.status.love": "@@POKEMON@@ fell in love with",
+  "battle.status.strong_poison": "@@POKEMON@@ was badly poisoned."
+}

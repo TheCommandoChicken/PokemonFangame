@@ -1,0 +1,664 @@
+{
+  "0": // Sample Move
+  {
+    "category": 0, // 0 = Physical, 1 = Special, 2 = Status
+    "base_power": 0, // Self explanatory, optional on status moves
+    "accuracy": 100, // Value from 0-100. Percentage representation of a move's accuracy. Special accuracy checks should be noted in the effects field.
+    "type": "NORMAL", // Move's type, in all uppercase.
+    "pp": 35, // Base max PP
+    "contact": true, // Boolean value denoting if the move makes contact.
+    "priority": 0, // Priority, integer value from -6 to 6.
+    "effects": // Optional list of additional effects the move has.
+    [
+      {
+        "effect": "increased_crit" // Increases critical hit chance
+      },
+      {
+        "effect": "multi-hit", // Move hits multiple times in a single turn
+        "strike_chances": [0, 0, 35, 70, 85, 100] // Array of chances for the duration of the move. Each consecutive value is increased by the chance of that given hit occuring. In code a random value from 1-100 is checked to see which two values it sits between, and the higher of those's position in the array is the number of hits.
+      },
+      {
+        "effect": "scatters_coins", // Causes coins to be scattered when the move connects.
+        "factor": 5 // Multiplier of the user's level to determine the amount scattered
+      },
+      {
+        "effect": "inflict_status", // Inflicts a status condition
+        "target": "target", // Which Pokemon to inflict the condition upon.
+        "status": "BURN", // Which condition is to be inflicted
+        "chance": 10, // Percentage chance of the status being inflicted
+        "overwrite_existing": false // Boolean value denoting if the status can overwrite an existing status
+      },
+      {
+        "effect": "special_accuracy" // The move's accuracy is determined by the formula (UserLevel - TargetLevel + Accuracy), bypasses accuracy and evasion checks
+      },
+      {
+        "effect": "one-hit-ko" // Guaranteed to KO the targeted Pokemon if the move succeeds
+      }
+      {
+        "effect": "multi-turn", // Move lasts multiple turns
+        "attacking_turn": 2, // Which turn the move attacks on (the turn it is used being 1)
+        "length": 2, // The number of turns the move lasts
+        "invulnerable": 0 // Which turn the user is invulnerable for, if any.
+      },
+      {
+        "effect": "change_stat", // Modifies a stat stage
+        "target": "self", // Which Pokemon to change the stages of
+        "factors": [2, 0, 0, 0, 0, 0, 0, 0], // The factor by which to change each stage. Attack, Defense, Special Attack, Special Defense, Speed, Evasion, Accuracy, Crit
+        "chance": 100 // Percentage chance of the stats being changed
+      },
+      {
+        "effect": "hit_invulnerable", // Hits invulnerable Pokemon
+        "moves": [19], // Which moves (by numerical ID) will have their invulnerability bypassed
+        "power": 80 // The power to use when bypassing invulnerability
+      },
+      {
+        "effect": "extended_range" // Can target Pokemon further from the user.
+      },
+      {
+        "effect": "switch_opponent" // Forces the opponent's Pokemon to switch out at random
+      },
+      {
+        "effect": "bypass_protect" // Bypasses Protect
+      },
+      {
+        "effect": "trapping", // Partial trapping move, prevents the target from using most moves.
+        "min-length": "4", // Minimum number of turns for the target to be trapped
+        "max-length": "5" // Maximum number of turns for the target to be trapped
+      },
+      {
+        "effect": "percent_damage", // Deals damage based on a percentage of another factor
+        "damage": "target_max_health", // Which factor to use when determining the damage to deal
+        "amount": 0.125 // 0-1 multiplier of the damage factor
+      },
+      {
+        "effect": "cause_flinch", // Causes the target to flinch
+        "chance": 30 // Percentage chance the target will flinch
+      },
+      {
+        "effect": "bypass_minimize" // Bypasses evasion changes if the target has used Minimize this battle
+      },
+      {
+        "effect": "crash_damage", // Deal damage to the user if the move misses
+        "damage": "user_max_health", // Which factor to use when determining the damage to deal
+        "amount": 0.5 // 0-1 multiplier of the damage factor
+      },
+      {
+        "effect": "recoil", // Deal damage to the user if the move connects
+        "damage": "user_max_health",
+        "amount": 0.25 // 0-1 multiplier of the damage factor
+      },
+      {
+        "effect": "sheer_cold_special_conditions" // Follows the special conditions of the move Sheer Cold (Does not affect targets of the same type, accuracy is reduced by 10% if the user is not the same type)
+      }
+    ]
+  },
+  "1": // Pound
+  {
+    "category": 0,
+    "base_power": 40,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 35,
+    "contact": true,
+    "priority": 0
+  },
+  "2": // Karate Chop
+  {
+    "category": 0,
+    "base_power": 50,
+    "accuracy": 90,
+    "type": "FIGHTING",
+    "pp": 25,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "increased_crit"
+      }
+    ]
+  },
+  "3": // Double Slap
+  {
+    "category": 0,
+    "base_power": 15,
+    "accuracy": 85,
+    "type": "NORMAL",
+    "pp": 10,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "multi-hit",
+        "strike_chances": [0, 0, 35, 70, 85, 100]
+      }
+    ]
+  },
+  "4": // Comet Punch
+  {
+    "category": 0,
+    "base_power": 18,
+    "accuracy": 85,
+    "type": "FIGHTING",
+    "pp": 15,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "multi-hit",
+        "strike_chances": [0, 0, 35, 70, 85, 100]
+      }
+    ]
+  },
+  "5": // Mega Punch
+  {
+    "category": 0,
+    "base_power": 80,
+    "accuracy": 85,
+    "type": "FIGHTING",
+    "pp": 20,
+    "contact": true,
+    "priority": 0
+  },
+  "6": // Pay Day
+  {
+    "category": 0,
+    "base_power": 40,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 20,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "scatters_coins",
+        "factor": 5
+      }
+    ]
+  },
+  "7": // Fire Punch
+  {
+    "category": 0,
+    "base_power": 75,
+    "accuracy": 100,
+    "type": "FIRE",
+    "pp": 15,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "BURN",
+        "chance": 10,
+        "overwrite_existing": false
+      }
+    ]
+  },
+  "8": // Ice Punch
+  {
+    "category": 0,
+    "base_power": 75,
+    "accuracy": 100,
+    "type": "ICE",
+    "pp": 15,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "FREEZE",
+        "chance": 10,
+        "overwrite_existing": false
+      }
+    ]
+  },
+  "9": // Thunder Punch
+  {
+    "category": 0,
+    "base_power": 75,
+    "accuracy": 100,
+    "type": "ELECTRIC",
+    "pp": 15,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "PARALYZE",
+        "chance": 10,
+        "overwrite_existing": false
+      }
+    ]
+  },
+  "10": // Scratch
+  {
+    "category": 0,
+    "base_power": 40,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 35,
+    "contact": true,
+    "priority": 0
+  },
+  "11": // Vise Grip
+  {
+    "category": 0,
+    "base_power": 55,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 30,
+    "contact": true,
+    "priority": 0
+  },
+  "12": // Guillotine
+  {
+    "category": 0,
+    "base_power": 0,
+    "accuracy": 30,
+    "type": "NORMAL",
+    "pp": 5,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "special_accuracy"
+      },
+      {
+        "effect": "one-hit-ko"
+      }
+    ]
+  },
+  "13": // Razor Wind
+  {
+    "category": 1,
+    "base_power": 80,
+    "accuracy": 100,
+    "type": "FLYING",
+    "pp": 10,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "multi-turn",
+        "attacking_turn": 2,
+        "length": 2,
+        "invulnerable": 0
+      },
+      {
+        "effect": "increased_crit"
+      }
+    ]
+  },
+  "14": // Swords Dance
+  {
+    "category": 2,
+    "type": "NORMAL",
+    "pp": 20,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "self",
+        "factors": [2, 0, 0, 0, 0, 0, 0, 0],
+        "chance": 100
+      }
+    ]
+  },
+  "15": // Cut
+  {
+    "category": 0,
+    "base_power": 50,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 30,
+    "contact": true,
+    "priority": 0
+  },
+  "16": // Gust
+  {
+    "category": 1,
+    "base_power": 40,
+    "accuracy": 100,
+    "type": "FLYING",
+    "pp": 35,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "hit_invulnerable",
+        "moves": [19],
+        "power": 80
+      },
+      {
+        "effect": "extended_range"
+      }
+    ]
+  },
+  "17": // Wing Attack
+  {
+    "category": 0,
+    "base_power": 60,
+    "accuracy": 100,
+    "type": "FLYING",
+    "pp": 35,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "extended_range"
+      }
+    ]
+  },
+  "18": // Whirlwind
+  {
+    "category": 2,
+    "type": "NORMAL",
+    "pp": 35,
+    "priority": -6,
+    "effects":
+    [
+      {
+        "effect": "switch_opponent"
+      },
+      {
+        "effect": "bypass_protect"
+      }
+    ]
+  },
+  "19": // Fly
+  {
+    "category": 0,
+    "base_power": 90,
+    "accuracy": 95,
+    "type": "FLYING",
+    "pp": 15,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "multi-turn",
+        "attacking_turn": 2,
+        "length": 2,
+        "invulnerable": 1
+      }
+    ]
+  },
+  "20": // Bind
+  {
+    "category": 0,
+    "base_power": 15,
+    "accuracy": 85,
+    "type": "NORMAL",
+    "pp": 20,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "trapping",
+        "min-length": "4",
+        "max-length": "5"
+      },
+      {
+        "effect": "percent_damage",
+        "damage": "target_max_health",
+        "amount": 0.125
+      }
+    ]
+  },
+  "21": // Slam
+  {
+    "category": 0,
+    "base_power": 80,
+    "accuracy": 75,
+    "type": "NORMAL",
+    "pp": 20,
+    "contact": true,
+    "priority": 0
+  },
+  "22": // Vine Whip
+  {
+    "category": 0,
+    "base_power": 45,
+    "accuracy": 100,
+    "type": "GRASS",
+    "pp": 25,
+    "contact": true,
+    "priority": 0
+  },
+  "23": // Stomp
+  {
+    "category": 0,
+    "base_power": 65,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 20,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "cause_flinch",
+        "chance": 30
+      },
+      {
+        "effect": "bypass_minimize"
+      }
+    ]
+  },
+  "24": // Double Kick
+  {
+    "category": 0,
+    "base_power": 30,
+    "accuracy": 100,
+    "type": "FIGHTING",
+    "pp": 30,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "multi-hit",
+        "strike_chances": [0, 0, 100]
+      }
+    ]
+  },
+  "25": // Mega Kick
+  {
+    "category": 0,
+    "base_power": 120,
+    "accuracy": 75,
+    "type": "FIGHTING",
+    "pp": 5,
+    "contact": true,
+    "priority": 0
+  },
+  "26": // Jump Kick
+  {
+    "category": 0,
+    "base_power": 100,
+    "accuracy": 95,
+    "type": "FIGHTING",
+    "pp": 10,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "crash_damage",
+        "damage": "user_max_health",
+        "amount": 0.5
+      }
+    ]
+  },
+  "27": // Rolling Kick
+  {
+    "category": 0,
+    "base_power": 60,
+    "accuracy": 85,
+    "type": "FIGHTING",
+    "pp": 15,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "cause_flinch",
+        "chance": 30
+      }
+    ]
+  },
+  "28": // Sand Attack
+  {
+    "category": 2,
+    "accuracy": 100,
+    "type": "GROUND",
+    "pp": 15,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "target",
+        "factors": [0, 0, 0, 0, 0, 0, -1, 0],
+        "chance": 100
+      }
+    ]
+  },
+  "29": // Headbutt
+  {
+    "category": 0,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 15,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "target",
+        "factors": [0, 0, 0, 0, 0, 0, -1, 0],
+        "chance": 100
+      }
+    ]
+  },
+  "32": // Horn Drill
+  {
+    "category": 0,
+    "base_power": 0,
+    "accuracy": 30,
+    "type": "NORMAL",
+    "pp": 5,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "special_accuracy"
+      },
+      {
+        "effect": "one-hit-ko"
+      }
+    ]
+  },
+  "90": // Fissure
+  {
+    "category": 0,
+    "base_power": 0,
+    "accuracy": 30,
+    "type": "GROUND",
+    "pp": 5,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "special_accuracy"
+      },
+      {
+        "effect": "one-hit-ko"
+      }
+    ]
+  },
+  "165": // Struggle
+  {
+    "category": 0,
+    "base_power": 50,
+    "accuracy": 1000,
+    "type": "NONE",
+    "pp": 4294967295,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "recoil",
+        "amount": 0.25,
+        "from_user": true
+      }
+    ]
+  },
+  "329": // Sheer Cold
+  {
+    "category": 1,
+    "base_power": 0,
+    "accuracy": 30,
+    "type": "ICE",
+    "pp": 5,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "special_accuracy"
+      },
+      {
+        "effect": "one-hit-ko"
+      },
+      {
+        "effect": "sheer_cold_special_conditions"
+      }
+    ]
+  },
+  "422": // Thunder Fang
+  {
+    "category": 0,
+    "base_power": 95,
+    "accuracy": 65,
+    "type": "ELECTRIC",
+    "pp": 15,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "PARALYZE",
+        "chance": 10,
+        "overwrite_existing": false
+      },
+      {
+        "effect": "cause_flinch",
+        "chance": 10
+      }
+    ]
+  },
+}

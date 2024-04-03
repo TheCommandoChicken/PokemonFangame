@@ -1,0 +1,80 @@
+{
+  "1":
+  {
+    "species": 100,
+    "nickname": "Voltorb",
+    "shiny": false,
+    "gender": 0,
+    "trainer": "Trainer",
+    "stats":
+    {
+      "max_health": 0,
+      "current_health": 0,
+      "attack": 1,
+      "defense": 1,
+      "sp_attack": 1,
+      "sp_defense": 1,
+      "speed": 0,
+    },
+    "ivs":
+    {
+      "health": 31
+      "attack": 1,
+      "defense": 1,
+      "sp_attack": 1,
+      "sp_defense": 1,
+      "speed": 0,
+    },
+    "evs":
+    {
+      "health": 252,
+      "attack": 1,
+      "defense": 1,
+      "sp_attack": 1,
+      "sp_defense": 1,
+      "speed": 0,
+    },
+    "stages":
+    {
+      "attack": 1,
+      "defense": 1,
+      "sp_attack": 1,
+      "sp_defense": 1,
+      "speed": 0,
+      "evasiveness": 0,
+      "accuracy": 0,
+      "crit": 0
+    },
+    "experience": 0,
+    "level": 1,
+    "friendship": 0,
+    "affection": 0,
+    "ability": "",
+    "nature": "",
+    "pokeball": 0,
+    "met_region": "Kanto",
+    "met_route": "Power Plant",
+    "fateful": false,
+    "moves":
+    {
+      "1":
+      {
+        "move": 1,
+        "max_pp": 20,
+        "current_pp": 6
+      },
+      "2":
+      {
+        "move": 0
+      },
+      "3":
+      {
+        "move": 0
+      },
+      "4":
+      {
+        "move": 0
+      }
+    }
+  }
+}

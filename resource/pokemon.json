@@ -1,0 +1,222 @@
+{
+  "1":
+  {
+    "type_1": "GRASS",
+		"type_2": "NONE",
+		"base_stats": {
+      "health": 45,
+      "attack": 49,
+      "defense": 49,
+      "sp_attack": 65,
+      "sp_defense": 65,
+      "speed": 45
+    },
+		"catch_rate": 45,
+		"exp_yield": 64,
+    "ev_yield":
+    {
+      "health": 0,
+      "attack": 0,
+      "defense": 0,
+      "sp_attack": 1,
+      "sp_defense": 0,
+      "speed": 0
+    },
+		"ability_1": "Overgrow",
+		"ability_2": "",
+		"hidden_ability": "Chlorophyll",
+    "leveling_group": "Medium Slow",
+    "base_friendship": 70,
+		"national_dex": 1,
+		"regional_dex": 0,
+		"height": 0.7,
+		"weight": 6.9,
+    "gender_ratio": 2,
+    "egg_group_1": "Monster",
+    "egg_group_2": "Grass",
+    "egg_cycles": 20
+	},
+  "2":
+  {
+    "type_1": "GRASS",
+		"type_2": "POISON",
+		"base_stats": {
+      "health": 60,
+      "attack": 62,
+      "defense": 63,
+      "sp_attack": 80,
+      "sp_defense": 80,
+      "speed": 60
+    },
+		"catch_rate": 45,
+		"exp_yield": 142,
+    "ev_yield":
+    {
+      "health": 0,
+      "attack": 0,
+      "defense": 0,
+      "sp_attack": 1,
+      "sp_defense": 1,
+      "speed": 0
+    },
+		"ability_1": "Overgrow",
+		"ability_2": "",
+		"hidden_ability": "Chlorophyll",
+    "leveling_group": "Medium Slow",
+    "base_friendship": 70,
+		"national_dex": 2,
+		"regional_dex": 0,
+		"height": 1.0,
+		"weight": 13.0,
+    "gender_ratio": 2,
+    "egg_group_1": "Monster",
+    "egg_group_2": "Grass",
+    "egg_cycles": 20
+	},
+  "3":
+  {
+    "type_1": "GRASS",
+		"type_2": "POISON",
+		"base_stats": {
+      "health": 80,
+      "attack": 82,
+      "defense": 83,
+      "sp_attack": 100,
+      "sp_defense": 100,
+      "speed": 80
+    },
+		"catch_rate": 45,
+		"exp_yield": 236,
+    "ev_yield":
+    {
+      "health": 0,
+      "attack": 0,
+      "defense": 0,
+      "sp_attack": 2,
+      "sp_defense": 1,
+      "speed": 0
+    },
+		"ability_1": "Overgrow",
+		"ability_2": "",
+		"hidden_ability": "Chlorophyll",
+    "leveling_group": "Medium Slow",
+    "base_friendship": 70,
+		"national_dex": 3,
+		"regional_dex": 0,
+		"height": 2.0,
+		"weight": 100.0,
+    "gender_ratio": 2,
+    "egg_group_1": "Monster",
+    "egg_group_2": "Grass",
+    "egg_cycles": 20
+	},
+  "4":
+  {
+    "type_1": "FIRE",
+		"type_2": "NONE",
+		"base_stats": {
+      "health": 39,
+      "attack": 52,
+      "defense": 43,
+      "sp_attack": 60,
+      "sp_defense": 50,
+      "speed": 65
+    },
+		"catch_rate": 45,
+		"exp_yield": 62,
+    "ev_yield":
+    {
+      "health": 0,
+      "attack": 0,
+      "defense": 0,
+      "sp_attack": 0,
+      "sp_defense": 0,
+      "speed": 1
+    },
+		"ability_1": "Blaze",
+		"ability_2": "",
+		"hidden_ability": "Solar Power",
+    "leveling_group": "Medium Slow",
+    "base_friendship": 70,
+		"national_dex": 4,
+		"regional_dex": 0,
+		"height": 0.6,
+		"weight": 8.5,
+    "gender_ratio": 2,
+    "egg_group_1": "Monster",
+    "egg_group_2": "Dragon",
+    "egg_cycles": 20
+	},
+  "5":
+  {
+    "type_1": "FIRE",
+		"type_2": "NONE",
+		"base_stats": {
+      "health": 60,
+      "attack": 62,
+      "defense": 63,
+      "sp_attack": 80,
+      "sp_defense": 80,
+      "speed": 60
+    },
+		"catch_rate": 45,
+		"exp_yield": 142,
+    "ev_yield":
+    {
+      "health": 0,
+      "attack": 0,
+      "defense": 0,
+      "sp_attack": 1,
+      "sp_defense": 0,
+      "speed": 1
+    },
+		"ability_1": "Blaze",
+		"ability_2": "",
+		"hidden_ability": "Solar Power",
+    "leveling_group": "Medium Slow",
+    "base_friendship": 70,
+		"national_dex": 5,
+		"regional_dex": 0,
+		"height": 1.1,
+		"weight": 19.0,
+    "gender_ratio": 2,
+    "egg_group_1": "Monster",
+    "egg_group_2": "Dragon",
+    "egg_cycles": 20
+	},
+	"100":
+  {
+    "type_1": "ELECTRIC",
+		"type_2": "NONE",
+		"base_stats": {
+      "health": 40,
+      "attack": 30,
+      "defense": 50,
+      "sp_attack": 55,
+      "sp_defense": 55,
+      "speed": 100
+    },
+		"catch_rate": 190,
+		"exp_yield": 66,
+    "ev_yield":
+    {
+      "health": 0,
+      "attack": 0,
+      "defense": 0,
+      "sp_attack": 0,
+      "sp_defense": 0,
+      "speed": 1
+    },
+		"ability_1": "Soundproof",
+		"ability_2": "Static",
+		"hidden_ability": "Aftermath",
+    "leveling_group": "Medium Fast",
+    "base_friendship": 70,
+		"national_dex": 100,
+		"regional_dex": 0,
+		"height": 0.4,
+		"weight": 10.4,
+    "egg_group": "Mineral",
+    "egg_cycles": 20
+	}
+}
