@@ -1,5 +1,5 @@
 {
-  "1":
+  "1": // Bulbasaur
   {
     "type_1": "GRASS",
 		"type_2": "NONE",
@@ -29,14 +29,77 @@
     "base_friendship": 70,
 		"national_dex": 1,
 		"regional_dex": 0,
+    "neo_dex": 1,
 		"height": 0.7,
 		"weight": 6.9,
     "gender_ratio": 2,
     "egg_group_1": "Monster",
     "egg_group_2": "Grass",
-    "egg_cycles": 20
+    "egg_cycles": 20,
+    "leveling_learnset":
+    {
+      "1": "Tackle",
+      "1": "Growl",
+      "3": "Vine Whip",
+      "6": "Growth",
+      "9": "Leech Seed",
+      "12": "Razor Leaf",
+      "15": "Poison Powder",
+      "15": "Sleep Powder",
+      "18": "Seed Bomb",
+      "21": "Take Down",
+      "24": "Sweet Scent",
+      "27": "Synthesis",
+      "30": "Worry Seed",
+      "33": "Power Whip",
+      "36": "Solar Beam"
+    },
+    "tm_learnset": 
+    [
+      "Take Down",
+      "Charm",
+      "Protect",
+      "Acid Spray",
+      "Trailblaze",
+      "Facade",
+      "Magical Leaf",
+      "Venoshock",
+      "Endure",
+      "Sunny Day",
+      "Bullet Seed",
+      "False Swipe",
+      "Body Slam",
+      "Sleep Talk",
+      "Seed Bomb",
+      "Grass Knot",
+      "Rest",
+      "Swords Dance",
+      "Substitute",
+      "Giga Drain",
+      "Energy Ball",
+      "Helping Hand",
+      "Grassy Terrain",
+      "Grass Pledge",
+      "Sludge Bomb",
+      "Leaf Storm",
+      "Solar Beam",
+      "Tera Blast",
+      "Toxic",
+      "Knock Off",
+      "Weather Ball",
+      "Grassy Glide",
+      "Double Edge",
+      "Curse"
+    ],
+    "egg_learnset":
+    [
+      "Curse",
+      "Ingrain",
+      "Petal Dance",
+      "Toxic"
+    ]
 	},
-  "2":
+  "2": // Ivysaur
   {
     "type_1": "GRASS",
 		"type_2": "POISON",
@@ -66,6 +129,7 @@
     "base_friendship": 70,
 		"national_dex": 2,
 		"regional_dex": 0,
+    "neo_dex": 2,
 		"height": 1.0,
 		"weight": 13.0,
     "gender_ratio": 2,
@@ -73,7 +137,7 @@
     "egg_group_2": "Grass",
     "egg_cycles": 20
 	},
-  "3":
+  "3": // Venusaur
   {
     "type_1": "GRASS",
 		"type_2": "POISON",
@@ -103,6 +167,7 @@
     "base_friendship": 70,
 		"national_dex": 3,
 		"regional_dex": 0,
+    "neo_dex": 3,
 		"height": 2.0,
 		"weight": 100.0,
     "gender_ratio": 2,
@@ -110,7 +175,7 @@
     "egg_group_2": "Grass",
     "egg_cycles": 20
 	},
-  "4":
+  "4": // Charmander
   {
     "type_1": "FIRE",
 		"type_2": "NONE",
@@ -140,6 +205,7 @@
     "base_friendship": 70,
 		"national_dex": 4,
 		"regional_dex": 0,
+    "neo_dex": 4,
 		"height": 0.6,
 		"weight": 8.5,
     "gender_ratio": 2,
@@ -147,7 +213,7 @@
     "egg_group_2": "Dragon",
     "egg_cycles": 20
 	},
-  "5":
+  "5": // Charmeleon
   {
     "type_1": "FIRE",
 		"type_2": "NONE",
@@ -177,6 +243,7 @@
     "base_friendship": 70,
 		"national_dex": 5,
 		"regional_dex": 0,
+    "neo_dex": 5,
 		"height": 1.1,
 		"weight": 19.0,
     "gender_ratio": 2,
@@ -184,7 +251,7 @@
     "egg_group_2": "Dragon",
     "egg_cycles": 20
 	},
-	"100":
+	"100": // Voltorb
   {
     "type_1": "ELECTRIC",
 		"type_2": "NONE",

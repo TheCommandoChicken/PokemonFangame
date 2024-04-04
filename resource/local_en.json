@@ -4,7 +4,7 @@
   "battle.wild_pokemon": "The wild @@POKEMON@@",
   "battle.super_effective": "It's super effective!",
   "battle.ineffective": "It's not very effective...",
-  "battle.no_effect": "It doesn't affect @@TARGET@@.",
+  "battle.immune": "It doesn't affect @@TARGET@@.",
   "battle.miss": "@@TARGET@@ evaded the attack!",
   "battle.critical_hit": "A critical hit!",
   "battle.status.burn": "@@POKEMON@@ was burned.",
