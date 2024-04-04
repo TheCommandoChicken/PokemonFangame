@@ -32,8 +32,11 @@
         "effect": "special_accuracy" // The move's accuracy is determined by the formula (UserLevel - TargetLevel + Accuracy), bypasses accuracy and evasion checks
       },
       {
+        "effect": "always_hit" // The move bypasses accuracy and evasion checks to always hit
+      },
+      {
         "effect": "one-hit-ko" // Guaranteed to KO the targeted Pokemon if the move succeeds
-      }
+      },
       {
         "effect": "multi-turn", // Move lasts multiple turns
         "attacking_turn": 2, // Which turn the move attacks on (the turn it is used being 1)
@@ -89,6 +92,16 @@
       },
       {
         "effect": "sheer_cold_special_conditions" // Follows the special conditions of the move Sheer Cold (Does not affect targets of the same type, accuracy is reduced by 10% if the user is not the same type)
+      },
+      {
+        "effect": "friendship_power", // Base power is derived from the user's friendship value, divided by the factor
+        "factor": 2.5
+      },
+      {
+        "effect": "hit_multiple", // Hit multiple Pokemon at once
+        "range": 1, // Range of Pokemon from the user to target (0 = user only, 1 = adjacent, 2 = entire field)
+        "opponents": true, // Whether to target opponents
+        "allies": false // Whether to target allies
       }
     ]
   },
@@ -544,18 +557,44 @@
   "29": // Headbutt
   {
     "category": 0,
+    "base_power": 70,
     "accuracy": 100,
     "type": "NORMAL",
     "pp": 15,
-    "contact": false,
+    "contact": true,
     "priority": 0,
     "effects":
     [
       {
-        "effect": "change_stat",
-        "target": "target",
-        "factors": [0, 0, 0, 0, 0, 0, -1, 0],
-        "chance": 100
+        "effect": "cause_flinch",
+        "chance": 30
+      }
+    ]
+  },
+  "30": // Horn Attack
+  {
+    "category": 0,
+    "base_power": 65,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 25,
+    "contact": true,
+    "priority": 0
+  },
+  "31": // Fury Attack
+  {
+    "category": 0,
+    "base_power": 15,
+    "accuracy": 85,
+    "type": "NORMAL",
+    "pp": 20,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "multi-hit",
+        "strike_chances": [0, 0, 35, 70, 85, 100]
       }
     ]
   },
@@ -575,6 +614,51 @@
       },
       {
         "effect": "one-hit-ko"
+      }
+    ]
+  },
+  "51": // Acid
+  {
+    "category": 1,
+    "base_power": 40,
+    "accuracy": 100,
+    "type": "POISON",
+    "pp": 30,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "target",
+        "factors": [0, 0, 0, -1, 0, 0, 0, 0],
+        "chance": 10
+      },
+      {
+        "effect": "hit_multiple",
+        "range": 1,
+        "opponents": true,
+        "allies": false
+      }
+    ]
+  },
+  "52": // Ember
+  {
+    "category": 1,
+    "base_power": 40,
+    "accuracy": 100,
+    "type": "FIRE",
+    "pp": 25,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "BURN",
+        "chance": 10,
+        "overwrite_existing": false
       }
     ]
   },
@@ -658,6 +742,194 @@
       {
         "effect": "cause_flinch",
         "chance": 10
+      }
+    ]
+  },
+  "423": // Ice Fang
+  {
+    "category": 0,
+    "base_power": 95,
+    "accuracy": 65,
+    "type": "ICE",
+    "pp": 15,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "FREEZE",
+        "chance": 10,
+        "overwrite_existing": false
+      },
+      {
+        "effect": "cause_flinch",
+        "chance": 10
+      }
+    ]
+  },
+  "424": // Fire Fang
+  {
+    "category": 0,
+    "base_power": 95,
+    "accuracy": 65,
+    "type": "FIRE",
+    "pp": 15,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "BURN",
+        "chance": 10,
+        "overwrite_existing": false
+      },
+      {
+        "effect": "cause_flinch",
+        "chance": 10
+      }
+    ]
+  },
+  "732": // Pika Papow
+  {
+    "category": 1,
+    "base_power": 0,
+    "accuracy": 100,
+    "type": "ELECTRIC",
+    "pp": 20,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "friendship_power",
+        "factor": 2.5
+      },
+      {
+        "effect": "always_hit"
+      }
+    ]
+  },
+  "741": // Veevee Volley
+  {
+    "category": 0,
+    "base_power": 0,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 20,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "friendship_power",
+        "factor": 2.5
+      },
+      {
+        "effect": "always_hit"
+      }
+    ]
+  },
+  "896": // Blazing Torque
+  {
+    "category": 0,
+    "base_power": 80,
+    "accuracy": 100,
+    "type": "FIRE",
+    "pp": 10,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "BURN",
+        "chance": 30,
+        "overwrite_existing": false
+      }
+    ]
+  },
+  "897": // Wicked Torque
+  {
+    "category": 0,
+    "base_power": 80,
+    "accuracy": 100,
+    "type": "DARK",
+    "pp": 10,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "SLEEP",
+        "chance": 10,
+        "overwrite_existing": false
+      }
+    ]
+  },
+  "898": // Noxious Torque
+  {
+    "category": 0,
+    "base_power": 100,
+    "accuracy": 100,
+    "type": "POISON",
+    "pp": 10,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "POISON",
+        "chance": 30,
+        "overwrite_existing": false
+      }
+    ]
+  },
+  "899": // Combat Torque
+  {
+    "category": 0,
+    "base_power": 100,
+    "accuracy": 100,
+    "type": "FIGHTING",
+    "pp": 10,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "PARALYZE",
+        "chance": 30,
+        "overwrite_existing": false
+      }
+    ]
+  },
+  "900": // Magical Torque
+  {
+    "category": 0,
+    "base_power": 100,
+    "accuracy": 100,
+    "type": "FAIRY",
+    "pp": 10,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "CONFUSE",
+        "chance": 30,
+        "overwrite_existing": false
       }
     ]
   },
