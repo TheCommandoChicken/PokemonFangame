@@ -4,3 +4,4 @@
 *.cache
 .godot/editor/filesystem_cache8
 /.godot
+.godot/editor/filesystem_cache8
