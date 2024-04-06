@@ -1959,6 +1959,423 @@
       }
     ]
   },
+  "101": // Night Shade
+  {
+    "category": 1,
+    "base_power": 0,
+    "accuracy": 100,
+    "type": "GHOST",
+    "pp": 20,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "special_damage",
+        "damage": "user_level",
+        "amount": 1.0
+      }
+    ]
+  },
+  "102": // Mimic
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "NORMAL",
+    "pp": 10,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "mimic"
+      }
+    ]
+  },
+  "103": // Screech
+  {
+    "category": 2,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 40,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "target",
+        "factors": [0, -2, 0, 0, 0, 0, 0, 0],
+        "chance": 100
+      },
+      {
+        "effect": "sound_based"
+      }
+    ]
+  },
+  "104": // Double Team
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "NORMAL",
+    "pp": 15,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "self",
+        "factors": [0, 0, 0, 0, 0, 1, 0, 0],
+        "chance": 100
+      }
+    ]
+  },
+  "105": // Recover
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "NORMAL",
+    "pp": 10,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "restore_health",
+        "target": "user",
+        "source": "user_max_health",
+        "amount": 0.5
+      }
+    ]
+  },
+  "106": // Harden
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "NORMAL",
+    "pp": 30,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "self",
+        "factors": [0, 1, 0, 0, 0, 0, 0, 0],
+        "chance": 100
+      }
+    ]
+  },
+  "107": // Minimize
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "NORMAL",
+    "pp": 10,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "self",
+        "factors": [0, 0, 0, 0, 0, 2, 0, 0],
+        "chance": 100
+      }
+    ]
+  },
+  "108": // Smokescreen
+  {
+    "category": 2,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 20,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "target",
+        "factors": [0, 0, 0, 0, 0, 0, -1, 0],
+        "chance": 100
+      }
+    ]
+  },
+  "109": // Confuse Ray
+  {
+    "category": 2,
+    "accuracy": 100,
+    "type": "GHOST",
+    "pp": 10,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "CONFUSE",
+        "chance": 100,
+        "overwrite_existing": false
+      }
+    ]
+  },
+  "110": // Withdraw
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "WATER",
+    "pp": 30, // Nerfed from 40 to match Harden, as the two moves are otherwise identical
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "self",
+        "factors": [0, 1, 0, 0, 0, 0, 0, 0],
+        "chance": 100
+      }
+    ]
+  },
+  "111": // Defense Curl
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "NORMAL",
+    "pp": 25, // Nerfed from 40 to match Harden, and further reduced to reflect the additional effect of the move
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "self",
+        "factors": [0, 1, 0, 0, 0, 0, 0, 0],
+        "chance": 100
+      },
+      {
+        "effect": "roll_up",
+        "factor": 2
+      }
+    ]
+  },
+  "112": // Barrier
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "PSYCHIC",
+    "pp": 20,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "self",
+        "factors": [0, 2, 0, 0, 0, 0, 0, 0],
+        "chance": 100
+      }
+    ]
+  },
+  "113": // Light Screen
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "PSYCHIC",
+    "pp": 20, // Nerfed from 30 to match Reflect
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "screen",
+        "damage_type": "special",
+        "duration": 5
+      }
+    ]
+  },
+  "114": // Haze
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "ICE",
+    "pp": 30,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "reset_stats",
+        "target": "all"
+      }
+    ]
+  },
+  "115": // Reflect
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "PSYCHIC",
+    "pp": 20,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "screen",
+        "damage_type": "physical",
+        "duration": 5
+      }
+    ]
+  },
+  "116": // Focus Energy
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "NORMAL",
+    "pp": 30,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "change_stat",
+        "target": "self",
+        "factors": [0, 0, 0, 0, 0, 0, 0, 1],
+        "chance": 100
+      }
+    ]
+  },
+  "117": // Bide
+  {
+    "category": 0,
+    "base_power": 0,
+    "accuracy": 1000,
+    "type": "NORMAL",
+    "pp": 10,
+    "contact": false,
+    "priority": 1,
+    "effects":
+    [
+      {
+        "effect": "bide",
+        "trapped": true,
+        "duration": 2
+      },
+      {
+        "effect": "always_hit"
+      }
+    ]
+  },
+  "118": // Metronome
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "NORMAL",
+    "pp": 10,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "random_move",
+        "blacklist": [68, 102, 119, 144, 165, 166, 168, 173, 182, 194, 197, 203, 214, 243, 264, 266, 267, 270, 271, 274, 289, 343, 364, 382, 383, 415, 448, 469, 476, 495, 501, 511, 516, 546, 547, 548, 553, 554, 555, 557, 561, 562, 578, 588, 591, 592, 593, 596, 606, 607, 614, 615, 617, 618, 619, 620, 621, 661, 671, 689, 690, 704, 705, 712, 713, 714, 717, 720, 721, 722, 742, 744, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 816, 817, 818, 819, 820, 821, 822, 823, 824, 825, 829, 833, 852, 856, 857, 858, 860, 863, 864, 867, 868, 873, 874, 877, 878, 879, 880, 881, 882, 883, 884, 885, 886, 887, 888, 889, 890, 892, 894, 897, 896, 898, 899, 900, 906]
+      }
+    ]
+  },
+  "119": // Mirror Move
+  {
+    "category": 2,
+    "accuracy": 1000,
+    "type": "FLYING",
+    "pp": 20,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "mirror_move"
+      }
+    ]
+  },
+  "120": // Self Destruct
+  {
+    "category": 0,
+    "base_power": 200,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 1, // Nerfed from 5 to compensate for the buffed effect
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "recoil",
+        "damage": "user_max_health",
+        "amount": 0.9
+      },
+      {
+        "effect": "hit_multiple",
+        "range": 1,
+        "opponents": true,
+        "allies": true
+      }
+    ]
+  },
+  "121": // Egg Bomb
+  {
+    "category": 0,
+    "base_power": 100,
+    "accuracy": 75,
+    "type": "NORMAL",
+    "pp": 10,
+    "contact": false,
+    "priority": 0
+  },
+  "122": // Lick
+  {
+    "category": 0,
+    "base_power": 30,
+    "accuracy": 100,
+    "type": "GHOST",
+    "pp": 30,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "inflict_status",
+        "target": "target",
+        "status": "PARALYZE",
+        "chance": 30,
+        "overwrite_existing": false
+      }
+    ]
+  },
+  "153": // Explosion
+  {
+    "category": 0,
+    "base_power": 250,
+    "accuracy": 100,
+    "type": "NORMAL",
+    "pp": 5,
+    "contact": false,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "knock_out_user"
+      },
+      {
+        "effect": "hit_multiple",
+        "range": 1,
+        "opponents": true,
+        "allies": true
+      }
+    ]
+  },
   "150": // Splash
   {
     "category": 0,
