@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bs8rgfj1e2pun" path="res://resource/pokemon/battle/assets/bulbasaur_front007.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://djyaydxtkto00" path="res://resource/pokemon/battle/assets/bulbasaur_front011.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://xh6h5ojagwug" path="res://resource/pokemon/battle/assets/bulbasaur_front_head.png" id="13_40csr"]
-[ext_resource type="SpriteFrames" uid="uid://cs83ocoy3qon0" path="res://resource/pokemon/battle/animation/ivysaur_front.tres" id="13_xk33i"]
+[ext_resource type="SpriteFrames" uid="uid://l5vdkjeabs0e" path="res://resource/pokemon/battle/animation/bulbasaur_front.tres" id="13_xk33i"]
 [ext_resource type="Texture2D" uid="uid://dgs1vbgfbheml" path="res://resource/pokemon/battle/assets/bulbasaur_front004.png" id="14_vnfu0"]
 [ext_resource type="Texture2D" uid="uid://gghyl3cpb80o" path="res://resource/pokemon/battle/assets/terastal-ornament-placeholder.png" id="15_go6h8"]
 
