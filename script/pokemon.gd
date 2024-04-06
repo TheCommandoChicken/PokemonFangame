@@ -1,6 +1,8 @@
 extends Node
 class_name Pokemon
 
+# These variables probably shouldn't be exposed like this, consider making getter and setter functions
+
 @export var species: int
 @export var nickname: String
 @export var shiny: bool
@@ -73,7 +75,7 @@ func _init(info: Dictionary) -> void:
 	level = info.level
 	ivs = info.ivs
 
-func updateStats():
+func updateStats(): # This is stupid and doesn't work
 	stats = {
 		"max_health": healthStat(BasePokemon.pokemon_table[species].base_stats.health, ivs.health, evs.health),
 		"current_health": stats.current_health,

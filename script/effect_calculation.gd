@@ -1,5 +1,5 @@
 extends Node
-class_name Fucker
+class_name Fucker # No idea why I called it that
 
 var move_table
 var effective_crit_stage: int
@@ -14,9 +14,9 @@ var attack = 1
 var defense = 1
 var recoil : int
 
-signal move_used(move, user, target, crit, effective, miss)
+signal move_used(move, user, target, crit, effective, miss) # This definitely needs to be refactored
 
-func _ready() -> void:
+func _ready() -> void: # This entire thing is almost verbatim duplicated from base_pokemon.gd, consider making it a function?
 	var path = "res://resource/moves.json"
 	var file = FileAccess.open(path, FileAccess.READ)
 	if not FileAccess.file_exists(path):
@@ -27,7 +27,7 @@ func _ready() -> void:
 
 func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 	var move = Dictionary(move_table.result[move_id])
-	var user_type_1 = BasePokemon.pokemon_table[user.species]["type_1"]
+	var user_type_1 = BasePokemon.pokemon_table[user.species]["type_1"] # These should probably be Tuples
 	var user_type_2 = BasePokemon.pokemon_table[user.species]["type_2"]
 	var target_type_1 = BasePokemon.pokemon_table[target.species]["type_1"]
 	var target_type_2 = BasePokemon.pokemon_table[target.species]["type_2"]
@@ -107,7 +107,7 @@ func getEffects(move: Dictionary) -> void:
 	for i in move["effects"].size():
 			effects.append(move["effects"][i])
 
-func checkEffectsPreDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> void:
+func checkEffectsPreDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> void: # Why do we have two separate functions for checking effects
 	for i in effects:
 		match i["effect"]:
 			"multi-hit":
@@ -183,7 +183,7 @@ func checkCrit(stage: int, affection: int) -> float:
 	
 	return 1.0
 
-func calculateDamage(attack : int, defense : int, level : int, power : int, effectiveness : float, stab : float, crit : float) -> int:
+func calculateDamage(attack : int, defense : int, level : int, power : int, effectiveness : float, stab : float, crit : float) -> int: # What the fuck
 	return int(((((((((2 * level) / 5) + 2) * power * max((attack / defense), 1)) / 50) + 2) * randf_range(0.85, 1.0) * stab) * crit) * effectiveness)
 
 func hitCount() -> int:
