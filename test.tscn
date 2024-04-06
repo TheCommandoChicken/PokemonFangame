@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://script/text_box.gd" id="2"]
 [ext_resource type="Script" path="res://script/battle_manager.gd" id="3"]
-[ext_resource type="Script" path="res://script/base_pokemon.gd" id="3_dwgc1"]
+[ext_resource type="PackedScene" uid="uid://bt5qf0yal4tpu" path="res://scene/pokemon.tscn" id="3_87dn1"]
 
 [sub_resource type="Theme" id="1"]
 
@@ -45,7 +45,6 @@ value = 1.0
 tick_count = 18
 ticks_on_borders = true
 
-[node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("3_dwgc1")
+[node name="Pokemon" parent="." instance=ExtResource("3_87dn1")]
 
 [connection signal="queue_text" from="BattleManager" to="TextBox" method="_on_BattleManager_queue_text"]
