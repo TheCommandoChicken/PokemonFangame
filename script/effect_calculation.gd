@@ -26,11 +26,11 @@ func _ready() -> void: # This entire thing is almost verbatim duplicated from ba
 	move_table = test_json_conv.get_data()
 
 func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
-	var move = Dictionary(move_table.result[move_id])
-	var user_type_1 = BasePokemon.pokemon_table[user.species]["type_1"] # These should probably be Tuples
-	var user_type_2 = BasePokemon.pokemon_table[user.species]["type_2"]
-	var target_type_1 = BasePokemon.pokemon_table[target.species]["type_1"]
-	var target_type_2 = BasePokemon.pokemon_table[target.species]["type_2"]
+	var move = Dictionary(move_table[str(move_id)])
+	var user_type_1 = BasePokemon.pokemon_table[str(user.species)]["type_1"] # These should probably be Tuples
+	var user_type_2 = BasePokemon.pokemon_table[str(user.species)]["type_2"]
+	var target_type_1 = BasePokemon.pokemon_table[str(target.species)]["type_1"]
+	var target_type_2 = BasePokemon.pokemon_table[str(target.species)]["type_2"]
 	var miss : bool
 	var power
 	var accuracy

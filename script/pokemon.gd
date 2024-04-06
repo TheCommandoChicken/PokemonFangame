@@ -77,13 +77,13 @@ func _init(info: Dictionary) -> void:
 
 func updateStats(): # This is stupid and doesn't work
 	stats = {
-		"max_health": healthStat(BasePokemon.pokemon_table[species].base_stats.health, ivs.health, evs.health),
+		"max_health": healthStat(BasePokemon.pokemon_table[str(species)].base_stats.health, ivs.health, evs.health),
 		"current_health": stats.current_health,
-		"attack": stat(BasePokemon.pokemon_table[species].base_stats.attack, ivs.attack, evs.attack),
-		"defense": stat(BasePokemon.pokemon_table[species].base_stats.defense, ivs.defense, evs.defense),
-		"sp_attack": stat(BasePokemon.pokemon_table[species].base_stats.sp_attack, ivs.sp_attack, evs.sp_attack),
-		"sp_defense": stat(BasePokemon.pokemon_table[species].base_stats.sp_defense, ivs.sp_defense, evs.sp_defense),
-		"speed": stat(BasePokemon.pokemon_table[species].base_stats.speed, ivs.speed, evs.speed)
+		"attack": stat(BasePokemon.pokemon_table[str(species)].base_stats.attack, ivs.attack, evs.attack),
+		"defense": stat(BasePokemon.pokemon_table[str(species)].base_stats.defense, ivs.defense, evs.defense),
+		"sp_attack": stat(BasePokemon.pokemon_table[str(species)].base_stats.sp_attack, ivs.sp_attack, evs.sp_attack),
+		"sp_defense": stat(BasePokemon.pokemon_table[str(species)].base_stats.sp_defense, ivs.sp_defense, evs.sp_defense),
+		"speed": stat(BasePokemon.pokemon_table[str(species)].base_stats.speed, ivs.speed, evs.speed)
 	}
 	
 	print(stats)

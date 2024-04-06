@@ -31,8 +31,8 @@ func getText(key) -> void:
 		assert("File does not exist at the provided path.")
 	var file = FileAccess.open(path, FileAccess.READ)
 	var test_json_conv = JSON.new()
-	test_json_conv.parse(file.get_as_text())[key]
-	text.append(String(test_json_conv.get_data()))
+	test_json_conv.parse(file.get_as_text())
+	text.append(String(test_json_conv.get_data()[key]))
 
 func nextPhrase():
 	var phrase = text[0].replace("@@POKEMON@@", pokemon)
@@ -55,6 +55,6 @@ func nextPhrase():
 
 func _on_BattleManager_queue_text(key, init_pokemon, init_move, init_target) -> void:
 	pokemon = init_pokemon
-	move = move_names[String(init_move)]
+	move = move_names[str(init_move)]
 	target = init_target
 	getText(key)
