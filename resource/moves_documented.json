@@ -1,47 +1,47 @@
 {
-  "0": 
+  "0": // Sample Move
   {
-    "category": 0, 
-    "base_power": 0, 
-    "accuracy": 100, 
-    "type": "NORMAL", 
-    "pp": 35, 
-    "contact": true, 
-    "priority": 0, 
-    "effects": 
+    "category": 0, // 0 = Physical, 1 = Special, 2 = Status
+    "base_power": 0, // Self explanatory, optional on status moves
+    "accuracy": 100, // Value from 0-100. Percentage representation of a move's accuracy. Special accuracy checks should be noted in the effects field.
+    "type": "NORMAL", // Move's type, in all uppercase.
+    "pp": 35, // Base max PP
+    "contact": true, // Boolean value denoting if the move makes contact.
+    "priority": 0, // Priority, integer value from -6 to 6.
+    "effects": // Optional list of additional effects the move has.
     [
       {
-        "effect": "increased_crit" 
+        "effect": "increased_crit" // Increases critical hit chance
       },
       {
-        "effect": "multi-hit", 
-        "strike_chances": [0, 0, 35, 70, 85, 100] 
+        "effect": "multi-hit", // Move hits multiple times in a single turn
+        "strike_chances": [0, 0, 35, 70, 85, 100] // Array of chances for the duration of the move. Each consecutive value is increased by the chance of that given hit occuring. In code a random value from 1-100 is checked to see which two values it sits between, and the higher of those's position in the array is the number of hits.
       },
       {
-        "effect": "scatters_coins", 
-        "factor": 5 
+        "effect": "scatters_coins", // Causes coins to be scattered when the move connects.
+        "factor": 5 // Multiplier of the user's level to determine the amount scattered
       },
       {
-        "effect": "inflict_status", 
-        "target": "target", 
-        "status": "BURN", 
-        "chance": 10, 
-        "overwrite_existing": false 
+        "effect": "inflict_status", // Inflicts a status condition
+        "target": "target", // Which Pokemon to inflict the condition upon.
+        "status": "BURN", // Which condition is to be inflicted
+        "chance": 10, // Percentage chance of the status being inflicted
+        "overwrite_existing": false // Boolean value denoting if the status can overwrite an existing status. Has no effect for statuses which can always be stacked with others, such as Confusion.
       },
       {
-        "effect": "special_accuracy" 
+        "effect": "special_accuracy" // The move's accuracy is determined by the formula (UserLevel - TargetLevel + Accuracy), bypasses accuracy and evasion checks
       },
       {
-        "effect": "always_hit" 
+        "effect": "always_hit" // The move bypasses accuracy and evasion checks to always hit
       },
       {
-        "effect": "one-hit-ko" 
+        "effect": "one-hit-ko" // Guaranteed to KO the targeted Pokemon if the move succeeds
       },
       {
-        "effect": "multi-turn", 
-        "attacking_turn": 2, 
-        "length": 2, 
-        "invulnerable": 0 
+        "effect": "multi-turn", // Move lasts multiple turns
+        "attacking_turn": 2, // Which turn the move attacks on (the turn it is used being 1)
+        "length": 2, // The number of turns the move lasts
+        "invulnerable": 0 // Which turn the user is invulnerable for, if any.
       },
       {
         "effect": "random_multi-turn",
@@ -49,106 +49,106 @@
         "max-length": 3
       },
       {
-        "effect": "effects_after_move", 
-        "effects": 
+        "effect": "effects_after_move", // Effects to be applied after a multi-turn move has finished
+        "effects": // Array of effects to be applied
         [
         ]
       },
       {
-        "effect": "change_stat", 
-        "target": "self", 
-        "factors": [2, 0, 0, 0, 0, 0, 0, 0], 
-        "chance": 100 
+        "effect": "change_stat", // Modifies a stat stage
+        "target": "self", // Which Pokemon to change the stages of
+        "factors": [2, 0, 0, 0, 0, 0, 0, 0], // The factor by which to change each stage. Attack, Defense, Special Attack, Special Defense, Speed, Evasion, Accuracy, Crit
+        "chance": 100 // Percentage chance of the stats being changed
       },
       {
-        "effect": "hit_invulnerable", 
-        "moves": [19], 
-        "power": 80 
+        "effect": "hit_invulnerable", // Hits invulnerable Pokemon
+        "moves": [19], // Which moves (by numerical ID) will have their invulnerability bypassed
+        "power": 80 // The power to use when bypassing invulnerability
       },
       {
-        "effect": "extended_range" 
+        "effect": "extended_range" // Can target Pokemon further from the user.
       },
       {
-        "effect": "switch_opponent" 
+        "effect": "switch_opponent" // Forces the opponent's Pokemon to switch out at random
       },
       {
-        "effect": "bypass_protect" 
+        "effect": "bypass_protect" // Bypasses Protect
       },
       {
-        "effect": "trapping", 
-        "min-length": "4", 
-        "max-length": "5" 
+        "effect": "trapping", // Partial trapping move, prevents the target from using most moves.
+        "min-length": "4", // Minimum number of turns for the target to be trapped
+        "max-length": "5" // Maximum number of turns for the target to be trapped
       },
       {
-        "effect": "percent_damage", 
-        "damage": "target_max_health", 
-        "amount": 0.125 
+        "effect": "percent_damage", // Deals damage based on a percentage of another factor
+        "damage": "target_max_health", // Which factor to use when determining the damage to deal
+        "amount": 0.125 // 0-1 multiplier of the damage factor
       },
       {
-        "effect": "cause_flinch", 
-        "chance": 30 
+        "effect": "cause_flinch", // Causes the target to flinch
+        "chance": 30 // Percentage chance the target will flinch
       },
       {
-        "effect": "bypass_minimize" 
+        "effect": "bypass_minimize" // Bypasses evasion checks and deals double damage if the target has used Minimize this battle
       },
       {
-        "effect": "crash_damage", 
-        "damage": "user_max_health", 
-        "amount": 0.5 
+        "effect": "crash_damage", // Deal damage to the user if the move misses
+        "damage": "user_max_health", // Which factor to use when determining the damage to deal
+        "amount": 0.5 // 0-1 multiplier of the damage factor
       },
       {
-        "effect": "recoil", 
+        "effect": "recoil", // Deal damage to the user if the move connects
         "damage": "user_max_health",
-        "amount": 0.25 
+        "amount": 0.25 // 0-1 multiplier of the damage factor
       },
       {
-        "effect": "same_type_immune" 
+        "effect": "same_type_immune" // Cannot affect Pokemon with the same type as the move
       },
       {
-        "effect": "same_type_accuracy_bonus", 
-        "amount": 10 
+        "effect": "same_type_accuracy_bonus", // The accuracy is increased when the user has the same type as the move
+        "amount": 10 // The amount by which to increase the accuracy
       },
       {
-        "effect": "friendship_power", 
+        "effect": "friendship_power", // Base power is derived from the user's friendship value, divided by the factor
         "factor": 2.5
       },
       {
-        "effect": "hit_multiple", 
-        "range": 1, 
-        "opponents": true, 
-        "allies": false 
+        "effect": "hit_multiple", // Hit multiple Pokemon at once
+        "range": 1, // Range of Pokemon from the user to target (0 = user only, 1 = adjacent, 2 = entire field)
+        "opponents": true, // Whether to target opponents
+        "allies": false // Whether to target allies
       },
       {
-        "effect": "fail_if_underlevel" 
+        "effect": "fail_if_underlevel" // The move will always fail if the user is lower level than the target
       },
       {
-        "effect": "sound_based" 
+        "effect": "sound_based" // The move will fail if used on a Pokemon with the Soundproof ability
       },
       {
-        "effect": "bypass_substitute" 
+        "effect": "bypass_substitute" // Can hit targets even if they are behind a substitute
       },
       {
-        "effect": "fixed_damage", 
+        "effect": "fixed_damage", // Deals an absolute amount of damage regardless of stats or typing.
         "amount": 20
       },
       {
-        "effect": "charge", 
-        "duration": 1, 
-        "invulnerable": true, 
-        "immobile": true 
+        "effect": "charge", // The user must charge before the move can be used
+        "duration": 1, // The number of turns the user must charge for
+        "invulnerable": true, // Whether the user is invulnerable during the charge period
+        "immobile": true // Whether the user can use other moves during the charge period
       },
       {
-        "effect": "recharge", 
-        "duration": 1, 
-        "invulnerable": false, 
-        "immobile": true 
+        "effect": "recharge", // The user must recharge after the move hits
+        "duration": 1, // The number of turns the user must recharge for
+        "invulnerable": false, // Whether the user is invulnerable during the recharge period
+        "immobile": true // Whether the user can use other moves during the recharge period
       },
       {
-        "effect": "no_effect" 
+        "effect": "no_effect" // Displays the message "But nothing happened!" (battle.no_effect)
       }
     ]
   },
-  "1": 
+  "1": // Pound
   {
     "category": 0,
     "base_power": 40,
@@ -158,7 +158,7 @@
     "contact": true,
     "priority": 0
   },
-  "2": 
+  "2": // Karate Chop
   {
     "category": 0,
     "base_power": 50,
@@ -174,7 +174,7 @@
       }
     ]
   },
-  "3": 
+  "3": // Double Slap
   {
     "category": 0,
     "base_power": 15,
@@ -191,7 +191,7 @@
       }
     ]
   },
-  "4": 
+  "4": // Comet Punch
   {
     "category": 0,
     "base_power": 18,
@@ -208,7 +208,7 @@
       }
     ]
   },
-  "5": 
+  "5": // Mega Punch
   {
     "category": 0,
     "base_power": 80,
@@ -218,7 +218,7 @@
     "contact": true,
     "priority": 0
   },
-  "6": 
+  "6": // Pay Day
   {
     "category": 0,
     "base_power": 40,
@@ -235,7 +235,7 @@
       }
     ]
   },
-  "7": 
+  "7": // Fire Punch
   {
     "category": 0,
     "base_power": 75,
@@ -255,7 +255,7 @@
       }
     ]
   },
-  "8": 
+  "8": // Ice Punch
   {
     "category": 0,
     "base_power": 75,
@@ -275,7 +275,7 @@
       }
     ]
   },
-  "9": 
+  "9": // Thunder Punch
   {
     "category": 0,
     "base_power": 75,
@@ -295,7 +295,7 @@
       }
     ]
   },
-  "10": 
+  "10": // Scratch
   {
     "category": 0,
     "base_power": 40,
@@ -305,7 +305,7 @@
     "contact": true,
     "priority": 0
   },
-  "11": 
+  "11": // Vise Grip
   {
     "category": 0,
     "base_power": 55,
@@ -315,7 +315,7 @@
     "contact": true,
     "priority": 0
   },
-  "12": 
+  "12": // Guillotine
   {
     "category": 0,
     "base_power": 0,
@@ -334,7 +334,7 @@
       }
     ]
   },
-  "13": 
+  "13": // Razor Wind
   {
     "category": 1,
     "base_power": 80,
@@ -356,7 +356,7 @@
       }
     ]
   },
-  "14": 
+  "14": // Swords Dance
   {
     "category": 2,
     "type": "NORMAL",
@@ -372,7 +372,7 @@
       }
     ]
   },
-  "15": 
+  "15": // Cut
   {
     "category": 0,
     "base_power": 50,
@@ -382,7 +382,7 @@
     "contact": true,
     "priority": 0
   },
-  "16": 
+  "16": // Gust
   {
     "category": 1,
     "base_power": 40,
@@ -403,7 +403,7 @@
       }
     ]
   },
-  "17": 
+  "17": // Wing Attack
   {
     "category": 0,
     "base_power": 60,
@@ -419,7 +419,7 @@
       }
     ]
   },
-  "18": 
+  "18": // Whirlwind
   {
     "category": 2,
     "type": "NORMAL",
@@ -436,7 +436,7 @@
       }
     ]
   },
-  "19": 
+  "19": // Fly
   {
     "category": 0,
     "base_power": 90,
@@ -455,7 +455,7 @@
       }
     ]
   },
-  "20": 
+  "20": // Bind
   {
     "category": 0,
     "base_power": 15,
@@ -478,7 +478,7 @@
       }
     ]
   },
-  "21": 
+  "21": // Slam
   {
     "category": 0,
     "base_power": 80,
@@ -488,7 +488,7 @@
     "contact": true,
     "priority": 0
   },
-  "22": 
+  "22": // Vine Whip
   {
     "category": 0,
     "base_power": 45,
@@ -498,7 +498,7 @@
     "contact": true,
     "priority": 0
   },
-  "23": 
+  "23": // Stomp
   {
     "category": 0,
     "base_power": 65,
@@ -518,7 +518,7 @@
       }
     ]
   },
-  "24": 
+  "24": // Double Kick
   {
     "category": 0,
     "base_power": 30,
@@ -535,7 +535,7 @@
       }
     ]
   },
-  "25": 
+  "25": // Mega Kick
   {
     "category": 0,
     "base_power": 120,
@@ -545,7 +545,7 @@
     "contact": true,
     "priority": 0
   },
-  "26": 
+  "26": // Jump Kick
   {
     "category": 0,
     "base_power": 100,
@@ -563,7 +563,7 @@
       }
     ]
   },
-  "27": 
+  "27": // Rolling Kick
   {
     "category": 0,
     "base_power": 60,
@@ -580,7 +580,7 @@
       }
     ]
   },
-  "28": 
+  "28": // Sand Attack
   {
     "category": 2,
     "accuracy": 100,
@@ -598,7 +598,7 @@
       }
     ]
   },
-  "29": 
+  "29": // Headbutt
   {
     "category": 0,
     "base_power": 70,
@@ -615,7 +615,7 @@
       }
     ]
   },
-  "30": 
+  "30": // Horn Attack
   {
     "category": 0,
     "base_power": 65,
@@ -625,7 +625,7 @@
     "contact": true,
     "priority": 0
   },
-  "31": 
+  "31": // Fury Attack
   {
     "category": 0,
     "base_power": 15,
@@ -642,7 +642,7 @@
       }
     ]
   },
-  "32": 
+  "32": // Horn Drill
   {
     "category": 0,
     "base_power": 0,
@@ -661,7 +661,7 @@
       }
     ]
   },
-  "33": 
+  "33": // Tackle
   {
     "category": 0,
     "base_power": 40,
@@ -671,7 +671,7 @@
     "contact": true,
     "priority": 0
   },
-  "34": 
+  "34": // Body Slam
   {
     "category": 0,
     "base_power": 85,
@@ -691,7 +691,7 @@
       }
     ]
   },
-  "35": 
+  "35": // Wrap
   {
     "category": 0,
     "base_power": 15,
@@ -714,7 +714,7 @@
       }
     ]
   },
-  "36": 
+  "36": // Take Down
   {
     "category": 0,
     "base_power": 90,
@@ -732,7 +732,7 @@
       }
     ]
   },
-  "37": 
+  "37": // Thrash
   {
     "category": 0,
     "base_power": 120,
@@ -763,7 +763,7 @@
       }
     ]
   },
-  "38": 
+  "38": // Double Edge
   {
     "category": 0,
     "base_power": 120,
@@ -781,7 +781,7 @@
       }
     ]
   },
-  "39": 
+  "39": // Tail Whip
   {
     "category": 2,
     "accuracy": 100,
@@ -805,7 +805,7 @@
       }
     ]
   },
-  "40": 
+  "40": // Poison Sting
   {
     "category": 0,
     "base_power": 15,
@@ -825,7 +825,7 @@
       }
     ]
   },
-  "41": 
+  "41": // Twineedle
   {
     "category": 0,
     "base_power": 25,
@@ -849,7 +849,7 @@
       }
     ]
   },
-  "42": 
+  "42": // Pin Missile
   {
     "category": 0,
     "base_power": 25,
@@ -866,7 +866,7 @@
       }
     ]
   },
-  "43": 
+  "43": // Leer
   {
     "category": 2,
     "accuracy": 100,
@@ -890,7 +890,7 @@
       }
     ]
   },
-  "44": 
+  "44": // Bite
   {
     "category": 0,
     "base_power": 60,
@@ -907,7 +907,7 @@
       }
     ]
   },
-  "45": 
+  "45": // Growl
   {
     "category": 2,
     "accuracy": 100,
@@ -934,7 +934,7 @@
       }
     ]
   },
-  "46": 
+  "46": // Roar
   {
     "category": 2,
     "type": "NORMAL",
@@ -960,7 +960,7 @@
       }
     ]
   },
-  "47": 
+  "47": // Sing
   {
     "category": 2,
     "accuracy": 55,
@@ -982,7 +982,7 @@
       }
     ]
   },
-  "48": 
+  "48": // Supersonic
   {
     "category": 2,
     "accuracy": 55,
@@ -1007,7 +1007,7 @@
       }
     ]
   },
-  "49": 
+  "49": // Sonic Boom
   {
     "category": 1,
     "base_power": 20,
@@ -1025,7 +1025,7 @@
       }
     ]
   },
-  "50": 
+  "50": // Disable
   {
     "category": 2,
     "accuracy": 100,
@@ -1041,7 +1041,7 @@
       }
     ]
   },
-  "51": 
+  "51": // Acid
   {
     "category": 1,
     "base_power": 40,
@@ -1066,7 +1066,7 @@
       }
     ]
   },
-  "52": 
+  "52": // Ember
   {
     "category": 1,
     "base_power": 40,
@@ -1086,7 +1086,7 @@
       }
     ]
   },
-  "53": 
+  "53": // Flamethrower
   {
     "category": 1,
     "base_power": 90,
@@ -1106,7 +1106,7 @@
       }
     ]
   },
-  "54": 
+  "54": // Mist
   {
     "category": 2,
     "accuracy": 100,
@@ -1122,7 +1122,7 @@
       }
     ]
   },
-  "55": 
+  "55": // Water Gun
   {
     "category": 1,
     "base_power": 40,
@@ -1132,7 +1132,7 @@
     "contact": false,
     "priority": 0
   },
-  "56": 
+  "56": // Hydro Pump
   {
     "category": 1,
     "base_power": 110,
@@ -1144,7 +1144,7 @@
     "effects":
     [
       {
-        "effect": "inflict_status", 
+        "effect": "inflict_status", // This is a custom effect not present on the original move in any official game
         "target": "target",
         "status": "CONFUSE",
         "chance": 10,
@@ -1152,7 +1152,7 @@
       }
     ]
   },
-  "57": 
+  "57": // Surf
   {
     "category": 1,
     "base_power": 90,
@@ -1162,7 +1162,7 @@
     "contact": false,
     "priority": 0
   },
-  "58": 
+  "58": // Ice Beam
   {
     "category": 1,
     "base_power": 90,
@@ -1182,11 +1182,11 @@
       }
     ]
   },
-  "59": 
+  "59": // Blizzard
   {
     "category": 1,
     "base_power": 110,
-    "accuracy": 75, 
+    "accuracy": 75, // Buffed from 70
     "type": "ICE",
     "pp": 5,
     "contact": false,
@@ -1202,7 +1202,7 @@
       }
     ]
   },
-  "60": 
+  "60": // Psybeam
   {
     "category": 1,
     "base_power": 65,
@@ -1222,7 +1222,7 @@
       }
     ]
   },
-  "61": 
+  "61": // Bubble Beam
   {
     "category": 1,
     "base_power": 65,
@@ -1241,7 +1241,7 @@
       }
     ]
   },
-  "62": 
+  "62": // Aurora Beam
   {
     "category": 1,
     "base_power": 65,
@@ -1260,7 +1260,7 @@
       }
     ]
   },
-  "63": 
+  "63": // Hyper Beam
   {
     "category": 1,
     "base_power": 150,
@@ -1279,7 +1279,7 @@
       }
     ]
   },
-  "64": 
+  "64": // Peck
   {
     "category": 0,
     "base_power": 35,
@@ -1295,7 +1295,7 @@
       }
     ]
   },
-  "65": 
+  "65": // Drill Peck
   {
     "category": 0,
     "base_power": 80,
@@ -1311,11 +1311,11 @@
       }
     ]
   },
-  "66": 
+  "66": // Submission
   {
     "category": 0,
     "base_power": 80,
-    "accuracy": 100, 
+    "accuracy": 100, // Buffed from 80
     "type": "FIGHTING",
     "pp": 20,
     "contact": true,
@@ -1329,7 +1329,7 @@
       }
     ]
   },
-  "67": 
+  "67": // Low Kick
   {
     "category": 0,
     "base_power": 0,
@@ -1346,7 +1346,7 @@
       }
     ]
   },
-  "68": 
+  "68": // Counter
   {
     "category": 0,
     "base_power": 0,
@@ -1362,7 +1362,7 @@
       }
     ]
   },
-  "69": 
+  "69": // Seismic Toss
   {
     "category": 0,
     "base_power": 0,
@@ -1380,7 +1380,7 @@
       }
     ]
   },
-  "70": 
+  "70": // Strength
   {
     "category": 0,
     "base_power": 80,
@@ -1390,7 +1390,7 @@
     "contact": true,
     "priority": 0
   },
-  "71": 
+  "71": // Absorb
   {
     "category": 1,
     "base_power": 20,
@@ -1409,7 +1409,7 @@
       }
     ]
   },
-  "72": 
+  "72": // Mega Drain
   {
     "category": 1,
     "base_power": 40,
@@ -1428,7 +1428,7 @@
       }
     ]
   },
-  "73": 
+  "73": // Leech Seed
   {
     "category": 2,
     "accuracy": 90,
@@ -1447,7 +1447,7 @@
       }
     ]
   },
-  "74": 
+  "74": // Growth
   {
     "category": 2,
     "accuracy": 1000,
@@ -1465,7 +1465,7 @@
       }
     ]
   },
-  "75": 
+  "75": // Razor Leaf
   {
     "category": 0,
     "base_power": 55,
@@ -1487,7 +1487,7 @@
       }
     ]
   },
-  "76": 
+  "76": // Solar Beam
   {
     "category": 1,
     "base_power": 120,
@@ -1506,7 +1506,7 @@
       }
     ]
   },
-  "77": 
+  "77": // Poison Powder
   {
     "category": 2,
     "accuracy": 75,
@@ -1525,7 +1525,7 @@
       }
     ]
   },
-  "78": 
+  "78": // Stun Spore
   {
     "category": 2,
     "accuracy": 75,
@@ -1544,7 +1544,7 @@
       }
     ]
   },
-  "79": 
+  "79": // Sleep Powder
   {
     "category": 2,
     "accuracy": 75,
@@ -1563,7 +1563,7 @@
       }
     ]
   },
-  "80": 
+  "80": // Petal Dance
   {
     "category": 1,
     "base_power": 120,
@@ -1587,7 +1587,7 @@
       }
     ]
   },
-  "81": 
+  "81": // String Shot
   {
     "category": 2,
     "accuracy": 95,
@@ -1611,7 +1611,7 @@
       }
     ]
   },
-  "82": 
+  "82": // Dragon Rage
   {
     "category": 1,
     "base_power": 40,
@@ -1629,7 +1629,7 @@
       }
     ]
   },
-  "83": 
+  "83": // Fire Spin
   {
     "category": 1,
     "base_power": 35,
@@ -1652,7 +1652,7 @@
       }
     ]
   },
-  "84": 
+  "84": // Thunder Shock
   {
     "category": 1,
     "base_power": 40,
@@ -1672,7 +1672,7 @@
       }
     ]
   },
-  "85": 
+  "85": // Thunderbolt
   {
     "category": 1,
     "base_power": 90,
@@ -1692,7 +1692,7 @@
       }
     ]
   },
-  "86": 
+  "86": // Thunder Wave
   {
     "category": 2,
     "accuracy": 90,
@@ -1711,7 +1711,7 @@
       }
     ]
   },
-  "87": 
+  "87": // Thunder
   {
     "category": 1,
     "base_power": 110,
@@ -1731,17 +1731,17 @@
       }
     ]
   },
-  "88": 
+  "88": // Rock Throw
   {
     "category": 0,
     "base_power": 50,
-    "accuracy": 100, 
+    "accuracy": 100, // Buffed from 90
     "type": "ROCK",
-    "pp": 20, 
+    "pp": 20, // Buffed from 15
     "contact": false,
     "priority": 0
   },
-  "89": 
+  "89": // Earthquake
   {
     "category": 0,
     "base_power": 100,
@@ -1765,7 +1765,7 @@
       }
     ]
   },
-  "90": 
+  "90": // Fissure
   {
     "category": 0,
     "base_power": 0,
@@ -1784,7 +1784,7 @@
       }
     ]
   },
-  "91": 
+  "91": // Dig
   {
     "category": 0,
     "base_power": 80,
@@ -1803,7 +1803,7 @@
       }
     ]
   },
-  "92": 
+  "92": // Toxic
   {
     "category": 2,
     "accuracy": 90,
@@ -1822,7 +1822,7 @@
       }
     ]
   },
-  "93": 
+  "93": // Confusion
   {
     "category": 1,
     "base_power": 50,
@@ -1842,7 +1842,7 @@
       }
     ]
   },
-  "94": 
+  "94": // Psychic
   {
     "category": 1,
     "base_power": 90,
@@ -1861,7 +1861,7 @@
       }
     ]
   },
-  "95": 
+  "95": // Hypnosis
   {
     "category": 2,
     "accuracy": 60,
@@ -1880,7 +1880,7 @@
       }
     ]
   },
-  "96": 
+  "96": // Meditate
   {
     "category": 2,
     "accuracy": 1000,
@@ -1893,12 +1893,12 @@
       {
         "effect": "change_stat",
         "target": "self",
-        "factors": [1, 0, 1, 0, 0, 0, 0, 0], 
+        "factors": [1, 0, 1, 0, 0, 0, 0, 0], // Buffed to increase Special Attack by 1 stage in addition to Physical Attack
         "chance": 100
       }
     ]
   },
-  "97": 
+  "97": // Agility
   {
     "category": 2,
     "accuracy": 1000,
@@ -1916,7 +1916,7 @@
       }
     ]
   },
-  "98": 
+  "98": // Quick Attack
   {
     "category": 0,
     "base_power": 40,
@@ -1926,7 +1926,7 @@
     "contact": true,
     "priority": 1
   },
-  "99": 
+  "99": // Rage
   {
     "category": 0,
     "base_power": 20,
@@ -1942,7 +1942,7 @@
       }
     ]
   },
-  "100": 
+  "100": // Teleport
   {
     "category": 2,
     "accuracy": 1000,
@@ -1959,7 +1959,7 @@
       }
     ]
   },
-  "101": 
+  "101": // Night Shade
   {
     "category": 1,
     "base_power": 0,
@@ -1977,7 +1977,7 @@
       }
     ]
   },
-  "102": 
+  "102": // Mimic
   {
     "category": 2,
     "accuracy": 1000,
@@ -1992,7 +1992,7 @@
       }
     ]
   },
-  "103": 
+  "103": // Screech
   {
     "category": 2,
     "accuracy": 100,
@@ -2013,7 +2013,7 @@
       }
     ]
   },
-  "104": 
+  "104": // Double Team
   {
     "category": 2,
     "accuracy": 1000,
@@ -2031,7 +2031,7 @@
       }
     ]
   },
-  "105": 
+  "105": // Recover
   {
     "category": 2,
     "accuracy": 1000,
@@ -2049,7 +2049,7 @@
       }
     ]
   },
-  "106": 
+  "106": // Harden
   {
     "category": 2,
     "accuracy": 1000,
@@ -2067,7 +2067,7 @@
       }
     ]
   },
-  "107": 
+  "107": // Minimize
   {
     "category": 2,
     "accuracy": 1000,
@@ -2085,7 +2085,7 @@
       }
     ]
   },
-  "108": 
+  "108": // Smokescreen
   {
     "category": 2,
     "accuracy": 100,
@@ -2103,7 +2103,7 @@
       }
     ]
   },
-  "109": 
+  "109": // Confuse Ray
   {
     "category": 2,
     "accuracy": 100,
@@ -2122,12 +2122,12 @@
       }
     ]
   },
-  "110": 
+  "110": // Withdraw
   {
     "category": 2,
     "accuracy": 1000,
     "type": "WATER",
-    "pp": 30, 
+    "pp": 30, // Nerfed from 40 to match Harden, as the two moves are otherwise identical
     "contact": false,
     "priority": 0,
     "effects":
@@ -2140,12 +2140,12 @@
       }
     ]
   },
-  "111": 
+  "111": // Defense Curl
   {
     "category": 2,
     "accuracy": 1000,
     "type": "NORMAL",
-    "pp": 25, 
+    "pp": 25, // Nerfed from 40 to match Harden, and further reduced to reflect the additional effect of the move
     "contact": false,
     "priority": 0,
     "effects":
@@ -2162,7 +2162,7 @@
       }
     ]
   },
-  "112": 
+  "112": // Barrier
   {
     "category": 2,
     "accuracy": 1000,
@@ -2180,12 +2180,12 @@
       }
     ]
   },
-  "113": 
+  "113": // Light Screen
   {
     "category": 2,
     "accuracy": 1000,
     "type": "PSYCHIC",
-    "pp": 20, 
+    "pp": 20, // Nerfed from 30 to match Reflect
     "contact": false,
     "priority": 0,
     "effects":
@@ -2197,7 +2197,7 @@
       }
     ]
   },
-  "114": 
+  "114": // Haze
   {
     "category": 2,
     "accuracy": 1000,
@@ -2213,7 +2213,7 @@
       }
     ]
   },
-  "115": 
+  "115": // Reflect
   {
     "category": 2,
     "accuracy": 1000,
@@ -2230,7 +2230,7 @@
       }
     ]
   },
-  "116": 
+  "116": // Focus Energy
   {
     "category": 2,
     "accuracy": 1000,
@@ -2248,7 +2248,7 @@
       }
     ]
   },
-  "117": 
+  "117": // Bide
   {
     "category": 0,
     "base_power": 0,
@@ -2269,7 +2269,7 @@
       }
     ]
   },
-  "118": 
+  "118": // Metronome
   {
     "category": 2,
     "accuracy": 1000,
@@ -2285,7 +2285,7 @@
       }
     ]
   },
-  "119": 
+  "119": // Mirror Move
   {
     "category": 2,
     "accuracy": 1000,
@@ -2300,13 +2300,13 @@
       }
     ]
   },
-  "120": 
+  "120": // Self Destruct
   {
     "category": 0,
     "base_power": 200,
     "accuracy": 100,
     "type": "NORMAL",
-    "pp": 1, 
+    "pp": 1, // Nerfed from 5 to compensate for the buffed effect
     "contact": false,
     "priority": 0,
     "effects":
@@ -2324,7 +2324,7 @@
       }
     ]
   },
-  "121": 
+  "121": // Egg Bomb
   {
     "category": 0,
     "base_power": 100,
@@ -2334,7 +2334,7 @@
     "contact": false,
     "priority": 0
   },
-  "122": 
+  "122": // Lick
   {
     "category": 0,
     "base_power": 30,
@@ -2354,7 +2354,7 @@
       }
     ]
   },
-  "153": 
+  "153": // Explosion
   {
     "category": 0,
     "base_power": 250,
@@ -2376,7 +2376,7 @@
       }
     ]
   },
-  "150": 
+  "150": // Splash
   {
     "category": 0,
     "base_power": 0,
@@ -2392,7 +2392,7 @@
       }
     ]
   },
-  "165": 
+  "165": // Struggle
   {
     "category": 0,
     "base_power": 50,
@@ -2410,7 +2410,7 @@
       }
     ]
   },
-  "329": 
+  "329": // Sheer Cold
   {
     "category": 1,
     "base_power": 0,
@@ -2436,7 +2436,7 @@
       }
     ]
   },
-  "422": 
+  "422": // Thunder Fang
   {
     "category": 0,
     "base_power": 95,
@@ -2460,7 +2460,7 @@
       }
     ]
   },
-  "423": 
+  "423": // Ice Fang
   {
     "category": 0,
     "base_power": 95,
@@ -2484,7 +2484,7 @@
       }
     ]
   },
-  "424": 
+  "424": // Fire Fang
   {
     "category": 0,
     "base_power": 95,
@@ -2508,7 +2508,7 @@
       }
     ]
   },
-  "732": 
+  "732": // Pika Papow
   {
     "category": 1,
     "base_power": 0,
@@ -2528,7 +2528,7 @@
       }
     ]
   },
-  "741": 
+  "741": // Veevee Volley
   {
     "category": 0,
     "base_power": 0,
@@ -2548,7 +2548,7 @@
       }
     ]
   },
-  "896": 
+  "896": // Blazing Torque
   {
     "category": 0,
     "base_power": 80,
@@ -2568,7 +2568,7 @@
       }
     ]
   },
-  "897": 
+  "897": // Wicked Torque
   {
     "category": 0,
     "base_power": 80,
@@ -2588,7 +2588,7 @@
       }
     ]
   },
-  "898": 
+  "898": // Noxious Torque
   {
     "category": 0,
     "base_power": 100,
@@ -2608,7 +2608,7 @@
       }
     ]
   },
-  "899": 
+  "899": // Combat Torque
   {
     "category": 0,
     "base_power": 100,
@@ -2628,7 +2628,7 @@
       }
     ]
   },
-  "900": 
+  "900": // Magical Torque
   {
     "category": 0,
     "base_power": 100,
