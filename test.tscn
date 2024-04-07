@@ -8,33 +8,48 @@
 
 [node name="Main" type="Node3D"]
 
-[node name="BattleManager" type="Node" parent="."]
+[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("healthBar")]
 script = ExtResource("3")
+healthBar = NodePath("../UI/Health")
 
-[node name="TextBox" type="Node" parent="."]
+[node name="Pokemon" parent="." instance=ExtResource("3_87dn1")]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.997
+offset_right = 2.0
+offset_bottom = 0.0799866
+
+[node name="TextBox" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 235.0
+offset_right = -4.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2")
 path = "res://resource/local_en.json"
 text_speed = 0.02
 
-[node name="ColorRect" type="ColorRect" parent="TextBox"]
-offset_left = 29.0
-offset_top = 396.0
-offset_right = 990.0
-offset_bottom = 572.0
+[node name="ColorRect" type="ColorRect" parent="UI/TextBox"]
+layout_mode = 2
 
-[node name="Text" type="RichTextLabel" parent="TextBox"]
-offset_left = 44.0
-offset_top = 411.0
-offset_right = 976.0
-offset_bottom = 561.0
+[node name="Text" type="RichTextLabel" parent="UI/TextBox"]
+layout_mode = 2
 theme = SubResource("1")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
+text = "
+"
 visible_characters = 0
 
-[node name="Timer" type="Timer" parent="TextBox"]
+[node name="Timer" type="Timer" parent="UI/TextBox"]
 
-[node name="MoveSlider" type="HSlider" parent="."]
+[node name="MoveSlider" type="HSlider" parent="UI"]
 offset_left = 28.0
 offset_top = 236.0
 offset_right = 535.0
@@ -45,6 +60,12 @@ value = 1.0
 tick_count = 18
 ticks_on_borders = true
 
-[node name="Pokemon" parent="." instance=ExtResource("3_87dn1")]
+[node name="Health" type="ProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 4.0
+offset_right = 637.0
+offset_bottom = 31.0
+show_percentage = false
 
-[connection signal="queue_text" from="BattleManager" to="TextBox" method="_on_BattleManager_queue_text"]
+[connection signal="queue_text" from="BattleManager" to="UI/TextBox" method="_on_BattleManager_queue_text"]

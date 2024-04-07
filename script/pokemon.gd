@@ -39,11 +39,11 @@ class_name Pokemon
 
 @export var stages = {
 	"attack": 0,
-	"defense": -6,
+	"defense": 0,
 	"sp_attack": 0,
 	"sp_defense": 0,
 	"speed": 0,
-	"evasiveness": 1,
+	"evasiveness": 2,
 	"accuracy": 0,
 	"crit": 0
 }
@@ -74,6 +74,9 @@ func _init(info: Dictionary) -> void:
 	species = info.species
 	level = info.level
 	ivs = info.ivs
+	BasePokemon._ready()
+	updateStats()
+	stats.current_health = stats.max_health
 
 func updateStats(): # This is stupid and does work
 	stats = {

@@ -13,6 +13,8 @@ var crit : float
 var attack = 1
 var defense = 1
 var recoil : int
+var attackId : String
+var defenseId : String
 
 signal move_used(move, user, target, crit, effective, miss)
 
@@ -36,9 +38,14 @@ func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 		0:
 			attack = user.stats["attack"]
 			defense = target.stats["defense"]
+			attackId = "attack"
+			defenseId = "defense"
 		1:
 			attack = user.stats["sp_attack"]
 			defense = target.stats["sp_defense"]
+			attackId = "sp_attack"
+			defenseId = "sp_defense"
+			
 			
 	match int(move["category"]):
 		0,1:
@@ -58,12 +65,15 @@ func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 			
 			for i in hits:
 				crit = checkCrit(effective_crit_stage, user.affection)
-				damage = max(calculateDamage(attack, defense, user.level, power, effective, stab, crit), 1)
+				damage = max(calculateDamage(attack * getStageMultiplier(user.stages[attackId]), defense * getStageMultiplier(target.stages[defenseId]), user.level, power, effective, stab, crit), 1)
 				
 				if miss || effective == 0.0:
 					damage = 0
 				
 				print("Dealt ", damage)
+				
+				target.stats.current_health -= damage
+				
 				print("Miss: ", miss)
 		
 	emit_signal("move_used", move_id, user.nickname, target.nickname, crit, effective, miss)
@@ -71,7 +81,10 @@ func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 func checkAccuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> bool:
 	var stage = accuracy_stage - evasion_stage
 	
-	accuracy *= pow(min(abs(stage) + 3, 9) / 3, sign(stage)) # This line has been simplified so much it's practically illegible, so maybe I want to revert to an earlier version
+	if stage >= 0:
+		accuracy *= min(abs(stage) + 3, 9) / 3.0
+	elif stage < 0:
+		accuracy *= 3.0 / min(abs(stage) + 3, 9)
 	
 	print(accuracy)
 	
@@ -168,8 +181,8 @@ func checkCrit(stage: int, affection: int) -> float:
 	
 	return 1.0
 
-func calculateDamage(attack : int, defense : int, level : int, power : int, effectiveness : float, stab : float, crit : float) -> int: # What the fuck
-	return int(((((((((2 * level) / 5) + 2) * power * max((attack / defense), 1)) / 50) + 2) * randf_range(0.85, 1.0) * stab) * crit) * effectiveness)
+func calculateDamage(tattack : float, tdefense : float, tlevel : int, tpower : int, teffectiveness : float, tstab : float, tcrit : float) -> int: # What the fuck
+	return int(((((((((2 * tlevel) / 5) + 2) * tpower * max((tattack / tdefense), 1)) / 50) + 2) * randf_range(0.85, 1.0) * tstab) * tcrit) * teffectiveness)
 
 func hitCount() -> int:
 	var rand = randf_range(0.01, 1) * 100
@@ -184,4 +197,4 @@ func calculateRecoil(amount : float, source : int) -> int:
 	return int(source * amount)
 
 func getStageMultiplier(stage: int) -> float:
-	return pow(min(abs(stage) + 2, 8) / 2, sign(stage))
+	return pow(min(abs(stage) + 2, 8) / 2, signf(stage + 0.5))
