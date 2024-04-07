@@ -38,13 +38,13 @@ class_name Pokemon
 }
 
 @export var stages = {
-	"attack": 0,
-	"defense": 0,
+	"attack": 2,
+	"defense": 6,
 	"sp_attack": 0,
-	"sp_defense": 0,
+	"sp_defense": 2,
 	"speed": 0,
-	"evasiveness": 2,
-	"accuracy": 0,
+	"evasiveness": 0,
+	"accuracy": 6,
 	"crit": 0
 }
 

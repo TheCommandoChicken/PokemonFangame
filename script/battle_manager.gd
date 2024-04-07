@@ -3,7 +3,7 @@ extends Node
 signal queue_text(key, init_pokemon, init_move, init_target)
 
 var pokemon_1 = Pokemon.new({"nickname": "Voltorb", "species": 100,"ivs":{"health": randf_range(0.00, 0.31) * 100,"attack": randf_range(0.00, 0.31) * 100,"defense": randf_range(0.00, 0.31) * 100,"sp_attack": randf_range(0.00, 0.31) * 100,"sp_defense": randf_range(0.00, 0.31) * 100,"speed": randf_range(0.00, 0.31) * 100}, "level": 100})
-var pokemon_2 = Pokemon.new({"nickname": "Voltorb", "species": 100,"ivs":{"health": randf_range(0.00, 0.31) * 100,"attack": randf_range(0.00, 0.31) * 100,"defense": randf_range(0.00, 0.31) * 100,"sp_attack": randf_range(0.00, 0.31) * 100,"sp_defense": randf_range(0.00, 0.31) * 100,"speed": randf_range(0.00, 0.31) * 100}, "level": 100})
+var pokemon_2 = Pokemon.new({"nickname": "Voltorb2", "species": 100,"ivs":{"health": randf_range(0.00, 0.31) * 100,"attack": randf_range(0.00, 0.31) * 100,"defense": randf_range(0.00, 0.31) * 100,"sp_attack": randf_range(0.00, 0.31) * 100,"sp_defense": randf_range(0.00, 0.31) * 100,"speed": randf_range(0.00, 0.31) * 100}, "level": 100})
 @export var moves : Array
 @export var healthBar : ProgressBar
 

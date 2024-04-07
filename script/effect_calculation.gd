@@ -53,7 +53,7 @@ func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 			
 			effective = Types.typeMatchup(move["type"], target.getTypes())
 			
-			miss = checkAccuracy(move["accuracy"], user.stages["accuracy"], target.stages["evasiveness"])
+			miss = checkAccuracy(move.accuracy, user.stages.accuracy, target.stages.evasiveness)
 			
 			stab = calcStab(move["type"], user.getTypes())
 			
@@ -79,12 +79,14 @@ func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 	emit_signal("move_used", move_id, user.nickname, target.nickname, crit, effective, miss)
 
 func checkAccuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> bool:
-	var stage = accuracy_stage - evasion_stage
+	var mstage = accuracy_stage - evasion_stage
 	
-	if stage >= 0:
-		accuracy *= min(abs(stage) + 3, 9) / 3.0
-	elif stage < 0:
-		accuracy *= 3.0 / min(abs(stage) + 3, 9)
+	if mstage >= 0:
+		accuracy *= min(abs(mstage) + 3, 9) / 3.0
+	else:
+		accuracy *= 3.0 / min(abs(mstage) + 3, 9)
+		
+	#accuracy *= pow(min(abs(mstage) + 3, 9) / 3, signf(mstage)) # For some inexplicable reason this doesn't work
 	
 	print(accuracy)
 	
@@ -182,7 +184,8 @@ func checkCrit(stage: int, affection: int) -> float:
 	return 1.0
 
 func calculateDamage(tattack : float, tdefense : float, tlevel : int, tpower : int, teffectiveness : float, tstab : float, tcrit : float) -> int: # What the fuck
-	return int(((((((((2 * tlevel) / 5) + 2) * tpower * max((tattack / tdefense), 1)) / 50) + 2) * randf_range(0.85, 1.0) * tstab) * tcrit) * teffectiveness)
+	print(tattack)
+	return int(((((((((2 * tlevel) / 5) + 2) * tpower * (tattack / tdefense)) / 50) + 2) * randf_range(0.85, 1.0) * tstab) * tcrit) * teffectiveness)
 
 func hitCount() -> int:
 	var rand = randf_range(0.01, 1) * 100
@@ -197,4 +200,7 @@ func calculateRecoil(amount : float, source : int) -> int:
 	return int(source * amount)
 
 func getStageMultiplier(stage: int) -> float:
-	return pow(min(abs(stage) + 2, 8) / 2, signf(stage + 0.5))
+	if stage >= 0:
+		return min(stage + 2, 8) / 2.0
+	else:
+		return 2.0 / min(abs(stage) + 2, 8)
