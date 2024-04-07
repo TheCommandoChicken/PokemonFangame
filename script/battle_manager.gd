@@ -17,17 +17,15 @@ func _process(delta: float) -> void:
 		pokemon_1.updateStats()
 		pokemon_2.updateStats()
 
-func _on_queue_move(move, speed, priority, user, target): # As far as I can tell this function is never called, and also doesn't seem like it would work anyway
+func _on_queue_move(move, speed, priority, user, target): # As far as I can tell this function is never called
 	for i in moves.size() - 1:
-		if moves[i][2] > priority:
-			continue
-		elif moves[i][2] < priority:
+		if moves[i][2] < priority || (moves[i][2] == priority && moves[i][1] <= speed):
 			moves.insert(i, [move, speed, priority, user, target])
-		elif moves[i][2] == priority:
-			if moves[i][1] > speed:
-				continue
-			elif moves[i][1] <= speed:
-				moves.insert(i, [move, speed, priority, user, target])
+			return
+		else:
+			continue
+	
+	moves.append([move, speed, priority, user, target])
 
 func _on_move_used(move, user, target, crit, effective, miss):
 	emit_signal("queue_text", "battle.move_used", user, move, target)

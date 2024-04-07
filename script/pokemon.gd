@@ -43,8 +43,8 @@ class_name Pokemon
 	"sp_attack": 0,
 	"sp_defense": 0,
 	"speed": 0,
-	"evasiveness": 0,
-	"accuracy": -6,
+	"evasiveness": 1,
+	"accuracy": 0,
 	"crit": 0
 }
 

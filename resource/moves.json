@@ -1,153 +1,4 @@
 {
-  "0": 
-  {
-    "category": 0, 
-    "base_power": 0, 
-    "accuracy": 1.0, 
-    "type": "NORMAL", 
-    "pp": 35, 
-    "contact": true, 
-    "priority": 0, 
-    "effects": 
-    [
-      {
-        "effect": "increased_crit" 
-      },
-      {
-        "effect": "multi-hit", 
-        "strike_chances": [0, 0, 35, 70, 85, 100] 
-      },
-      {
-        "effect": "scatters_coins", 
-        "factor": 5 
-      },
-      {
-        "effect": "inflict_status", 
-        "target": "target", 
-        "status": "BURN", 
-        "chance": 10, 
-        "overwrite_existing": false 
-      },
-      {
-        "effect": "special_accuracy" 
-      },
-      {
-        "effect": "always_hit" 
-      },
-      {
-        "effect": "one-hit-ko" 
-      },
-      {
-        "effect": "multi-turn", 
-        "attacking_turn": 2, 
-        "length": 2, 
-        "invulnerable": 0 
-      },
-      {
-        "effect": "random_multi-turn",
-        "min-length": 2,
-        "max-length": 3
-      },
-      {
-        "effect": "effects_after_move", 
-        "effects": 
-        [
-        ]
-      },
-      {
-        "effect": "change_stat", 
-        "target": "self", 
-        "factors": [2, 0, 0, 0, 0, 0, 0, 0], 
-        "chance": 100 
-      },
-      {
-        "effect": "hit_invulnerable", 
-        "moves": [19], 
-        "power": 80 
-      },
-      {
-        "effect": "extended_range" 
-      },
-      {
-        "effect": "switch_opponent" 
-      },
-      {
-        "effect": "bypass_protect" 
-      },
-      {
-        "effect": "trapping", 
-        "min-length": "4", 
-        "max-length": "5" 
-      },
-      {
-        "effect": "percent_damage", 
-        "damage": "target_max_health", 
-        "amount": 0.125 
-      },
-      {
-        "effect": "cause_flinch", 
-        "chance": 30 
-      },
-      {
-        "effect": "bypass_minimize" 
-      },
-      {
-        "effect": "crash_damage", 
-        "damage": "user_max_health", 
-        "amount": 0.5 
-      },
-      {
-        "effect": "recoil", 
-        "damage": "user_max_health",
-        "amount": 0.25 
-      },
-      {
-        "effect": "same_type_immune" 
-      },
-      {
-        "effect": "same_type_accuracy_bonus", 
-        "amount": 10 
-      },
-      {
-        "effect": "friendship_power", 
-        "factor": 2.5
-      },
-      {
-        "effect": "hit_multiple", 
-        "range": 1, 
-        "opponents": true, 
-        "allies": false 
-      },
-      {
-        "effect": "fail_if_underlevel" 
-      },
-      {
-        "effect": "sound_based" 
-      },
-      {
-        "effect": "bypass_substitute" 
-      },
-      {
-        "effect": "fixed_damage", 
-        "amount": 20
-      },
-      {
-        "effect": "charge", 
-        "duration": 1, 
-        "invulnerable": true, 
-        "immobile": true 
-      },
-      {
-        "effect": "recharge", 
-        "duration": 1, 
-        "invulnerable": false, 
-        "immobile": true 
-      },
-      {
-        "effect": "no_effect" 
-      }
-    ]
-  },
   "1": 
   {
     "category": 0,
@@ -250,7 +101,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "BURN",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -270,7 +121,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "FREEZE",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -290,7 +141,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "PARALYZE",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -369,7 +220,7 @@
         "effect": "change_stat",
         "target": "self",
         "factors": [2, 0, 0, 0, 0, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -513,7 +364,7 @@
     [
       {
         "effect": "cause_flinch",
-        "chance": 30
+        "chance": 0.3
       },
       {
         "effect": "bypass_minimize"
@@ -578,7 +429,7 @@
     [
       {
         "effect": "cause_flinch",
-        "chance": 30
+        "chance": 0.3
       }
     ]
   },
@@ -596,7 +447,7 @@
         "effect": "change_stat",
         "target": "target",
         "factors": [0, 0, 0, 0, 0, 0, -1, 0],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -613,7 +464,7 @@
     [
       {
         "effect": "cause_flinch",
-        "chance": 30
+        "chance": 0.3
       }
     ]
   },
@@ -686,7 +537,7 @@
     [
       {
         "effect": "cause_flinch",
-        "chance": 30
+        "chance": 0.3
       },
       {
         "effect": "bypass_minimize"
@@ -758,7 +609,7 @@
             "effect": "inflict_status",
             "target": "self",
             "status": "CONFUSE",
-            "chance": 100,
+            "chance": 1.0,
             "overwrite_existing": false
           }
         ]
@@ -797,7 +648,7 @@
         "effect": "change_stat",
         "target": "target",
         "factors": [0, -1, 0, 0, 0, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       },
       {
         "effect": "hit_multiple",
@@ -822,7 +673,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "POISON",
-        "chance": 30,
+        "chance": 0.3,
         "overwrite_existing": false
       }
     ]
@@ -842,7 +693,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "POISON",
-        "chance": 20,
+        "chance": 0.2,
         "overwrite_existing": false
       },
       {
@@ -882,7 +733,7 @@
         "effect": "change_stat",
         "target": "target",
         "factors": [0, -1, 0, 0, 0, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       },
       {
         "effect": "hit_multiple",
@@ -905,7 +756,7 @@
     [
       {
         "effect": "cause_flinch",
-        "chance": 30
+        "chance": 0.3
       }
     ]
   },
@@ -923,7 +774,7 @@
         "effect": "change_stat",
         "target": "target",
         "factors": [-1, 0, 0, 0, 0, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       },
       {
         "effect": "hit_multiple",
@@ -977,7 +828,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "SLEEP",
-        "chance": 100,
+        "chance": 1.0,
         "overwrite_existing": false
       },
       {
@@ -999,7 +850,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "CONFUSE",
-        "chance": 100,
+        "chance": 1.0,
         "overwrite_existing": false
       },
       {
@@ -1059,7 +910,7 @@
         "effect": "change_stat",
         "target": "target",
         "factors": [0, 0, 0, -1, 0, 0, 0, 0],
-        "chance": 10
+        "chance": 0.1
       },
       {
         "effect": "hit_multiple",
@@ -1084,7 +935,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "BURN",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -1104,7 +955,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "BURN",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -1150,7 +1001,7 @@
         "effect": "inflict_status", 
         "target": "target",
         "status": "CONFUSE",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -1180,7 +1031,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "FREEZE",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -1200,7 +1051,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "FREEZE",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -1220,7 +1071,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "CONFUSE",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -1240,7 +1091,7 @@
         "effect": "change_stat",
         "target": "target",
         "factors": [0, 0, 0, 0, -1, 0, 0, 0],
-        "chance": 10
+        "chance": 0.1
       }
     ]
   },
@@ -1259,7 +1110,7 @@
         "effect": "change_stat",
         "target": "target",
         "factors": [-1, 0, 0, 0, 0, 0, 0, 0],
-        "chance": 10
+        "chance": 0.1
       }
     ]
   },
@@ -1445,7 +1296,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "SEED",
-        "chance": 100,
+        "chance": 1.0,
         "overwrite_existing": false
       }
     ]
@@ -1464,7 +1315,7 @@
         "effect": "change_stat",
         "target": "self",
         "factors": [1, 0, 1, 0, 0, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -1523,7 +1374,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "POISON",
-        "chance": 100,
+        "chance": 1.0,
         "overwrite_existing": false
       }
     ]
@@ -1542,7 +1393,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "PARALYZE",
-        "chance": 100,
+        "chance": 1.0,
         "overwrite_existing": false
       }
     ]
@@ -1561,7 +1412,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "SLEEP",
-        "chance": 100,
+        "chance": 1.0,
         "overwrite_existing": false
       }
     ]
@@ -1610,7 +1461,7 @@
         "effect": "change_stat",
         "target": "target",
         "factors": [0, 0, 0, 0, -2, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -1670,7 +1521,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "PARALYZE",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -1690,7 +1541,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "PARALYZE",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -1709,7 +1560,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "PARALYZE",
-        "chance": 100,
+        "chance": 1.0,
         "overwrite_existing": false
       }
     ]
@@ -1729,7 +1580,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "PARALYZE",
-        "chance": 30,
+        "chance": 0.3,
         "overwrite_existing": false
       }
     ]
@@ -1820,7 +1671,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "TOXIC",
-        "chance": 100,
+        "chance": 1.0,
         "overwrite_existing": false
       }
     ]
@@ -1840,7 +1691,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "CONFUSE",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -1860,7 +1711,7 @@
         "effect": "change_stat",
         "target": "target",
         "factors": [0, 0, 0, -1, 0, 0, 0, 0],
-        "chance": 10
+        "chance": 0.1
       }
     ]
   },
@@ -1878,7 +1729,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "SLEEP",
-        "chance": 100,
+        "chance": 1.0,
         "overwrite_existing": false
       }
     ]
@@ -1897,7 +1748,7 @@
         "effect": "change_stat",
         "target": "self",
         "factors": [1, 0, 1, 0, 0, 0, 0, 0], 
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -1915,7 +1766,7 @@
         "effect": "change_stat",
         "target": "self",
         "factors": [0, 0, 0, 0, 2, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -2009,7 +1860,7 @@
         "effect": "change_stat",
         "target": "target",
         "factors": [0, -2, 0, 0, 0, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       },
       {
         "effect": "sound_based"
@@ -2030,7 +1881,7 @@
         "effect": "change_stat",
         "target": "self",
         "factors": [0, 0, 0, 0, 0, 1, 0, 0],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -2066,7 +1917,7 @@
         "effect": "change_stat",
         "target": "self",
         "factors": [0, 1, 0, 0, 0, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -2084,7 +1935,7 @@
         "effect": "change_stat",
         "target": "self",
         "factors": [0, 0, 0, 0, 0, 2, 0, 0],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -2102,7 +1953,7 @@
         "effect": "change_stat",
         "target": "target",
         "factors": [0, 0, 0, 0, 0, 0, -1, 0],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -2120,7 +1971,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "CONFUSE",
-        "chance": 100,
+        "chance": 1.0,
         "overwrite_existing": false
       }
     ]
@@ -2139,7 +1990,7 @@
         "effect": "change_stat",
         "target": "self",
         "factors": [0, 1, 0, 0, 0, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -2157,7 +2008,7 @@
         "effect": "change_stat",
         "target": "self",
         "factors": [0, 1, 0, 0, 0, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       },
       {
         "effect": "roll_up",
@@ -2179,7 +2030,7 @@
         "effect": "change_stat",
         "target": "self",
         "factors": [0, 2, 0, 0, 0, 0, 0, 0],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -2247,7 +2098,7 @@
         "effect": "change_stat",
         "target": "self",
         "factors": [0, 0, 0, 0, 0, 0, 0, 1],
-        "chance": 100
+        "chance": 1.0
       }
     ]
   },
@@ -2352,7 +2203,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "PARALYZE",
-        "chance": 30,
+        "chance": 0.3,
         "overwrite_existing": false
       }
     ]
@@ -2454,12 +2305,12 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "PARALYZE",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       },
       {
         "effect": "cause_flinch",
-        "chance": 10
+        "chance": 0.1
       }
     ]
   },
@@ -2478,12 +2329,12 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "FREEZE",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       },
       {
         "effect": "cause_flinch",
-        "chance": 10
+        "chance": 0.1
       }
     ]
   },
@@ -2502,12 +2353,12 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "BURN",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       },
       {
         "effect": "cause_flinch",
-        "chance": 10
+        "chance": 0.1
       }
     ]
   },
@@ -2566,7 +2417,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "BURN",
-        "chance": 30,
+        "chance": 0.3,
         "overwrite_existing": false
       }
     ]
@@ -2586,7 +2437,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "SLEEP",
-        "chance": 10,
+        "chance": 0.1,
         "overwrite_existing": false
       }
     ]
@@ -2606,7 +2457,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "POISON",
-        "chance": 30,
+        "chance": 0.3,
         "overwrite_existing": false
       }
     ]
@@ -2626,7 +2477,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "PARALYZE",
-        "chance": 30,
+        "chance": 0.3,
         "overwrite_existing": false
       }
     ]
@@ -2646,7 +2497,7 @@
         "effect": "inflict_status",
         "target": "target",
         "status": "CONFUSE",
-        "chance": 30,
+        "chance": 0.3,
         "overwrite_existing": false
       }
     ]

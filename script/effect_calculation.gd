@@ -29,24 +29,21 @@ func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 	var move = Dictionary(move_table[str(move_id)])
 	var miss : bool
 	var power
-	var accuracy
 	
 	hits = 1
 	
-	match int(move["category"]):
+	match int(move["category"]): # There are moves that won't fit within this structure
 		0:
 			attack = user.stats["attack"]
 			defense = target.stats["defense"]
-			power = move["base_power"]
-			accuracy = move["accuracy"]
 		1:
 			attack = user.stats["sp_attack"]
 			defense = target.stats["sp_defense"]
-			power = move["base_power"]
-			accuracy = move["accuracy"]
 			
 	match int(move["category"]):
 		0,1:
+			power = move["base_power"]
+			
 			effective = Types.typeMatchup(move["type"], target.getTypes())
 			
 			miss = checkAccuracy(move["accuracy"], user.stages["accuracy"], target.stages["evasiveness"])
@@ -61,39 +58,33 @@ func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 			
 			for i in hits:
 				crit = checkCrit(effective_crit_stage, user.affection)
-				damage = calculateDamage(attack, defense, user.level, power, effective, stab, crit)
+				damage = max(calculateDamage(attack, defense, user.level, power, effective, stab, crit), 1)
 				
-				if damage <= 0 && miss == false && effective != 0.0:
-					damage = 1
-				
-				if miss:
+				if miss || effective == 0.0:
 					damage = 0
 				
-				print(damage)
+				print("Dealt ", damage)
+				print("Miss: ", miss)
 		
 	emit_signal("move_used", move_id, user.nickname, target.nickname, crit, effective, miss)
 
-func checkAccuracy(accuracy: int, accuracy_stage: int, evasion_stage: int) -> bool:
+func checkAccuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> bool:
 	var stage = accuracy_stage - evasion_stage
 	
-	if stage >= 0 && stage <= 6:
-		accuracy *= (abs(stage) + 3) / 3.0
-	elif stage < 0 && stage >= -6:
-		accuracy *= 3.0 / (abs(stage) + 3)
-	elif stage > 6:
-		accuracy *= 3
-	elif stage < -6:
-		accuracy *= 1.0/3.0
+	if stage >= 0:
+		accuracy *= min(abs(stage) + 3, 9) / 3.0
+	elif stage < 0:
+		accuracy *= 3.0 / min(abs(stage) + 3, 9)
 		
 	print(accuracy)
 	
-	if randf_range(0, 1) * 100 > accuracy:
+	if randf_range(0, 1) > accuracy:
 		return true
 	
 	return false
 
 func calcStab(move_type: String, user_types: Array) -> float:
-	if move_type == user_types[1] || (move_type == user_types[2]) && user_types[2] != "NONE":
+	if move_type == user_types[0] || (move_type == user_types[1]) && user_types[1] != "NONE":
 		return 1.5
 	else:
 		return 1.0
@@ -115,7 +106,7 @@ func checkEffectsPreDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> 
 				effective_crit_stage += 1
 			
 			"change_stat":
-				if (randf_range(0, 1) * 100) <= i["chance"]:
+				if (randf_range(0, 1)) <= i["chance"]:
 					var factors = i["factors"]
 					
 					match i["target"]:
@@ -127,7 +118,7 @@ func checkEffectsPreDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> 
 								target.stages[j] += factors[j]
 			
 			"inflict_status":
-				if (randf_range(0, 1) * 100) <= i["chance"]:
+				if (randf_range(0, 1)) <= i["chance"]:
 					var status = i["status"]
 					
 					match i["target"]:
@@ -147,15 +138,16 @@ func checkEffectsPreDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> 
 				print(target.status)
 
 func checkEffectsPostDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> void:
-	if effects.has("recoil"):
-		var amount = move["effects"][effects.find("recoil")]["amount"]
+	# if effects.has("recoil"):
+		# var amount = move["effects"][effects.find("recoil")]["amount"]
 			
-		if move["effects"][effects.find("recoil")]["from_user"]:
-			recoil = calculateRecoil(amount, user.stats["max_health"])
-		else:
-			recoil = calculateRecoil(amount, damage)
+		# if move["effects"][effects.find("recoil")]["from_user"]:
+			# recoil = calculateRecoil(amount, user.stats["max_health"])
+		# else:
+			# recoil = calculateRecoil(amount, damage)
 		
-		print("recoiled for ", recoil, " damage")
+		# print("recoiled for ", recoil, " damage")
+		pass
 
 func checkCrit(stage: int, affection: int) -> float:
 	var chance : float

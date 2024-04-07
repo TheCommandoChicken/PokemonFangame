@@ -26,4 +26,4 @@ const type_chart=[
 ]
 
 func typeMatchup(attacking_type: String, defending_types: Array):
-	return type_chart[types.get(attacking_type)][types.get(defending_types[1])] * type_chart[types.get(attacking_type)][types.get(defending_types[2])]
+	return type_chart[types.get(attacking_type)][types.get(defending_types[0])] * type_chart[types.get(attacking_type)][types.get(defending_types[1])]
