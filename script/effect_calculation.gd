@@ -14,7 +14,7 @@ var attack = 1
 var defense = 1
 var recoil : int
 
-signal move_used(move, user, target, crit, effective, miss) # This definitely needs to be refactored
+signal move_used(move, user, target, crit, effective, miss)
 
 func _ready() -> void: # This entire thing is almost verbatim duplicated from base_pokemon.gd, consider making it a function?
 	var path = "res://resource/moves.json"
@@ -71,11 +71,8 @@ func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 func checkAccuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> bool:
 	var stage = accuracy_stage - evasion_stage
 	
-	if stage >= 0:
-		accuracy *= min(abs(stage) + 3, 9) / 3.0
-	elif stage < 0:
-		accuracy *= 3.0 / min(abs(stage) + 3, 9)
-		
+	accuracy *= pow(min(abs(stage) + 3, 9) / 3, sign(stage)) # This line has been simplified so much it's practically illegible, so maybe I want to revert to an earlier version
+	
 	print(accuracy)
 	
 	if randf_range(0, 1) > accuracy:
@@ -84,7 +81,7 @@ func checkAccuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> 
 	return false
 
 func calcStab(move_type: String, user_types: Array) -> float:
-	if move_type == user_types[0] || (move_type == user_types[1]) && user_types[1] != "NONE":
+	if move_type == user_types[0] || move_type == user_types[1]:
 		return 1.5
 	else:
 		return 1.0
@@ -185,3 +182,6 @@ func hitCount() -> int:
 
 func calculateRecoil(amount : float, source : int) -> int:
 	return int(source * amount)
+
+func getStageMultiplier(stage: int) -> float:
+	return pow(min(abs(stage) + 2, 8) / 2, sign(stage))

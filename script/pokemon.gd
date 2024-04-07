@@ -39,7 +39,7 @@ class_name Pokemon
 
 @export var stages = {
 	"attack": 0,
-	"defense": 0,
+	"defense": -6,
 	"sp_attack": 0,
 	"sp_defense": 0,
 	"speed": 0,
