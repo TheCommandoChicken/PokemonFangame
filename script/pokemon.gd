@@ -75,7 +75,7 @@ func _init(info: Dictionary) -> void:
 	level = info.level
 	ivs = info.ivs
 
-func updateStats(): # This is stupid and doesn't work
+func updateStats(): # This is stupid and does work
 	stats = {
 		"max_health": healthStat(BasePokemon.pokemon_table[str(species)].base_stats.health, ivs.health, evs.health),
 		"current_health": stats.current_health,
@@ -97,3 +97,7 @@ func healthStat(base: int, iv: int, ev: int):
 # warning-ignore:integer_division
 # warning-ignore:integer_division
 	return (((2 * base + iv + (ev / 4)) * level) / 100) + level + 10
+
+func getTypes() -> Array:
+	var pokemon_info = BasePokemon.pokemon_table[str(species)]
+	return [pokemon_info["type_1"], pokemon_info["type_2"]]

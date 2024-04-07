@@ -25,5 +25,5 @@ const type_chart=[
 	[1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 0.5, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 1.0, 0.5, 0.5, 2.0, 1.0, 2.0, 0.5]
 ]
 
-func typeMatchup(attacking_type: String, defending_type_1: String, defending_type_2: String):
-	return type_chart[types.get(attacking_type)][types.get(defending_type_1)] * type_chart[types.get(attacking_type)][types.get(defending_type_2)]
+func typeMatchup(attacking_type: String, defending_types: Array):
+	return type_chart[types.get(attacking_type)][types.get(defending_types[1])] * type_chart[types.get(attacking_type)][types.get(defending_types[2])]

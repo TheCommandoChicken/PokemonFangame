@@ -3,7 +3,7 @@
   {
     "category": 0, 
     "base_power": 0, 
-    "accuracy": 100, 
+    "accuracy": 1.0, 
     "type": "NORMAL", 
     "pp": 35, 
     "contact": true, 
@@ -152,7 +152,7 @@
   {
     "category": 0,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 35,
     "contact": true,
@@ -162,7 +162,7 @@
   {
     "category": 0,
     "base_power": 50,
-    "accuracy": 90,
+    "accuracy": 0.9,
     "type": "FIGHTING",
     "pp": 25,
     "contact": true,
@@ -178,7 +178,7 @@
   {
     "category": 0,
     "base_power": 15,
-    "accuracy": 85,
+    "accuracy": 0.85,
     "type": "NORMAL",
     "pp": 10,
     "contact": true,
@@ -195,7 +195,7 @@
   {
     "category": 0,
     "base_power": 18,
-    "accuracy": 85,
+    "accuracy": 0.85,
     "type": "FIGHTING",
     "pp": 15,
     "contact": true,
@@ -212,7 +212,7 @@
   {
     "category": 0,
     "base_power": 80,
-    "accuracy": 85,
+    "accuracy": 0.85,
     "type": "FIGHTING",
     "pp": 20,
     "contact": true,
@@ -222,7 +222,7 @@
   {
     "category": 0,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 20,
     "contact": true,
@@ -239,7 +239,7 @@
   {
     "category": 0,
     "base_power": 75,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FIRE",
     "pp": 15,
     "contact": true,
@@ -259,7 +259,7 @@
   {
     "category": 0,
     "base_power": 75,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "ICE",
     "pp": 15,
     "contact": true,
@@ -279,7 +279,7 @@
   {
     "category": 0,
     "base_power": 75,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "ELECTRIC",
     "pp": 15,
     "contact": true,
@@ -299,7 +299,7 @@
   {
     "category": 0,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 35,
     "contact": true,
@@ -309,7 +309,7 @@
   {
     "category": 0,
     "base_power": 55,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 30,
     "contact": true,
@@ -319,7 +319,7 @@
   {
     "category": 0,
     "base_power": 0,
-    "accuracy": 30,
+    "accuracy": 0.3,
     "type": "NORMAL",
     "pp": 5,
     "contact": true,
@@ -338,7 +338,7 @@
   {
     "category": 1,
     "base_power": 80,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FLYING",
     "pp": 10,
     "contact": true,
@@ -359,6 +359,7 @@
   "14": 
   {
     "category": 2,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 20,
     "priority": 0,
@@ -376,7 +377,7 @@
   {
     "category": 0,
     "base_power": 50,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 30,
     "contact": true,
@@ -386,7 +387,7 @@
   {
     "category": 1,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FLYING",
     "pp": 35,
     "contact": false,
@@ -407,7 +408,7 @@
   {
     "category": 0,
     "base_power": 60,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FLYING",
     "pp": 35,
     "contact": true,
@@ -422,6 +423,7 @@
   "18": 
   {
     "category": 2,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 35,
     "contact": false,
@@ -440,7 +442,7 @@
   {
     "category": 0,
     "base_power": 90,
-    "accuracy": 95,
+    "accuracy": 0.95,
     "type": "FLYING",
     "pp": 15,
     "contact": true,
@@ -459,7 +461,7 @@
   {
     "category": 0,
     "base_power": 15,
-    "accuracy": 85,
+    "accuracy": 0.85,
     "type": "NORMAL",
     "pp": 20,
     "contact": true,
@@ -482,7 +484,7 @@
   {
     "category": 0,
     "base_power": 80,
-    "accuracy": 75,
+    "accuracy": 0.75,
     "type": "NORMAL",
     "pp": 20,
     "contact": true,
@@ -492,7 +494,7 @@
   {
     "category": 0,
     "base_power": 45,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "GRASS",
     "pp": 25,
     "contact": true,
@@ -502,7 +504,7 @@
   {
     "category": 0,
     "base_power": 65,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 20,
     "contact": true,
@@ -522,7 +524,7 @@
   {
     "category": 0,
     "base_power": 30,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FIGHTING",
     "pp": 30,
     "contact": true,
@@ -539,7 +541,7 @@
   {
     "category": 0,
     "base_power": 120,
-    "accuracy": 75,
+    "accuracy": 0.75,
     "type": "FIGHTING",
     "pp": 5,
     "contact": true,
@@ -549,7 +551,7 @@
   {
     "category": 0,
     "base_power": 100,
-    "accuracy": 95,
+    "accuracy": 0.95,
     "type": "FIGHTING",
     "pp": 10,
     "contact": true,
@@ -567,7 +569,7 @@
   {
     "category": 0,
     "base_power": 60,
-    "accuracy": 85,
+    "accuracy": 0.85,
     "type": "FIGHTING",
     "pp": 15,
     "contact": true,
@@ -583,7 +585,7 @@
   "28": 
   {
     "category": 2,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "GROUND",
     "pp": 15,
     "contact": false,
@@ -602,7 +604,7 @@
   {
     "category": 0,
     "base_power": 70,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 15,
     "contact": true,
@@ -619,7 +621,7 @@
   {
     "category": 0,
     "base_power": 65,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 25,
     "contact": true,
@@ -629,7 +631,7 @@
   {
     "category": 0,
     "base_power": 15,
-    "accuracy": 85,
+    "accuracy": 0.85,
     "type": "NORMAL",
     "pp": 20,
     "contact": true,
@@ -646,7 +648,7 @@
   {
     "category": 0,
     "base_power": 0,
-    "accuracy": 30,
+    "accuracy": 0.3,
     "type": "NORMAL",
     "pp": 5,
     "contact": true,
@@ -665,7 +667,7 @@
   {
     "category": 0,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 35,
     "contact": true,
@@ -675,7 +677,7 @@
   {
     "category": 0,
     "base_power": 85,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 15,
     "contact": true,
@@ -695,7 +697,7 @@
   {
     "category": 0,
     "base_power": 15,
-    "accuracy": 90,
+    "accuracy": 0.9,
     "type": "NORMAL",
     "pp": 20,
     "contact": true,
@@ -718,7 +720,7 @@
   {
     "category": 0,
     "base_power": 90,
-    "accuracy": 85,
+    "accuracy": 0.85,
     "type": "NORMAL",
     "pp": 20,
     "contact": true,
@@ -736,7 +738,7 @@
   {
     "category": 0,
     "base_power": 120,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 10,
     "contact": true,
@@ -767,7 +769,7 @@
   {
     "category": 0,
     "base_power": 120,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 15,
     "contact": true,
@@ -784,7 +786,7 @@
   "39": 
   {
     "category": 2,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 30,
     "contact": false,
@@ -809,7 +811,7 @@
   {
     "category": 0,
     "base_power": 15,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "POISON",
     "pp": 35,
     "contact": false,
@@ -829,7 +831,7 @@
   {
     "category": 0,
     "base_power": 25,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "BUG",
     "pp": 20,
     "contact": false,
@@ -853,7 +855,7 @@
   {
     "category": 0,
     "base_power": 25,
-    "accuracy": 95,
+    "accuracy": 0.95,
     "type": "BUG",
     "pp": 20,
     "contact": false,
@@ -869,7 +871,7 @@
   "43": 
   {
     "category": 2,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 30,
     "contact": false,
@@ -894,7 +896,7 @@
   {
     "category": 0,
     "base_power": 60,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "DARK",
     "pp": 25,
     "contact": true,
@@ -910,7 +912,7 @@
   "45": 
   {
     "category": 2,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 40,
     "contact": false,
@@ -937,6 +939,7 @@
   "46": 
   {
     "category": 2,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 20,
     "contact": false,
@@ -963,7 +966,7 @@
   "47": 
   {
     "category": 2,
-    "accuracy": 55,
+    "accuracy": 0.55,
     "type": "NORMAL",
     "pp": 15,
     "contact": false,
@@ -985,7 +988,7 @@
   "48": 
   {
     "category": 2,
-    "accuracy": 55,
+    "accuracy": 0.55,
     "type": "NORMAL",
     "pp": 20,
     "contact": false,
@@ -1011,7 +1014,7 @@
   {
     "category": 1,
     "base_power": 20,
-    "accuracy": 90,
+    "accuracy": 0.90,
     "type": "NORMAL",
     "pp": 20,
     "contact": false,
@@ -1028,7 +1031,7 @@
   "50": 
   {
     "category": 2,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 20,
     "contact": false,
@@ -1045,7 +1048,7 @@
   {
     "category": 1,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "POISON",
     "pp": 30,
     "contact": false,
@@ -1070,7 +1073,7 @@
   {
     "category": 1,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FIRE",
     "pp": 25,
     "contact": false,
@@ -1090,7 +1093,7 @@
   {
     "category": 1,
     "base_power": 90,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FIRE",
     "pp": 15,
     "contact": false,
@@ -1109,7 +1112,7 @@
   "54": 
   {
     "category": 2,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "ICE",
     "pp": 30,
     "contact": false,
@@ -1126,7 +1129,7 @@
   {
     "category": 1,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "WATER",
     "pp": 25,
     "contact": false,
@@ -1136,7 +1139,7 @@
   {
     "category": 1,
     "base_power": 110,
-    "accuracy": 80,
+    "accuracy": 0.8,
     "type": "WATER",
     "pp": 5,
     "contact": false,
@@ -1156,7 +1159,7 @@
   {
     "category": 1,
     "base_power": 90,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "WATER",
     "pp": 15,
     "contact": false,
@@ -1166,7 +1169,7 @@
   {
     "category": 1,
     "base_power": 90,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "ICE",
     "pp": 10,
     "contact": false,
@@ -1186,7 +1189,7 @@
   {
     "category": 1,
     "base_power": 110,
-    "accuracy": 75, 
+    "accuracy": 0.75, 
     "type": "ICE",
     "pp": 5,
     "contact": false,
@@ -1206,7 +1209,7 @@
   {
     "category": 1,
     "base_power": 65,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "PSYCHIC",
     "pp": 20,
     "contact": false,
@@ -1226,7 +1229,7 @@
   {
     "category": 1,
     "base_power": 65,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "WATER",
     "pp": 20,
     "contact": false,
@@ -1245,7 +1248,7 @@
   {
     "category": 1,
     "base_power": 65,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "ICE",
     "pp": 20,
     "contact": false,
@@ -1264,7 +1267,7 @@
   {
     "category": 1,
     "base_power": 150,
-    "accuracy": 90,
+    "accuracy": 0.9,
     "type": "NORMAL",
     "pp": 5,
     "contact": false,
@@ -1283,7 +1286,7 @@
   {
     "category": 0,
     "base_power": 35,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FLYING",
     "pp": 35,
     "contact": true,
@@ -1299,7 +1302,7 @@
   {
     "category": 0,
     "base_power": 80,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FLYING",
     "pp": 20,
     "contact": true,
@@ -1315,7 +1318,7 @@
   {
     "category": 0,
     "base_power": 80,
-    "accuracy": 100, 
+    "accuracy": 1.0, 
     "type": "FIGHTING",
     "pp": 20,
     "contact": true,
@@ -1333,7 +1336,7 @@
   {
     "category": 0,
     "base_power": 0,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FIGHTING",
     "pp": 20,
     "contact": true,
@@ -1350,7 +1353,7 @@
   {
     "category": 0,
     "base_power": 0,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FIGHTING",
     "pp": 20,
     "contact": true,
@@ -1366,7 +1369,7 @@
   {
     "category": 0,
     "base_power": 0,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FIGHTING",
     "pp": 20,
     "contact": true,
@@ -1384,7 +1387,7 @@
   {
     "category": 0,
     "base_power": 80,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 15,
     "contact": true,
@@ -1394,7 +1397,7 @@
   {
     "category": 1,
     "base_power": 20,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "GRASS",
     "pp": 25,
     "contact": false,
@@ -1413,7 +1416,7 @@
   {
     "category": 1,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "GRASS",
     "pp": 15,
     "contact": false,
@@ -1431,7 +1434,7 @@
   "73": 
   {
     "category": 2,
-    "accuracy": 90,
+    "accuracy": 0.9,
     "type": "GRASS",
     "pp": 10,
     "contact": false,
@@ -1450,7 +1453,7 @@
   "74": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "GRASS",
     "pp": 20,
     "contact": false,
@@ -1469,7 +1472,7 @@
   {
     "category": 0,
     "base_power": 55,
-    "accuracy": 95,
+    "accuracy": 0.95,
     "type": "GRASS",
     "pp": 25,
     "contact": false,
@@ -1491,7 +1494,7 @@
   {
     "category": 1,
     "base_power": 120,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "GRASS",
     "pp": 10,
     "contact": false,
@@ -1509,7 +1512,7 @@
   "77": 
   {
     "category": 2,
-    "accuracy": 75,
+    "accuracy": 0.75,
     "type": "POISON",
     "pp": 35,
     "contact": false,
@@ -1528,7 +1531,7 @@
   "78": 
   {
     "category": 2,
-    "accuracy": 75,
+    "accuracy": 0.75,
     "type": "GRASS",
     "pp": 30,
     "contact": false,
@@ -1547,7 +1550,7 @@
   "79": 
   {
     "category": 2,
-    "accuracy": 75,
+    "accuracy": 0.75,
     "type": "GRASS",
     "pp": 15,
     "contact": false,
@@ -1567,7 +1570,7 @@
   {
     "category": 1,
     "base_power": 120,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "GRASS",
     "pp": 10,
     "contact": true,
@@ -1590,7 +1593,7 @@
   "81": 
   {
     "category": 2,
-    "accuracy": 95,
+    "accuracy": 0.95,
     "type": "BUG",
     "pp": 40,
     "contact": false,
@@ -1615,7 +1618,7 @@
   {
     "category": 1,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "DRAGON",
     "pp": 10,
     "contact": false,
@@ -1633,7 +1636,7 @@
   {
     "category": 1,
     "base_power": 35,
-    "accuracy": 85,
+    "accuracy": 0.85,
     "type": "FIRE",
     "pp": 15,
     "contact": false,
@@ -1656,7 +1659,7 @@
   {
     "category": 1,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "ELECTRIC",
     "pp": 30,
     "contact": false,
@@ -1676,7 +1679,7 @@
   {
     "category": 1,
     "base_power": 90,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "ELECTRIC",
     "pp": 15,
     "contact": false,
@@ -1695,7 +1698,7 @@
   "86": 
   {
     "category": 2,
-    "accuracy": 90,
+    "accuracy": 0.9,
     "type": "ELECTRIC",
     "pp": 20,
     "contact": false,
@@ -1715,7 +1718,7 @@
   {
     "category": 1,
     "base_power": 110,
-    "accuracy": 70,
+    "accuracy": 0.7,
     "type": "ELECTRIC",
     "pp": 10,
     "contact": false,
@@ -1735,7 +1738,7 @@
   {
     "category": 0,
     "base_power": 50,
-    "accuracy": 100, 
+    "accuracy": 1.0, 
     "type": "ROCK",
     "pp": 20, 
     "contact": false,
@@ -1745,7 +1748,7 @@
   {
     "category": 0,
     "base_power": 100,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "GROUND",
     "pp": 10,
     "contact": false,
@@ -1769,7 +1772,7 @@
   {
     "category": 0,
     "base_power": 0,
-    "accuracy": 30,
+    "accuracy": 0.3,
     "type": "GROUND",
     "pp": 5,
     "contact": true,
@@ -1788,7 +1791,7 @@
   {
     "category": 0,
     "base_power": 80,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "GROUND",
     "pp": 10,
     "contact": true,
@@ -1806,7 +1809,7 @@
   "92": 
   {
     "category": 2,
-    "accuracy": 90,
+    "accuracy": 0.9,
     "type": "POISON",
     "pp": 10,
     "contact": false,
@@ -1826,7 +1829,7 @@
   {
     "category": 1,
     "base_power": 50,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "PSYCHIC",
     "pp": 25,
     "contact": false,
@@ -1846,7 +1849,7 @@
   {
     "category": 1,
     "base_power": 90,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "PSYCHIC",
     "pp": 10,
     "contact": false,
@@ -1864,7 +1867,7 @@
   "95": 
   {
     "category": 2,
-    "accuracy": 60,
+    "accuracy": 0.6,
     "type": "PSYCHIC",
     "pp": 20,
     "contact": false,
@@ -1883,7 +1886,7 @@
   "96": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "PSYCHIC",
     "pp": 20,
     "contact": false,
@@ -1901,7 +1904,7 @@
   "97": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 30,
     "contact": false,
@@ -1920,7 +1923,7 @@
   {
     "category": 0,
     "base_power": 40,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 30,
     "contact": true,
@@ -1930,7 +1933,7 @@
   {
     "category": 0,
     "base_power": 20,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 20,
     "contact": true,
@@ -1945,7 +1948,7 @@
   "100": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "PSYCHIC",
     "pp": 20,
     "contact": true,
@@ -1963,7 +1966,7 @@
   {
     "category": 1,
     "base_power": 0,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "GHOST",
     "pp": 20,
     "contact": false,
@@ -1980,7 +1983,7 @@
   "102": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 10,
     "contact": false,
@@ -1995,7 +1998,7 @@
   "103": 
   {
     "category": 2,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 40,
     "contact": false,
@@ -2016,7 +2019,7 @@
   "104": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 15,
     "contact": false,
@@ -2034,7 +2037,7 @@
   "105": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 10,
     "contact": false,
@@ -2052,7 +2055,7 @@
   "106": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 30,
     "contact": false,
@@ -2070,7 +2073,7 @@
   "107": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 10,
     "contact": false,
@@ -2088,7 +2091,7 @@
   "108": 
   {
     "category": 2,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 20,
     "contact": false,
@@ -2106,7 +2109,7 @@
   "109": 
   {
     "category": 2,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "GHOST",
     "pp": 10,
     "contact": false,
@@ -2125,7 +2128,7 @@
   "110": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "WATER",
     "pp": 30, 
     "contact": false,
@@ -2143,7 +2146,7 @@
   "111": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 25, 
     "contact": false,
@@ -2165,7 +2168,7 @@
   "112": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "PSYCHIC",
     "pp": 20,
     "contact": false,
@@ -2183,7 +2186,7 @@
   "113": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "PSYCHIC",
     "pp": 20, 
     "contact": false,
@@ -2200,7 +2203,7 @@
   "114": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "ICE",
     "pp": 30,
     "contact": false,
@@ -2216,7 +2219,7 @@
   "115": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "PSYCHIC",
     "pp": 20,
     "contact": false,
@@ -2233,7 +2236,7 @@
   "116": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 30,
     "contact": false,
@@ -2252,7 +2255,7 @@
   {
     "category": 0,
     "base_power": 0,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 10,
     "contact": false,
@@ -2272,7 +2275,7 @@
   "118": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "NORMAL",
     "pp": 10,
     "contact": false,
@@ -2288,7 +2291,7 @@
   "119": 
   {
     "category": 2,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "FLYING",
     "pp": 20,
     "contact": false,
@@ -2304,7 +2307,7 @@
   {
     "category": 0,
     "base_power": 200,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 1, 
     "contact": false,
@@ -2328,7 +2331,7 @@
   {
     "category": 0,
     "base_power": 100,
-    "accuracy": 75,
+    "accuracy": 0.75,
     "type": "NORMAL",
     "pp": 10,
     "contact": false,
@@ -2338,7 +2341,7 @@
   {
     "category": 0,
     "base_power": 30,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "GHOST",
     "pp": 30,
     "contact": false,
@@ -2354,11 +2357,27 @@
       }
     ]
   },
+  "150": 
+  {
+    "category": 0,
+    "base_power": 0,
+    "accuracy": 100.0,
+    "type": "NORMAL",
+    "pp": 40,
+    "contact": true,
+    "priority": 0,
+    "effects":
+    [
+      {
+        "effect": "no_effect"
+      }
+    ]
+  },
   "153": 
   {
     "category": 0,
     "base_power": 250,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 5,
     "contact": false,
@@ -2376,27 +2395,11 @@
       }
     ]
   },
-  "150": 
-  {
-    "category": 0,
-    "base_power": 0,
-    "accuracy": 0,
-    "type": "NORMAL",
-    "pp": 40,
-    "contact": true,
-    "priority": 0,
-    "effects":
-    [
-      {
-        "effect": "no_effect"
-      }
-    ]
-  },
   "165": 
   {
     "category": 0,
     "base_power": 50,
-    "accuracy": 1000,
+    "accuracy": 100.0,
     "type": "NONE",
     "pp": 4294967295,
     "contact": true,
@@ -2414,7 +2417,7 @@
   {
     "category": 1,
     "base_power": 0,
-    "accuracy": 20,
+    "accuracy": 0.2,
     "type": "ICE",
     "pp": 5,
     "contact": true,
@@ -2440,7 +2443,7 @@
   {
     "category": 0,
     "base_power": 95,
-    "accuracy": 65,
+    "accuracy": 0.65,
     "type": "ELECTRIC",
     "pp": 15,
     "contact": true,
@@ -2464,7 +2467,7 @@
   {
     "category": 0,
     "base_power": 95,
-    "accuracy": 65,
+    "accuracy": 0.65,
     "type": "ICE",
     "pp": 15,
     "contact": true,
@@ -2488,7 +2491,7 @@
   {
     "category": 0,
     "base_power": 95,
-    "accuracy": 65,
+    "accuracy": 0.65,
     "type": "FIRE",
     "pp": 15,
     "contact": true,
@@ -2512,7 +2515,7 @@
   {
     "category": 1,
     "base_power": 0,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "ELECTRIC",
     "pp": 20,
     "contact": false,
@@ -2532,7 +2535,7 @@
   {
     "category": 0,
     "base_power": 0,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "NORMAL",
     "pp": 20,
     "contact": false,
@@ -2552,7 +2555,7 @@
   {
     "category": 0,
     "base_power": 80,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FIRE",
     "pp": 10,
     "contact": false,
@@ -2572,7 +2575,7 @@
   {
     "category": 0,
     "base_power": 80,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "DARK",
     "pp": 10,
     "contact": false,
@@ -2592,7 +2595,7 @@
   {
     "category": 0,
     "base_power": 100,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "POISON",
     "pp": 10,
     "contact": false,
@@ -2612,7 +2615,7 @@
   {
     "category": 0,
     "base_power": 100,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FIGHTING",
     "pp": 10,
     "contact": false,
@@ -2632,7 +2635,7 @@
   {
     "category": 0,
     "base_power": 100,
-    "accuracy": 100,
+    "accuracy": 1.0,
     "type": "FAIRY",
     "pp": 10,
     "contact": false,

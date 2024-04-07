@@ -27,10 +27,6 @@ func _ready() -> void: # This entire thing is almost verbatim duplicated from ba
 
 func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 	var move = Dictionary(move_table[str(move_id)])
-	var user_type_1 = BasePokemon.pokemon_table[str(user.species)]["type_1"] # These should probably be Tuples
-	var user_type_2 = BasePokemon.pokemon_table[str(user.species)]["type_2"]
-	var target_type_1 = BasePokemon.pokemon_table[str(target.species)]["type_1"]
-	var target_type_2 = BasePokemon.pokemon_table[str(target.species)]["type_2"]
 	var miss : bool
 	var power
 	var accuracy
@@ -51,11 +47,11 @@ func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 			
 	match int(move["category"]):
 		0,1:
-			effective = Types.typeMatchup(move["type"], target_type_1, target_type_2)
+			effective = Types.typeMatchup(move["type"], target.getTypes())
 			
 			miss = checkAccuracy(move["accuracy"], user.stages["accuracy"], target.stages["evasiveness"])
 			
-			stab = calcStab(move["type"], user_type_1, user_type_2)
+			stab = calcStab(move["type"], user.getTypes())
 			
 			effective_crit_stage = user.stages["crit"]
 			
@@ -96,8 +92,8 @@ func checkAccuracy(accuracy: int, accuracy_stage: int, evasion_stage: int) -> bo
 	
 	return false
 
-func calcStab(move_type: String, user_type_1: String, user_type_2: String) -> float:
-	if move_type == user_type_1 || (move_type == user_type_2) && user_type_2 != "NONE":
+func calcStab(move_type: String, user_types: Array) -> float:
+	if move_type == user_types[1] || (move_type == user_types[2]) && user_types[2] != "NONE":
 		return 1.5
 	else:
 		return 1.0
