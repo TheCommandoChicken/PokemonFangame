@@ -7,7 +7,6 @@ var pokemon_2 = Pokemon.new({"nickname": "Voltorb2", "species": 100,"ivs":{"heal
 @export var moves : Array
 @export var health_bar : ProgressBar
 @export var move_buttons : GridContainer
-
 func _ready() -> void:
 	EffectCalculation.connect("move_used", Callable(self, "_on_move_used"))
 	for i in move_buttons.get_children():
