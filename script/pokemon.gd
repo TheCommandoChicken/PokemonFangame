@@ -75,7 +75,7 @@ func _init(info: Dictionary) -> void:
 	level = info.level
 	ivs = info.ivs
 	moves = info.moves
-	BasePokemon._ready()
+	BasePokemon._ready() # Don't do this
 	update_stats()
 	stats.current_health = stats.max_health
 
