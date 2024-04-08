@@ -13,21 +13,16 @@ var crit : float
 var attack = 1
 var defense = 1
 var recoil : int
-var attackId : String
-var defenseId : String
+var attack_id : String
+var defense_id : String
 
 signal move_used(move, user, target, crit, effective, miss)
 
 func _ready() -> void: # This entire thing is almost verbatim duplicated from base_pokemon.gd, consider making it a function?
 	var path = "res://resource/moves.json"
-	var file = FileAccess.open(path, FileAccess.READ)
-	if not FileAccess.file_exists(path):
-		return
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(file.get_as_text())
-	move_table = test_json_conv.get_data()
+	move_table = DataManager.generic_json_read(path)
 
-func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
+func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
 	var move = Dictionary(move_table[str(move_id)])
 	var miss : bool
 	var power
@@ -38,34 +33,34 @@ func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 		0:
 			attack = user.stats["attack"]
 			defense = target.stats["defense"]
-			attackId = "attack"
-			defenseId = "defense"
+			attack_id = "attack"
+			defense_id = "defense"
 		1:
 			attack = user.stats["sp_attack"]
 			defense = target.stats["sp_defense"]
-			attackId = "sp_attack"
-			defenseId = "sp_defense"
+			attack_id = "sp_attack"
+			defense_id = "sp_defense"
 			
 			
 	match int(move["category"]):
 		0,1:
 			power = move["base_power"]
 			
-			effective = Types.typeMatchup(move["type"], target.getTypes())
+			effective = Types.type_matchup(move["type"], target.get_types())
 			
-			miss = checkAccuracy(move.accuracy, user.stages.accuracy, target.stages.evasiveness)
+			miss = check_accuracy(move.accuracy, user.stages.accuracy, target.stages.evasiveness)
 			
-			stab = calcStab(move["type"], user.getTypes())
+			stab = calc_stab(move["type"], user.get_types())
 			
 			effective_crit_stage = user.stages["crit"]
 			
 			if move.has("effects"):
-				getEffects(move)
-				checkEffectsPreDamage(move, user, target)
+				get_effects(move)
+				check_effects_pre_damage(move, user, target)
 			
 			for i in hits:
-				crit = checkCrit(effective_crit_stage, user.affection)
-				damage = max(calculateDamage(attack * getStageMultiplier(user.stages[attackId]), defense * getStageMultiplier(target.stages[defenseId]), user.level, power, effective, stab, crit), 1)
+				crit = check_crit(effective_crit_stage, user.affection)
+				damage = max(calculate_damage(attack * get_stage_multiplier(user.stages[attack_id]), defense * get_stage_multiplier(target.stages[defense_id]), user.level, power, effective, stab, crit), 1)
 				
 				if miss || effective == 0.0:
 					damage = 0
@@ -78,7 +73,7 @@ func calculateMoveEffect(move_id: int, user: Pokemon, target: Pokemon):
 		
 	emit_signal("move_used", move_id, user.nickname, target.nickname, crit, effective, miss)
 
-func checkAccuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> bool:
+func check_accuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> bool:
 	var mstage = accuracy_stage - evasion_stage
 	
 	if mstage >= 0:
@@ -95,24 +90,24 @@ func checkAccuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> 
 	
 	return false
 
-func calcStab(move_type: String, user_types: Array) -> float:
+func calc_stab(move_type: String, user_types: Array) -> float:
 	if move_type == user_types[0] || move_type == user_types[1]:
 		return 1.5
 	else:
 		return 1.0
 
-func getEffects(move: Dictionary) -> void:
+func get_effects(move: Dictionary) -> void:
 	effects = []
 	for i in move["effects"].size():
 			effects.append(move["effects"][i])
 
-func checkEffectsPreDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> void: # Why do we have two separate functions for checking effects
+func check_effects_pre_damage(move: Dictionary, user: Pokemon, target: Pokemon) -> void: # Why do we have two separate functions for checking effects
 	for i in effects:
 		match i["effect"]:
 			"multi-hit":
 				strike_chances = i["strike_chances"]
 				
-				hits = hitCount()
+				hits = hit_count()
 				
 			"increased_crit":
 				effective_crit_stage += 1
@@ -149,7 +144,7 @@ func checkEffectsPreDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> 
 				
 				print(target.status)
 
-func checkEffectsPostDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> void:
+func check_effects_post_damage(move: Dictionary, user: Pokemon, target: Pokemon) -> void:
 	# if effects.has("recoil"):
 		# var amount = move["effects"][effects.find("recoil")]["amount"]
 			
@@ -161,7 +156,7 @@ func checkEffectsPostDamage(move: Dictionary, user: Pokemon, target: Pokemon) ->
 		# print("recoiled for ", recoil, " damage")
 		pass
 
-func checkCrit(stage: int, affection: int) -> float:
+func check_crit(stage: int, affection: int) -> float:
 	var chance : float
 	
 	match stage:
@@ -183,11 +178,11 @@ func checkCrit(stage: int, affection: int) -> float:
 	
 	return 1.0
 
-func calculateDamage(tattack : float, tdefense : float, tlevel : int, tpower : int, teffectiveness : float, tstab : float, tcrit : float) -> int: # What the fuck
+func calculate_damage(tattack : float, tdefense : float, tlevel : int, tpower : int, teffectiveness : float, tstab : float, tcrit : float) -> int: # What the fuck
 	print(tattack)
 	return int(((((((((2 * tlevel) / 5) + 2) * tpower * (tattack / tdefense)) / 50) + 2) * randf_range(0.85, 1.0) * tstab) * tcrit) * teffectiveness)
 
-func hitCount() -> int:
+func hit_count() -> int:
 	var rand = randf_range(0.01, 1) * 100
 	
 	for i in strike_chances.size() - 1:
@@ -196,10 +191,10 @@ func hitCount() -> int:
 	
 	return 0
 
-func calculateRecoil(amount : float, source : int) -> int:
+func calculate_recoil(amount : float, source : int) -> int:
 	return int(source * amount)
 
-func getStageMultiplier(stage: int) -> float:
+func get_stage_multiplier(stage: int) -> float:
 	if stage >= 0:
 		return min(stage + 2, 8) / 2.0
 	else:

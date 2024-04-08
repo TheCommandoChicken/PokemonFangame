@@ -21,6 +21,8 @@ BasePokemon="*res://script/base_pokemon.gd"
 Types="*res://script/types.gd"
 EffectCalculation="*res://script/effect_calculation.gd"
 Settings="*res://script/settings.gd"
+TextManager="*res://script/text_manager.gd"
+DataManager="*res://script/data_manager.gd"
 
 [display]
 

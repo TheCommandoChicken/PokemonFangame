@@ -5,21 +5,28 @@ signal queue_text(key, init_pokemon, init_move, init_target)
 var pokemon_1 = Pokemon.new({"nickname": "Voltorb", "species": 100,"ivs":{"health": randf_range(0.00, 0.31) * 100,"attack": randf_range(0.00, 0.31) * 100,"defense": randf_range(0.00, 0.31) * 100,"sp_attack": randf_range(0.00, 0.31) * 100,"sp_defense": randf_range(0.00, 0.31) * 100,"speed": randf_range(0.00, 0.31) * 100}, "level": 100})
 var pokemon_2 = Pokemon.new({"nickname": "Voltorb2", "species": 100,"ivs":{"health": randf_range(0.00, 0.31) * 100,"attack": randf_range(0.00, 0.31) * 100,"defense": randf_range(0.00, 0.31) * 100,"sp_attack": randf_range(0.00, 0.31) * 100,"sp_defense": randf_range(0.00, 0.31) * 100,"speed": randf_range(0.00, 0.31) * 100}, "level": 100})
 @export var moves : Array
-@export var healthBar : ProgressBar
+@export var health_bar : ProgressBar
+@export var move_buttons : GridContainer
 
 func _ready() -> void:
 	EffectCalculation.connect("move_used", Callable(self, "_on_move_used"))
-	healthBar.max_value = pokemon_2.stats.max_health
-	healthBar.value = pokemon_2.stats.current_health
+	for i in move_buttons.get_children():
+		i.pressed.connect(_on_move_button_pressed.bind(i))
+		i.text = TextManager.get_move_name(pokemon_1.moves[i.get_index()][0], Settings.current_language)
+	health_bar.max_value = pokemon_2.stats.max_health
+	health_bar.value = pokemon_2.stats.current_health
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_right"):
-		Settings.updateMove()
-		EffectCalculation.calculateMoveEffect(Settings.move, pokemon_1, pokemon_2)
-		healthBar.value = pokemon_2.stats.current_health
+		EffectCalculation.calculate_move_effect(Settings.move, pokemon_1, pokemon_2)
+		health_bar.value = pokemon_2.stats.current_health
 	if Input.is_action_just_pressed("ui_left"):
-		pokemon_1.updateStats()
-		pokemon_2.updateStats()
+		pokemon_1.update_stats()
+		pokemon_2.update_stats()
+
+func _on_move_button_pressed(button : Button):
+	EffectCalculation.calculate_move_effect(int(pokemon_1.moves[button.get_index()][0]), pokemon_1, pokemon_2)
+	health_bar.value = pokemon_2.stats.current_health
 
 func _on_queue_move(move, speed, priority, user, target): # As far as I can tell this function is never called
 	for i in moves.size() - 1:

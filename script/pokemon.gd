@@ -64,7 +64,7 @@ class_name Pokemon
 @export var met_route: String
 @export var fateful: bool
 
-@export var moves = [["", 0], ["", 0], ["", 0], ["", 0]]
+@export var moves = [["1", 0], ["24", 0], ["17", 0], ["98", 0]]
 
 @export var invulnerable : int
 @export var using_move : int
@@ -75,12 +75,12 @@ func _init(info: Dictionary) -> void:
 	level = info.level
 	ivs = info.ivs
 	BasePokemon._ready()
-	updateStats()
+	update_stats()
 	stats.current_health = stats.max_health
 
-func updateStats(): # This is stupid and does work
+func update_stats(): # This is stupid and does work
 	stats = {
-		"max_health": healthStat(BasePokemon.pokemon_table[str(species)].base_stats.health, ivs.health, evs.health),
+		"max_health": health_stat(BasePokemon.pokemon_table[str(species)].base_stats.health, ivs.health, evs.health),
 		"current_health": stats.current_health,
 		"attack": stat(BasePokemon.pokemon_table[str(species)].base_stats.attack, ivs.attack, evs.attack),
 		"defense": stat(BasePokemon.pokemon_table[str(species)].base_stats.defense, ivs.defense, evs.defense),
@@ -96,11 +96,11 @@ func stat(base: int, iv: int, ev: int):
 # warning-ignore:integer_division
 	return (((2 * base + iv + (ev / 4)) * level) / 100) + 5
 
-func healthStat(base: int, iv: int, ev: int):
+func health_stat(base: int, iv: int, ev: int):
 # warning-ignore:integer_division
 # warning-ignore:integer_division
 	return (((2 * base + iv + (ev / 4)) * level) / 100) + level + 10
 
-func getTypes() -> Array:
+func get_types() -> Array:
 	var pokemon_info = BasePokemon.pokemon_table[str(species)]
 	return [pokemon_info["type_1"], pokemon_info["type_2"]]
