@@ -74,6 +74,7 @@ func _init(info: Dictionary) -> void:
 	species = info.species
 	level = info.level
 	ivs = info.ivs
+	moves = info.moves
 	BasePokemon._ready()
 	update_stats()
 	stats.current_health = stats.max_health
