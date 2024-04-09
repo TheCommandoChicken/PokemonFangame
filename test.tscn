@@ -1,13 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://chtqlhsgbyhy7"]
+[gd_scene load_steps=6 format=3 uid="uid://chtqlhsgbyhy7"]
 
 [ext_resource type="Script" path="res://script/text_box.gd" id="2"]
 [ext_resource type="Script" path="res://script/battle_manager.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://bt5qf0yal4tpu" path="res://scene/pokemon.tscn" id="3_87dn1"]
-[ext_resource type="Texture2D" uid="uid://dc1046gbapbul" path="res://aseprite/Move-Button-Mockup.png" id="4_r8mts"]
-[ext_resource type="Texture2D" uid="uid://dos65v4wv8kuh" path="res://aseprite/Move-PP-Bar-Under.png" id="5_73h62"]
-[ext_resource type="Texture2D" uid="uid://bu3mtdm6er2sf" path="res://aseprite/Move-PP-Bar-Progress.png" id="6_vktpc"]
-[ext_resource type="Texture2D" uid="uid://dp32j8yv5v6g4" path="res://aseprite/Move-Button-Base-Normal.png" id="7_ieih6"]
-[ext_resource type="Texture2D" uid="uid://cumtqwavv42h8" path="res://aseprite/Move-Button-Icon-Normal.png" id="8_1a44h"]
+[ext_resource type="PackedScene" uid="uid://yaqs8c8afhx6" path="res://scene/move_button.tscn" id="4_f4rqy"]
 
 [sub_resource type="Theme" id="1"]
 
@@ -16,7 +12,7 @@
 [node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("health_bar", "move_buttons")]
 script = ExtResource("3")
 health_bar = NodePath("../UI/Health")
-move_buttons = NodePath("../UI/Move Buttons")
+move_buttons = NodePath("../UI/MoveButtons")
 
 [node name="Pokemon" parent="." instance=ExtResource("3_87dn1")]
 
@@ -25,18 +21,17 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 0
 
 [node name="TextBox" type="PanelContainer" parent="UI"]
 layout_direction = 2
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -213.0
-offset_bottom = -113.0
-grow_horizontal = 2
+offset_top = -100.0
+offset_right = 429.0
 grow_vertical = 0
 script = ExtResource("2")
 text_speed = 0.02
@@ -81,98 +76,40 @@ offset_bottom = 27.0
 grow_horizontal = 0
 show_percentage = false
 
-[node name="TextureButton" type="TextureButton" parent="UI"]
-layout_mode = 2
-offset_left = 322.0
-offset_top = 312.0
-offset_right = 630.0
-offset_bottom = 360.0
-texture_normal = ExtResource("4_r8mts")
-stretch_mode = 3
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/TextureButton"]
-z_index = 1
+[node name="MoveButtons" type="Control" parent="UI"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 5.5
-offset_top = 5.0
-offset_right = 53.5
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 48.0
-value = 17.0
-texture_under = ExtResource("5_73h62")
-texture_progress = ExtResource("6_vktpc")
-
-[node name="TextureRect" type="TextureRect" parent="UI/TextureButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -68.5
-offset_top = -15.0
-offset_right = 68.5
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_ieih6")
-stretch_mode = 3
-
-[node name="TextureRect2" type="TextureRect" parent="UI/TextureButton"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -59.5
-offset_top = -14.0
-offset_right = -31.5
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_1a44h")
-stretch_mode = 3
-
-[node name="Move Buttons" type="GridContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 12
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -100.0
-offset_right = -10.0
-grow_horizontal = 2
+offset_left = -194.0
+offset_top = -127.0
+grow_horizontal = 0
 grow_vertical = 0
-columns = 2
 
-[node name="Move1" type="Button" parent="UI/Move Buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="MoveButton1" parent="UI/MoveButtons" instance=ExtResource("4_f4rqy")]
+layout_mode = 1
 
-[node name="Move2" type="Button" parent="UI/Move Buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="MoveButton2" parent="UI/MoveButtons" instance=ExtResource("4_f4rqy")]
+layout_mode = 1
+offset_left = -166.0
+offset_top = 32.0
+offset_right = -21.0
+offset_bottom = 62.0
 
-[node name="Move3" type="Button" parent="UI/Move Buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="MoveButton3" parent="UI/MoveButtons" instance=ExtResource("4_f4rqy")]
+layout_mode = 1
+offset_left = -187.0
+offset_top = 64.0
+offset_right = -42.0
+offset_bottom = 94.0
 
-[node name="Move4" type="Button" parent="UI/Move Buttons"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="MoveButton4" parent="UI/MoveButtons" instance=ExtResource("4_f4rqy")]
+layout_mode = 1
+offset_left = -208.0
+offset_top = 96.0
+offset_right = -63.0
+offset_bottom = 126.0
 
 [connection signal="queue_text" from="BattleManager" to="UI/TextBox" method="_on_BattleManager_queue_text"]

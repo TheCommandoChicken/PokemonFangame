@@ -1,0 +1,22 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://dyk5isvvwa8wu"
+path="res://.godot/imported/PP-Font.png-0ba2bb274f618fd465c39ad0c4b8cc40.fontdata"
+
+[deps]
+
+source_file="res://aseprite/PP-Font.png"
+dest_files=["res://.godot/imported/PP-Font.png-0ba2bb274f618fd465c39ad0c4b8cc40.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("\'0\'-\'9\'")
+columns=10
+rows=1
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+fallbacks=[]
+compress=false
+scaling_mode=0
