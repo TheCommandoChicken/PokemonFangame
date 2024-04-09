@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://script/text_box.gd" id="2"]
 [ext_resource type="Script" path="res://script/battle_manager.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://bt5qf0yal4tpu" path="res://scene/pokemon.tscn" id="3_87dn1"]
-[ext_resource type="PackedScene" uid="uid://yaqs8c8afhx6" path="res://scene/move_button.tscn" id="4_f4rqy"]
+[ext_resource type="PackedScene" uid="uid://3iyymp1q81hd" path="res://scene/move_button.tscn" id="4_f4rqy"]
 
 [sub_resource type="Theme" id="1"]
 

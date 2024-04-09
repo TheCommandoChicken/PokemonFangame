@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://yaqs8c8afhx6"]
+[gd_scene load_steps=11 format=3 uid="uid://3iyymp1q81hd"]
 
 [ext_resource type="Texture2D" uid="uid://dc1046gbapbul" path="res://aseprite/Move-Button-Mockup.png" id="1_8q6ld"]
 [ext_resource type="Texture2D" uid="uid://dos65v4wv8kuh" path="res://aseprite/Move-PP-Bar-Under.png" id="2_07lrg"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://dyk5isvvwa8wu" path="res://aseprite/PP-Font.png" id="6_wa8mv"]
 
 [sub_resource type="SystemFont" id="SystemFont_4vdu6"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_6vshv"]
 font = SubResource("SystemFont_4vdu6")

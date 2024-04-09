@@ -3,9 +3,6 @@ extends Node
 @export var text_speed: float
 @export var move_names: Dictionary
 
-var pokemon: String
-var move: String
-var target: String
 var text_playing: bool
 
 var text: Array
@@ -19,9 +16,9 @@ func _process(delta: float) -> void:
 		next_phrase()
 
 func next_phrase():
-	var phrase = text[0].replace("@@POKEMON@@", pokemon)
-	phrase = phrase.replace("@@MOVE@@", move)
-	phrase = phrase.replace("@@TARGET@@", target)
+	var phrase = TextManager.get_message(text[0][0], Settings.current_language).replace("@@POKEMON@@", text[0][1])
+	phrase = phrase.replace("@@MOVE@@", text[0][2])
+	phrase = phrase.replace("@@TARGET@@", text[0][3])
 	$Text.text = phrase
 	print(phrase)
 	
@@ -38,8 +35,5 @@ func next_phrase():
 	
 	text_playing = false
 
-func _on_battle_manager_queue_text(key, init_pokemon, init_move, init_target) -> void:
-	pokemon = init_pokemon
-	move = TextManager.get_move_name(str(init_move), Settings.current_language)
-	target = init_target
-	text.append(TextManager.get_message(key, Settings.current_language))
+func _on_battle_manager_queue_text(key : String, pokemon : String, move : int, target : String) -> void:
+	text.append([key, pokemon, TextManager.get_move_name(str(move), Settings.current_language), target])

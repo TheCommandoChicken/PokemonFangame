@@ -76,7 +76,7 @@ func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
 			user.moves[m].current_pp -= 1
 			break
 
-	emit_signal("move_used", move_id, user.nickname, target.nickname, crit, effective, miss)
+	await emit_signal("move_used", move_id, user.nickname, target.nickname, crit, effective, miss)
 
 func check_accuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> bool:
 	var mstage = accuracy_stage - evasion_stage
