@@ -11,7 +11,7 @@ func _ready() -> void:
 	EffectCalculation.connect("move_used", Callable(self, "_on_move_used"))
 	for i in move_buttons.get_children():
 		i.pressed.connect(_on_move_button_pressed.bind(i))
-		i.text = TextManager.get_move_name(pokemon_1.moves[i.get_index()][0], Settings.current_language)
+		#i.text = TextManager.get_move_name(pokemon_1.moves[i.get_index()][0], Settings.current_language)
 	health_bar.max_value = pokemon_2.stats.max_health
 	health_bar.value = pokemon_2.stats.current_health
 

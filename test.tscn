@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://chtqlhsgbyhy7"]
+[gd_scene load_steps=10 format=3 uid="uid://chtqlhsgbyhy7"]
 
 [ext_resource type="Script" path="res://script/text_box.gd" id="2"]
 [ext_resource type="Script" path="res://script/battle_manager.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://bt5qf0yal4tpu" path="res://scene/pokemon.tscn" id="3_87dn1"]
-[ext_resource type="Texture2D" uid="uid://csmjf3uftcv8x" path="res://aseprite/Test.png" id="4_xk8aa"]
+[ext_resource type="Texture2D" uid="uid://dc1046gbapbul" path="res://aseprite/Move-Button-Mockup.png" id="4_r8mts"]
+[ext_resource type="Texture2D" uid="uid://dos65v4wv8kuh" path="res://aseprite/Move-PP-Bar-Under.png" id="5_73h62"]
+[ext_resource type="Texture2D" uid="uid://bu3mtdm6er2sf" path="res://aseprite/Move-PP-Bar-Progress.png" id="6_vktpc"]
+[ext_resource type="Texture2D" uid="uid://dp32j8yv5v6g4" path="res://aseprite/Move-Button-Base-Normal.png" id="7_ieih6"]
+[ext_resource type="Texture2D" uid="uid://cumtqwavv42h8" path="res://aseprite/Move-Button-Icon-Normal.png" id="8_1a44h"]
 
 [sub_resource type="Theme" id="1"]
 
@@ -18,6 +22,7 @@ move_buttons = NodePath("../UI/Move Buttons")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
@@ -44,6 +49,7 @@ bbcode_enabled = true
 text = "
 "
 visible_characters = 0
+visible_ratio = 0.0
 
 [node name="ColorRect" type="ColorRect" parent="UI/TextBox"]
 layout_mode = 2
@@ -52,6 +58,7 @@ layout_mode = 2
 
 [node name="MoveSlider" type="HSlider" parent="UI"]
 visible = false
+layout_mode = 0
 offset_left = 28.0
 offset_top = 236.0
 offset_right = 535.0
@@ -73,6 +80,66 @@ offset_left = -130.0
 offset_bottom = 27.0
 grow_horizontal = 0
 show_percentage = false
+
+[node name="TextureButton" type="TextureButton" parent="UI"]
+layout_mode = 2
+offset_left = 322.0
+offset_top = 312.0
+offset_right = 630.0
+offset_bottom = 360.0
+texture_normal = ExtResource("4_r8mts")
+stretch_mode = 3
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/TextureButton"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 5.5
+offset_top = 5.0
+offset_right = 53.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 48.0
+value = 17.0
+texture_under = ExtResource("5_73h62")
+texture_progress = ExtResource("6_vktpc")
+
+[node name="TextureRect" type="TextureRect" parent="UI/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -15.0
+offset_right = 68.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_ieih6")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="UI/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -14.0
+offset_right = -31.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_1a44h")
+stretch_mode = 3
 
 [node name="Move Buttons" type="GridContainer" parent="UI"]
 layout_mode = 1
@@ -103,12 +170,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Move4" type="Button" parent="UI/Move Buttons"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Test" type="Sprite2D" parent="UI"]
-position = Vector2(607, 291)
-texture = ExtResource("4_xk8aa")
 
 [connection signal="queue_text" from="BattleManager" to="UI/TextBox" method="_on_BattleManager_queue_text"]
