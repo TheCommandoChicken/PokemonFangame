@@ -71,6 +71,11 @@ func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
 				
 				print("Miss: ", miss)
 		
+	for m in user.moves.size():
+		if user.moves[m].id == str(move_id):
+			user.moves[m].current_pp -= 1
+			break
+
 	emit_signal("move_used", move_id, user.nickname, target.nickname, crit, effective, miss)
 
 func check_accuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> bool:

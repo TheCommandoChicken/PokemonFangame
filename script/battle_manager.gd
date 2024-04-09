@@ -2,16 +2,17 @@ extends Node
 
 signal queue_text(key, init_pokemon, init_move, init_target)
 
-var pokemon_1 = Pokemon.new({"nickname": "Voltorb", "species": 100,"ivs":{"health": randi_range(0, 31),"attack": randi_range(0, 31),"defense": randi_range(0, 31),"sp_attack": randi_range(0, 31),"sp_defense": randi_range(0, 31),"speed": randi_range(0, 31)}, "level": 100, "moves": [["1", 0], ["24", 0], ["17", 0], ["99", 0]]})
-var pokemon_2 = Pokemon.new({"nickname": "Voltorb2", "species": 100,"ivs":{"health": randi_range(0, 31),"attack": randi_range(0, 31),"defense": randi_range(0, 31),"sp_attack": randi_range(0, 31),"sp_defense": randi_range(0, 31),"speed": randi_range(0, 31)}, "level": 100, "moves": [["1", 0], ["24", 0], ["17", 0], ["99", 0]]})
+var pokemon_1 = Pokemon.new({"nickname": "Voltorb", "species": 100,"ivs":{"health": randi_range(0, 31),"attack": randi_range(0, 31),"defense": randi_range(0, 31),"sp_attack": randi_range(0, 31),"sp_defense": randi_range(0, 31),"speed": randi_range(0, 31)}, "level": 100, "moves": [{"id": "1", "current_pp": 35}, {"id": "24", "current_pp": 30}, {"id": "17", "current_pp": 35}, {"id": "99", "current_pp": 20}]})
+var pokemon_2 = Pokemon.new({"nickname": "Voltorb2", "species": 100,"ivs":{"health": randi_range(0, 31),"attack": randi_range(0, 31),"defense": randi_range(0, 31),"sp_attack": randi_range(0, 31),"sp_defense": randi_range(0, 31),"speed": randi_range(0, 31)}, "level": 100, "moves": [{"id": "1", "current_pp": 35}, {"id": "24", "current_pp": 30}, {"id": "17", "current_pp": 35}, {"id": "99", "current_pp": 20}]})
 @export var moves : Array
 @export var health_bar : ProgressBar
 @export var move_buttons : Control
+
 func _ready() -> void:
 	EffectCalculation.connect("move_used", Callable(self, "_on_move_used"))
-	for i in move_buttons.get_children():
-		i.pressed.connect(_on_move_button_pressed.bind(i))
-		i.get_node("Label").text = TextManager.get_move_name(pokemon_1.moves[i.get_index()][0], Settings.current_language)
+	for button in move_buttons.get_children():
+		button.pressed.connect(_on_move_button_pressed.bind(button))
+		button.update_info(pokemon_1.moves[button.get_index()])
 	health_bar.max_value = pokemon_2.stats.max_health
 	health_bar.value = pokemon_2.stats.current_health
 
@@ -24,7 +25,8 @@ func _process(delta: float) -> void:
 		pokemon_2.update_stats()
 
 func _on_move_button_pressed(button : TextureButton):
-	EffectCalculation.calculate_move_effect(int(pokemon_1.moves[button.get_index()][0]), pokemon_1, pokemon_2)
+	EffectCalculation.calculate_move_effect(int(pokemon_1.moves[button.get_index()].id), pokemon_1, pokemon_2)
+	button.update_info(pokemon_1.moves[button.get_index()])
 	health_bar.value = pokemon_2.stats.current_health
 
 func _on_queue_move(move, speed, priority, user, target): # As far as I can tell this function is never called

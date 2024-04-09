@@ -64,7 +64,7 @@ class_name Pokemon
 @export var met_route: String
 @export var fateful: bool
 
-@export var moves = [["1", 0], ["24", 0], ["17", 0], ["98", 0]]
+@export var moves = {}
 
 @export var invulnerable : int
 @export var using_move : int
