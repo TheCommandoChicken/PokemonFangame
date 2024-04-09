@@ -1,19 +1,20 @@
-[gd_resource type="MeshLibrary" load_steps=5 format=2]
+[gd_resource type="MeshLibrary" load_steps=5 format=3 uid="uid://xnlf4ctvcscx"]
 
-[sub_resource type="PlaneMesh" id=1]
+[sub_resource type="PlaneMesh" id="1"]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id="2"]
 
-[sub_resource type="GradientTexture2D" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture2D" id="3"]
+gradient = SubResource("2")
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id="4"]
 
 [resource]
 item/0/name = ""
-item/0/mesh = SubResource( 1 )
-item/0/mesh_transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-item/0/shapes = [  ]
-item/0/navmesh_transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-item/0/preview = SubResource( 3 )
-script = SubResource( 4 )
+item/0/mesh = SubResource("1")
+item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/shapes = []
+item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item/0/navigation_layers = 1
+item/0/preview = SubResource("3")
+script = SubResource("4")

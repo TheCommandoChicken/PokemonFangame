@@ -1,5 +1,5 @@
 {
-  "1": // Bulbasaur
+  "1":
   {
     "type_1": "GRASS",
 		"type_2": "NONE",
@@ -99,7 +99,7 @@
       "Toxic"
     ]
 	},
-  "2": // Ivysaur
+  "2":
   {
     "type_1": "GRASS",
 		"type_2": "POISON",
@@ -137,7 +137,7 @@
     "egg_group_2": "Grass",
     "egg_cycles": 20
 	},
-  "3": // Venusaur
+  "3":
   {
     "type_1": "GRASS",
 		"type_2": "POISON",
@@ -175,7 +175,7 @@
     "egg_group_2": "Grass",
     "egg_cycles": 20
 	},
-  "4": // Charmander
+  "4":
   {
     "type_1": "FIRE",
 		"type_2": "NONE",
@@ -213,7 +213,7 @@
     "egg_group_2": "Dragon",
     "egg_cycles": 20
 	},
-  "5": // Charmeleon
+  "5":
   {
     "type_1": "FIRE",
 		"type_2": "NONE",
@@ -251,7 +251,7 @@
     "egg_group_2": "Dragon",
     "egg_cycles": 20
 	},
-	"100": // Voltorb
+	"100":
   {
     "type_1": "ELECTRIC",
 		"type_2": "NONE",
