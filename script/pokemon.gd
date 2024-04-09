@@ -1,5 +1,4 @@
 extends Node
-class_name Pokemon
 
 # These variables probably shouldn't be exposed like this, consider making getter and setter functions
 

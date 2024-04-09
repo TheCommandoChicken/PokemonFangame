@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Pokemon" load_steps=2 format=3 uid="uid://c6l4b14gytxkk"]
+
+[ext_resource type="Script" path="res://script/resources/base_pokemon.gd" id="1_okoa5"]
+
+[resource]
+script = ExtResource("1_okoa5")
+types = Array[int]([12, 0])
+base_stats = {
+"atk": 49,
+"def": 49,
+"hp": 45,
+"spa": 65,
+"spd": 65,
+"spe": 45
+}
+catch_rate = 0
+exp_yield = 0
+ev_yield = {
+"atk": 0,
+"def": 0,
+"hp": 0,
+"spa": 0,
+"spd": 0,
+"spe": 0
+}
+abilities = Array[int]([])
+hidden_ability = 0
+leveling_group = ""
+base_friendship = 0
+nat_dex = 0
+reg_dex = 0
+new_dex = 0
+height = 0.0
+weight = 0.0
+gender_ratio = 0
+egg_groups = []
+egg_cycles = 0
+leveling_learnset = {}
