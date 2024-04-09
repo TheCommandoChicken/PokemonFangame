@@ -37,12 +37,14 @@ script = ExtResource("2")
 text_speed = 0.02
 
 [node name="Text" type="RichTextLabel" parent="UI/TextBox"]
+z_index = 1
 layout_mode = 2
 theme = SubResource("1")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "
 "
+scroll_active = false
 visible_characters = 0
 visible_ratio = 0.0
 
@@ -112,4 +114,4 @@ offset_top = 96.0
 offset_right = -63.0
 offset_bottom = 126.0
 
-[connection signal="queue_text" from="BattleManager" to="UI/TextBox" method="_on_BattleManager_queue_text"]
+[connection signal="queue_text" from="BattleManager" to="UI/TextBox" method="_on_battle_manager_queue_text"]

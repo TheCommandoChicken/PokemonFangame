@@ -23,6 +23,7 @@ func next_phrase():
 	phrase = phrase.replace("@@MOVE@@", move)
 	phrase = phrase.replace("@@TARGET@@", target)
 	$Text.text = phrase
+	print(phrase)
 	
 	$Text.visible_characters = 0
 	
@@ -39,6 +40,6 @@ func next_phrase():
 
 func _on_battle_manager_queue_text(key, init_pokemon, init_move, init_target) -> void:
 	pokemon = init_pokemon
-	move = TextManager.get_move_name(init_move, Settings.current_language)
+	move = TextManager.get_move_name(str(init_move), Settings.current_language)
 	target = init_target
-	TextManager.get_message(key, Settings.current_language)
+	text.append(TextManager.get_message(key, Settings.current_language))
