@@ -117,19 +117,6 @@ func checkEffectsPreDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> 
 				
 			"increased_crit":
 				effective_crit_stage += 1
-
-func checkEffectsPostDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> void:
-	for i in effects:
-		match i["effect"]:
-			"recoil":
-				var amount = move["effects"][effects.find("recoil")]["amount"]
-					
-				if move["effects"][effects.find("recoil")]["from_user"]:
-					recoil = calculateRecoil(amount, user.stats["max_health"])
-				else:
-					recoil = calculateRecoil(amount, damage)
-				
-				print("recoiled for ", recoil, " damage")
 			
 			"change_stat":
 				if (randf_range(0, 1) * 100) <= i["chance"]:
@@ -149,17 +136,30 @@ func checkEffectsPostDamage(move: Dictionary, user: Pokemon, target: Pokemon) ->
 					
 					match i["target"]:
 						"self":
-							if user.status == "NONE" || i["overwrite_existing"] == true:
+							if user.status == "NONE":
 								user.status = status
 								continue
 							
 							print("failed")
 						"target":
-							if target.status == "NONE" || i["overwrite_existing"] == true:
+							if target.status == "NONE":
 								target.status = status
 								continue
 								
 							print("failed")
+				
+				print(target.status)
+
+func checkEffectsPostDamage(move: Dictionary, user: Pokemon, target: Pokemon) -> void:
+	if effects.has("recoil"):
+		var amount = move["effects"][effects.find("recoil")]["amount"]
+			
+		if move["effects"][effects.find("recoil")]["from_user"]:
+			recoil = calculateRecoil(amount, user.stats["max_health"])
+		else:
+			recoil = calculateRecoil(amount, damage)
+		
+		print("recoiled for ", recoil, " damage")
 
 func checkCrit(stage: int, affection: int) -> float:
 	var chance : float
