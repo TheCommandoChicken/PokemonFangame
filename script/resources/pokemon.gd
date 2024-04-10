@@ -1,27 +1,28 @@
 extends Resource
 class_name Pokemon
 
-enum genders {NONE, MALE, FEMALE}
+enum Gender {NONE, MALE, FEMALE}
 
 @export var base : BasePokemon
 @export var nickname : String
 @export var shiny : bool
-@export var gender : genders
+@export var gender : Gender
 @export var original_trainer : String
 @export var exp : int
 @export var level : int
 @export var friendship : int
 @export var affection : int
-@export var ability : int
-@export var nature : int
-@export var pokeball : int
+@export var ability : Abilities.Ability
+@export var nature : Natures.Nature
+@export var pokeball : Pokeballs.Pokeball
 @export var region : int
 @export var route : int
 @export var fateful : bool
 @export var moves : Array
 @export var status : Array
 @export var stats = {
-	"hp": 0,
+	"max_hp": 0,
+	"current_hp": 0,
 	"atk": 0,
 	"def": 0,
 	"spa": 0,

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://chtqlhsgbyhy7"]
+[gd_scene load_steps=5 format=3 uid="uid://chtqlhsgbyhy7"]
 
 [ext_resource type="Script" path="res://script/text_box.gd" id="2"]
 [ext_resource type="Script" path="res://script/battle_manager.gd" id="3"]
-[ext_resource type="PackedScene" uid="uid://bt5qf0yal4tpu" path="res://scene/pokemon.tscn" id="3_87dn1"]
 [ext_resource type="PackedScene" uid="uid://3iyymp1q81hd" path="res://scene/move_button.tscn" id="4_f4rqy"]
 
 [sub_resource type="Theme" id="1"]
@@ -11,10 +10,9 @@
 
 [node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("health_bar", "move_buttons")]
 script = ExtResource("3")
+pokemon = Array[Resource("res://script/resources/pokemon.gd")]([null, null])
 health_bar = NodePath("../UI/Health")
 move_buttons = NodePath("../UI/MoveButtons")
-
-[node name="Pokemon" parent="." instance=ExtResource("3_87dn1")]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

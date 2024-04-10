@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Pokemon" load_steps=2 format=3 uid="uid://c6l4b14gytxkk"]
+[gd_resource type="Resource" script_class="BasePokemon" load_steps=2 format=3 uid="uid://c6l4b14gytxkk"]
 
-[ext_resource type="Script" path="res://script/resources/base_pokemon.gd" id="1_okoa5"]
+[ext_resource type="Script" path="res://script/resources/base_pokemon.gd" id="1_lx74h"]
 
 [resource]
-script = ExtResource("1_okoa5")
+script = ExtResource("1_lx74h")
 types = Array[int]([12, 0])
 base_stats = {
 "atk": 49,
