@@ -2,7 +2,7 @@ extends Resource
 class_name BasePokemon
 
 ## Stores the two types of the Pokemon. Must always have a size of 2.
-@export var types : Array[Types.types]
+@export var types : Array[Types.Type]
 ## The base stats of the Pokemon.
 @export var base_stats = {
 	"hp": 0,
