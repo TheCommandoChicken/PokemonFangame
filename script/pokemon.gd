@@ -1,105 +1,87 @@
 extends Node
+class_name Pokemon
 
-# These variables probably shouldn't be exposed like this, consider making getter and setter functions
+enum Gender {NONE, MALE, FEMALE}
 
-@export var species: int
-@export var nickname: String
-@export var shiny: bool
-@export var gender: int
-@export var trainer: String
-
-@export var stats = {
-	"max_health": 0,
-	"current_health": 0,
-	"attack": 1,
-	"defense": 1,
-	"sp_attack": 1,
-	"sp_defense": 1,
-	"speed": 0
-}
-
+@export var base : BasePokemon
+@export var nickname : String
+@export var shiny : bool
+@export var gender : Gender
+@export var ability : Abilities.Ability
+@export var nature : Natures.Nature
 @export var ivs = {
-	"health": 0,
-	"attack": 0,
-	"defense": 0,
-	"sp_attack": 0,
-	"sp_defense": 0,
-	"speed": 0
+	"hp": 0,
+	"atk": 0,
+	"def": 0,
+	"spa": 0,
+	"spd": 0,
+	"spe": 0
 }
-
+@export var trainer : String
+@export var trainer_id : int
+@export var ball : Pokeballs.Pokeball
+@export var region : int
+@export var route : int
+@export var fateful : bool
+@export var exp : int
+@export var level : int
+@export var friendship : int
+@export var affection : int
+@export var moves : Array[Move]
+@export var current_pp : Array[int]
+@export var pp_up : Array[int]
+@export var non_volatile_status : Statuses.Status
+@export var stats = {
+	"max_hp": 0,
+	"current_hp": 0,
+	"atk": 0,
+	"def": 0,
+	"spa": 0,
+	"spd": 0,
+	"spe": 0
+}
 @export var evs = {
-	"health": 0,
-	"attack": 100,
-	"defense": 0,
-	"sp_attack": 0,
-	"sp_defense": 0,
-	"speed": 0
+	"hp": 0,
+	"atk": 0,
+	"def": 0,
+	"spa": 0,
+	"spd": 0,
+	"spe": 0
 }
-
+@export var held_item : int
+@export var volatile_status : Array[int]
 @export var stages = {
-	"attack": 2,
-	"defense": 6,
-	"sp_attack": 0,
-	"sp_defense": 2,
-	"speed": 0,
-	"evasiveness": 0,
-	"accuracy": 6,
-	"crit": 0
+	"atk": 0,
+	"def": 0,
+	"spa": 0,
+	"spd": 0,
+	"spe": 0,
+	"eva": 0,
+	"acc": 0,
+	"crt": 0
 }
-
-@export var experience: int
-@export var level: int
-
-@export var friendship: int
-@export var affection: int
-
-@export var ability: String
-@export var nature: String
-
-@export var status = "NONE"
-
-@export var pokeball: int
-@export var met_region: String
-@export var met_route: String
-@export var fateful: bool
-
-@export var moves = {}
-
-@export var invulnerable : int
-@export var using_move : int
+@export var invulnerable : bool
+@export var last_move : int
 
 func _init(info: Dictionary) -> void:
+	base = info.base
 	nickname = info.nickname
-	species = info.species
-	level = info.level
+	shiny = info.shiny
+	gender = info.gender
+	ability = info.ability
+	nature = info.nature
 	ivs = info.ivs
+	level = info.level
 	moves = info.moves
-	update_stats()
-	stats.current_health = stats.max_health
 
-func update_stats(): # This is stupid and does work
-	stats = {
-		"max_health": health_stat(BasePokemon.pokemon_table[str(species)].base_stats.health, ivs.health, evs.health),
-		"current_health": stats.current_health,
-		"attack": stat(BasePokemon.pokemon_table[str(species)].base_stats.attack, ivs.attack, evs.attack),
-		"defense": stat(BasePokemon.pokemon_table[str(species)].base_stats.defense, ivs.defense, evs.defense),
-		"sp_attack": stat(BasePokemon.pokemon_table[str(species)].base_stats.sp_attack, ivs.sp_attack, evs.sp_attack),
-		"sp_defense": stat(BasePokemon.pokemon_table[str(species)].base_stats.sp_defense, ivs.sp_defense, evs.sp_defense),
-		"speed": stat(BasePokemon.pokemon_table[str(species)].base_stats.speed, ivs.speed, evs.speed)
-	}
+func update_stats():
+	stats[0] = health_stat(base.base_stats.hp, ivs.hp, evs.hp)
 	
-	print(stats)
+	for i in range (1, 5):
+		stats[i + 1] = stat(base.base_stats[i], ivs[i], evs[i])
 
-func stat(base: int, iv: int, ev: int):
-# warning-ignore:integer_division
-# warning-ignore:integer_division
-	return (((2 * base + iv + (ev / 4)) * level) / 100) + 5
+func stat(stat: int, iv: int, ev: int) -> int:
+	return int((((2 * stat + iv + (ev / 4)) * level) / 100) + 5)
 
 func health_stat(base: int, iv: int, ev: int):
-# warning-ignore:integer_division
-# warning-ignore:integer_division
 	return (((2 * base + iv + (ev / 4)) * level) / 100) + level + 10
-
-func get_types() -> Array:
-	var pokemon_info = BasePokemon.pokemon_table[str(species)]
-	return [pokemon_info["type_1"], pokemon_info["type_2"]]

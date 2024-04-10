@@ -23,40 +23,36 @@ func _ready() -> void: # This entire thing is almost verbatim duplicated from ba
 	move_table = DataManager.generic_json_read(path)
 
 func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
-	var move = Dictionary(move_table[str(move_id)])
+	var move = user.moves[move_id]
 	var miss : bool
 	var power
 	
 	hits = 1
 	
-	match int(move["category"]): # There are moves that won't fit within this structure
-		0:
+	match move.category:
+		move.Category.PHYSICAL:
 			attack = user.stats["attack"]
 			defense = target.stats["defense"]
 			attack_id = "attack"
 			defense_id = "defense"
-		1:
+		move.Category.SPECIAL:
 			attack = user.stats["sp_attack"]
 			defense = target.stats["sp_defense"]
 			attack_id = "sp_attack"
 			defense_id = "sp_defense"
 			
 			
-	match int(move["category"]):
-		0,1:
-			power = move["base_power"]
+	match move.category:
+		move.Category.PHYSICAL, move.Category.SPECIAL:
+			power = move.power
 			
-			effective = Types.type_matchup(move["type"], target.get_types())
+			effective = Types.type_matchup(move.type, target.get_types())
 			
-			miss = check_accuracy(move.accuracy, user.stages.accuracy, target.stages.evasiveness)
+			miss = check_accuracy(move.accuracy, user.stages.acc, target.stages.eva)
 			
-			stab = calc_stab(move["type"], user.get_types())
+			stab = calc_stab(move.type, user.get_types())
 			
-			effective_crit_stage = user.stages["crit"]
-			
-			if move.has("effects"):
-				get_effects(move)
-				check_effects_pre_damage(move, user, target)
+			effective_crit_stage = user.stages.crt
 			
 			for i in hits:
 				crit = check_crit(effective_crit_stage, user.affection)
@@ -71,10 +67,7 @@ func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
 				
 				print("Miss: ", miss)
 		
-	for m in user.moves.size():
-		if user.moves[m].id == str(move_id):
-			user.moves[m].current_pp -= 1
-			break
+	user.moves[move_id].pp -= 1
 
 	await emit_signal("move_used", move_id, user.nickname, target.nickname, crit, effective, miss)
 

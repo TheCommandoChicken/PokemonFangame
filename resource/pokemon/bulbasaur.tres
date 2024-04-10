@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://script/resources/base_pokemon.gd" id="1_lx74h"]
 
+
 [resource]
 script = ExtResource("1_lx74h")
 types = Array[int]([12, 0])

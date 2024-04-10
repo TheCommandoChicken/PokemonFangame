@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://bt5qf0yal4tpu"]
 
-[ext_resource type="Script" path="res://script/base_pokemon.gd" id="1"]
+[ext_resource type="Script" path="res://script/old_base_pokemon.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://canaabfknpk8e" path="res://resource/pokemon/battle/assets/bulbasaur_front001.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://bmp03hoxjq4xv" path="res://resource/pokemon/battle/assets/bulbasaur_front006.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://j08ym7ufed4y" path="res://resource/pokemon/battle/assets/bulbasaur_front014.png" id="4"]
@@ -14,6 +14,7 @@
 [ext_resource type="SpriteFrames" uid="uid://l5vdkjeabs0e" path="res://resource/pokemon/battle/animation/bulbasaur_front.tres" id="13_xk33i"]
 [ext_resource type="Texture2D" uid="uid://dgs1vbgfbheml" path="res://resource/pokemon/battle/assets/bulbasaur_front004.png" id="14_vnfu0"]
 [ext_resource type="Texture2D" uid="uid://gghyl3cpb80o" path="res://resource/pokemon/battle/assets/terastal-ornament-placeholder.png" id="15_go6h8"]
+
 
 [sub_resource type="Animation" id="Animation_i7skj"]
 length = 0.001
