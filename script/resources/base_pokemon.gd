@@ -24,7 +24,7 @@ class_name BasePokemon
 }
 @export var abilities : Array[Abilities.Ability]
 @export var hidden_ability : Abilities.Ability
-@export var leveling_group : String
+@export var leveling_group : int
 @export var base_friendship : int
 @export var nat_dex : int
 @export var reg_dex : int
@@ -32,6 +32,6 @@ class_name BasePokemon
 @export var height : float
 @export var weight : float
 @export var gender_ratio : int
-@export var egg_groups : Array
+@export var egg_groups : Array[int]
 @export var egg_cycles : int
 @export var leveling_learnset : Dictionary

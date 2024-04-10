@@ -9,7 +9,7 @@ var action_list : Array
 @export var move_buttons : Control
 
 func _ready() -> void:
-	pokemon = [Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres")]), Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres")])]
+	pokemon = [Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load("res://resource/move/pound.tres"), load("res://resource/moves/pound.tres"), load("res://resource/moves/pound.tres"), load("res://resource/moves/pound.tres")]), Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load("res://resource/moves/pound.tres"), load("res://resource/moves/pound.tres"), load("res://resource/moves/pound.tres"), load("res://resource/moves/pound.tres")])]
 	EffectCalculation.connect("move_used", Callable(self, "_on_move_used"))
 	for button in move_buttons.get_children():
 		button.pressed.connect(_on_move_button_pressed.bind(button))

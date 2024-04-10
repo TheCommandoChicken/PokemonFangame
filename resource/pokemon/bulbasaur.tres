@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" path="res://script/resources/base_pokemon.gd" id="1_lx74h"]
 
-
 [resource]
 script = ExtResource("1_lx74h")
-types = Array[int]([12, 0])
+types = Array[int]([12, 4])
 base_stats = {
 "atk": 49,
 "def": 49,
@@ -14,26 +13,26 @@ base_stats = {
 "spd": 65,
 "spe": 45
 }
-catch_rate = 0
-exp_yield = 0
+catch_rate = 45
+exp_yield = 64
 ev_yield = {
 "atk": 0,
 "def": 0,
 "hp": 0,
-"spa": 0,
+"spa": 1,
 "spd": 0,
 "spe": 0
 }
-abilities = Array[int]([])
-hidden_ability = 0
-leveling_group = ""
-base_friendship = 0
-nat_dex = 0
+abilities = Array[int]([65])
+hidden_ability = 34
+leveling_group = 3
+base_friendship = 70
+nat_dex = 1
 reg_dex = 0
 new_dex = 0
-height = 0.0
-weight = 0.0
-gender_ratio = 0
-egg_groups = []
-egg_cycles = 0
+height = 0.7
+weight = 6.9
+gender_ratio = 2
+egg_groups = [1, 7]
+egg_cycles = 20
 leveling_learnset = {}
