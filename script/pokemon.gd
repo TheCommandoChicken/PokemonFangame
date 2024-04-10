@@ -28,7 +28,7 @@ enum Gender {NONE, MALE, FEMALE}
 @export var friendship : int
 @export var affection : int
 @export var moves : Array[Move]
-@export var current_pp : Array[int]
+@export var current_pp : Array[int] = [10, 10, 10, 10]
 @export var pp_up : Array[int]
 @export var non_volatile_status : Statuses.Status
 @export var stats = {
@@ -63,22 +63,23 @@ enum Gender {NONE, MALE, FEMALE}
 @export var invulnerable : bool
 @export var last_move : int
 
-func _init(info: Dictionary) -> void:
-	base = info.base
-	nickname = info.nickname
-	shiny = info.shiny
-	gender = info.gender
-	ability = info.ability
-	nature = info.nature
-	ivs = info.ivs
-	level = info.level
-	moves = info.moves
+func _init(init_base: BasePokemon, init_ivs: Dictionary, init_level: int, init_moves: Array[Move], init_nickname: String = "", init_shiny: bool = false, init_gender: Gender = Gender.NONE) -> void:
+	base = init_base
+	nickname = init_nickname
+	shiny = init_shiny
+	gender = init_gender
+	ivs = init_ivs
+	level = init_level
+	moves = init_moves
+	update_stats()
 
 func update_stats():
-	stats[0] = health_stat(base.base_stats.hp, ivs.hp, evs.hp)
+	stats["max_hp"] = health_stat(base.base_stats.hp, ivs.hp, evs.hp)
 	
-	for i in range (1, 5):
-		stats[i + 1] = stat(base.base_stats[i], ivs[i], evs[i])
+	for i in ["atk", "def", "spa", "spd", "spe"]:
+		stats[i] = stat(base.base_stats[i], ivs[i], evs[i])
+	
+	print(stats)
 
 func stat(stat: int, iv: int, ev: int) -> int:
 	return int((((2 * stat + iv + (ev / 4)) * level) / 100) + 5)

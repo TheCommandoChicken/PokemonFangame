@@ -8,9 +8,9 @@
 
 [node name="Main" type="Node3D"]
 
-[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("pokemon", "health_bar", "move_buttons")]
+[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("health_bar", "move_buttons")]
 script = ExtResource("3")
-pokemon = [null, null]
+pokemon = Array[Resource("res://script/old_pokemon.gd")]([null, null])
 health_bar = NodePath("../UI/Health")
 move_buttons = NodePath("../UI/MoveButtons")
 

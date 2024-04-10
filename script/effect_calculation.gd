@@ -31,26 +31,26 @@ func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
 	
 	match move.category:
 		move.Category.PHYSICAL:
-			attack = user.stats["attack"]
-			defense = target.stats["defense"]
-			attack_id = "attack"
-			defense_id = "defense"
+			attack = user.stats.atk
+			defense = target.stats.atk
+			attack_id = "atk"
+			defense_id = "def"
 		move.Category.SPECIAL:
-			attack = user.stats["sp_attack"]
-			defense = target.stats["sp_defense"]
-			attack_id = "sp_attack"
-			defense_id = "sp_defense"
+			attack = user.stats.spa
+			defense = target.stats.spd
+			attack_id = "spa"
+			defense_id = "spd"
 			
 			
 	match move.category:
 		move.Category.PHYSICAL, move.Category.SPECIAL:
 			power = move.power
 			
-			effective = Types.type_matchup(move.type, target.get_types())
+			effective = Types.type_matchup(move.type, target.base.types)
 			
 			miss = check_accuracy(move.accuracy, user.stages.acc, target.stages.eva)
 			
-			stab = calc_stab(move.type, user.get_types())
+			stab = calc_stab(move.type, user.base.types)
 			
 			effective_crit_stage = user.stages.crt
 			
@@ -63,11 +63,11 @@ func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
 				
 				print("Dealt ", damage)
 				
-				target.stats.current_health -= damage
+				target.stats.current_hp -= damage
 				
 				print("Miss: ", miss)
 		
-	user.moves[move_id].pp -= 1
+	user.current_pp[move_id] -= 1
 
 	await emit_signal("move_used", move_id, user.nickname, target.nickname, crit, effective, miss)
 
@@ -88,7 +88,7 @@ func check_accuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) ->
 	
 	return false
 
-func calc_stab(move_type: String, user_types: Array) -> float:
+func calc_stab(move_type: Types.Type, user_types: Array[Types.Type]) -> float:
 	if move_type == user_types[0] || move_type == user_types[1]:
 		return 1.5
 	else:

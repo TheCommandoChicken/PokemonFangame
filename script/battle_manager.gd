@@ -2,19 +2,20 @@ extends Node
 
 signal queue_text(key, init_pokemon, init_move, init_target)
 
-@export var pokemon : Array[Pokemon]
+@export var pokemon : Array
 var moves : Array
 var action_list : Array
 @export var health_bar : ProgressBar
 @export var move_buttons : Control
 
 func _ready() -> void:
+	pokemon = [Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres")]), Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres"), load("res://resource/move/pound.tres")])]
 	EffectCalculation.connect("move_used", Callable(self, "_on_move_used"))
 	for button in move_buttons.get_children():
 		button.pressed.connect(_on_move_button_pressed.bind(button))
-		button.update_info(pokemon[0].moves[button.get_index()])
-	health_bar.max_value = pokemon[1].stats.max_health
-	health_bar.value = pokemon[1].stats.current_health
+		button.update_info(pokemon[0].moves[button.get_index()], pokemon[0].current_pp[button.get_index()])
+	health_bar.max_value = pokemon[1].stats.max_hp
+	health_bar.value = pokemon[1].stats.current_hp
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_right"):
@@ -24,11 +25,11 @@ func _process(delta: float) -> void:
 		pokemon[1].update_stats()
 
 func _on_move_button_pressed(button : TextureButton):
-	action_list.append({"action_type": "use_move", "user": pokemon[0], "target": pokemon[1], "move_id": pokemon[0].moves[button.get_index()].id})
-	button.update_info(pokemon[0].moves[button.get_index()])
+	action_list.append({"action_type": "use_move", "user": pokemon[0], "target": pokemon[1], "move": pokemon[0].moves[button.get_index()]})
+	button.update_info(pokemon[0].moves[button.get_index()], pokemon[0].current_pp[button.get_index()])
 
-func ai_choose_move(pokemon : Pokemon, opposing_pokemon : Pokemon):
-	action_list.append({"action_type": "use_move", "user": pokemon, "target": opposing_pokemon, "move_id": pokemon.moves[randi_range(0, 3)].id})
+func ai_choose_move(user : Pokemon, opposing_pokemon : Pokemon):
+	action_list.append({"action_type": "use_move", "user": user, "target": opposing_pokemon, "move": user.moves[randi_range(0, 3)]})
 	print(action_list)
 
 func queue_move(move, speed, priority, user, target):
@@ -67,12 +68,12 @@ func execute_turn():
 		var action = action_list[i]
 		match action.action_type:
 			"use_move":
-				queue_move(action.move_id, action.user.stats.speed, EffectCalculation.move_table[str(action.move_id)].priority, action.user, action.target)
+				queue_move(action.move.id, action.user.stats.spe, action.move.priority, action.user, action.target)
 			
 	
 	for move in moves:
 		await EffectCalculation.calculate_move_effect(int(move[0]), move[3], move[4])
-		health_bar.value = pokemon[1].stats.current_health
+		health_bar.value = pokemon[1].stats.current_hp
 		
 	action_list.clear()
 	moves.clear()

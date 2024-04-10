@@ -7,13 +7,13 @@ extends BaseButton
 @export var type_icon : TextureRect
 @export var background : TextureRect
 
-func update_info(move : Dictionary):
-	var current_pp = roundi((move.current_pp/EffectCalculation.move_table[str(move.id)]["pp"]) * 48)
-	move_name_label.text = TextManager.get_move_name(move.id, Settings.current_language)
+func update_info(move : Move, current_pp : int):
+	move_name_label.text = TextManager.get_move_name(str(move.id), Settings.current_language)
 	max_pp_label.text = str(EffectCalculation.move_table[str(move.id)]["pp"])
-	current_pp_label.text = str(move.current_pp)
+	current_pp_label.text = str(current_pp)
+	current_pp = roundi((current_pp/EffectCalculation.move_table[str(move.id)]["pp"]) * 48)
 	pp_bar.value = current_pp
-	if move.current_pp == 0:
+	if current_pp == 0:
 		disabled = true
 	else:
 		disabled = false
