@@ -1,14 +1,12 @@
 extends Node
 class_name Pokemon
 
-enum Gender {NONE, MALE, FEMALE}
-
 @export var base : BasePokemon
 @export var nickname : String
 @export var shiny : bool
-@export var gender : Gender
-@export var ability : Abilities.Ability
-@export var nature : Natures.Nature
+@export var gender : Enums.Gender
+@export var ability : Enums.Ability
+@export var nature : Enums.Nature
 @export var ivs = {
 	"hp": 0,
 	"atk": 0,
@@ -19,7 +17,7 @@ enum Gender {NONE, MALE, FEMALE}
 }
 @export var trainer : String
 @export var trainer_id : int
-@export var ball : Pokeballs.Pokeball
+@export var ball : Enums.Pokeball
 @export var region : int
 @export var route : int
 @export var fateful : bool
@@ -30,7 +28,7 @@ enum Gender {NONE, MALE, FEMALE}
 @export var moves : Array[Move]
 @export var current_pp : Array[int] = [10, 10, 10, 10]
 @export var pp_up : Array[int]
-@export var non_volatile_status : Statuses.Status
+@export var non_volatile_status : Enums.NonVolatileStatus
 @export var stats = {
 	"max_hp": 0,
 	"current_hp": 0,
@@ -63,7 +61,7 @@ enum Gender {NONE, MALE, FEMALE}
 @export var invulnerable : bool
 @export var last_move : int
 
-func _init(init_base: BasePokemon, init_ivs: Dictionary, init_level: int, init_moves: Array[Move], init_nickname: String = "", init_shiny: bool = false, init_gender: Gender = Gender.NONE) -> void:
+func _init(init_base: BasePokemon, init_ivs: Dictionary, init_level: int, init_moves: Array[Move], init_nickname: String = "", init_shiny: bool = false, init_gender: Enums.Gender = Enums.Gender.NONE) -> void:
 	base = init_base
 	nickname = init_nickname
 	shiny = init_shiny

@@ -2,10 +2,8 @@
 extends Resource
 class_name Move
 
-enum Category {PHYSICAL, SPECIAL, STATUS}
-
 @export var id : int
-@export var category := Category.PHYSICAL:
+@export var category := Enums.Category.PHYSICAL:
 	set(value):
 		category = value
 		notify_property_list_changed()
@@ -18,5 +16,5 @@ enum Category {PHYSICAL, SPECIAL, STATUS}
 @export var effects : Array[MoveEffect]
 
 func _validate_property(property: Dictionary):
-	if property.name == "power" and category == Category.STATUS:
+	if property.name == "power" and category == Enums.Category.STATUS:
 		property.usage = PROPERTY_USAGE_NO_EDITOR

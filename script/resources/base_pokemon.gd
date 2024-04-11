@@ -22,16 +22,16 @@ class_name BasePokemon
 	"spd": 0,
 	"spe": 0
 }
-@export var abilities : Array[Abilities.Ability]
-@export var hidden_ability : Abilities.Ability
-@export var leveling_group : int
+@export var abilities : Array[Enums.Ability]
+@export var hidden_ability : Enums.Ability
+@export var leveling_group : Enums.LevelingRate
 @export var base_friendship : int
 @export var nat_dex : int
 @export var reg_dex : int
 @export var new_dex : int
 @export var height : float
 @export var weight : float
-@export var gender_ratio : int
-@export var egg_groups : Array[int]
+@export var gender_ratio : Enums.GenderRatio
+@export var egg_groups : Array[Enums.EggGroup]
 @export var egg_cycles : int
 @export var leveling_learnset : Dictionary

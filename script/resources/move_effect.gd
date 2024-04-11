@@ -13,7 +13,7 @@ enum Source {FIXED, USER_MAX_HP, USER_CURRENT_HP, USER_LEVEL, TARGET_MAX_HP, TAR
 @export var strike_chances : Array[float]
 @export var multiplier : float
 @export var target : Target
-@export var status : Statuses.Status
+@export var status : Enums.NonVolatileStatus
 @export_range(0.0, 1.0) var chance : float
 @export var overwrite : bool
 @export var factors : Array[int]
