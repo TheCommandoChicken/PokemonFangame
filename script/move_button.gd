@@ -9,6 +9,10 @@ extends BaseButton
 @export var assigned_move : int
 @export var pokemon : Pokemon
 
+func _ready():
+	get_node("/root/Main/BattleManager").disable_buttons.connect(_on_disable.bind())
+	get_node("/root/Main/BattleManager").enable_buttons.connect(_on_enable.bind())
+
 func assign_move(user : Pokemon, move : int) -> void:
 	move_name_label.text = TextManager.get_move_name(str(user.moves[move].id), Settings.current_language)
 	assigned_move = move
@@ -23,6 +27,12 @@ func update_info() -> void:
 		disabled = true
 	else:
 		disabled = false
+
+func _on_disable():
+	disabled = true
+	
+func _on_enable():
+	disabled = false
 
 func _pressed():
 	emit_signal("pressed", assigned_move, self)

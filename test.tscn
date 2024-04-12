@@ -112,3 +112,4 @@ offset_right = -63.0
 offset_bottom = 126.0
 
 [connection signal="queue_text" from="BattleManager" to="UI/TextBox" method="_on_battle_manager_queue_text"]
+[connection signal="text_finished" from="UI/TextBox" to="BattleManager" method="_on_text_finished"]

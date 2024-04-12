@@ -1,6 +1,9 @@
 extends Node
+class_name BattleManager
 
 signal queue_text(key, init_pokemon, init_move, init_target)
+signal disable_buttons()
+signal enable_buttons()
 
 @export var pokemon : Array
 var moves : Array
@@ -29,7 +32,8 @@ func _on_move_button_pressed(assigned_move : int, button : TextureButton):
 	action_list.append({"action_type": "use_move", "user": pokemon[0], "target": pokemon[1], "move": assigned_move})
 	pokemon[0].current_pp[assigned_move] -= 1
 	button.update_info()
-	print(action_list)
+	emit_signal("disable_buttons")
+	execute_turn()
 
 func ai_choose_move(user : Pokemon, opposing_pokemon : Pokemon):
 	action_list.append({"action_type": "use_move", "user": user, "target": opposing_pokemon, "move": randi_range(0, 3)})
@@ -65,7 +69,11 @@ func _on_move_used(move, user, target, crit, effective, miss):
 		2.0, 4.0:
 			emit_signal("queue_text", "battle.super_effective", user, move, target)
 
+func _on_text_finished():
+	emit_signal("enable_buttons")
+
 func execute_turn():
+	
 	ai_choose_move(pokemon[1], pokemon[0])
 	for i in action_list.size():
 		var action = action_list[i]

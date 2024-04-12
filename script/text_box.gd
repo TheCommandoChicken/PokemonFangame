@@ -1,5 +1,7 @@
 extends Node
 
+signal text_finished()
+
 @export var text_speed: float
 @export var move_names: Dictionary
 
@@ -34,6 +36,9 @@ func next_phrase():
 	text.remove_at(0)
 	
 	text_playing = false
+	
+	if text.size() == 0:
+		emit_signal("text_finished")
 
 func _on_battle_manager_queue_text(key : String, pokemon : String, move : int, target : String) -> void:
 	text.append([key, pokemon, TextManager.get_move_name(str(move), Settings.current_language), target])
