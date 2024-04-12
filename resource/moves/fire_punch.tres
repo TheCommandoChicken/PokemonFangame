@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Move" load_steps=4 format=3 uid="uid://b3wd8a0clh2f5"]
+
+[ext_resource type="Script" path="res://script/resources/move_effect.gd" id="1_4krp6"]
+[ext_resource type="Script" path="res://script/resources/moves.gd" id="2_4sw3y"]
+
+[sub_resource type="Resource" id="Resource_4nkfb"]
+Resource = null
+script = ExtResource("1_4krp6")
+effect = 3
+strike_chances = Array[float]([])
+multiplier = 5.0
+target = 0
+status = 0
+chance = 0.0
+overwrite = false
+factors = Array[int]([])
+moves_to_bypass = Array[int]([])
+power = 0
+duration = 0
+invulnerable = false
+immobile = false
+duration_range = Array[int]([])
+source = 0
+
+[resource]
+script = ExtResource("2_4sw3y")
+id = 6
+category = 0
+type = 1
+power = 40
+accuracy = 1.0
+max_pp = 20
+contact = true
+priority = 0
+effects = Array[ExtResource("1_4krp6")]([SubResource("Resource_4nkfb")])

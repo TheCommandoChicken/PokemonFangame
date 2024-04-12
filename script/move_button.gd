@@ -6,14 +6,33 @@ extends BaseButton
 @export var move_name_label : Label
 @export var type_icon : TextureRect
 @export var background : TextureRect
+@export var assigned_move : int
+@export var pokemon : Pokemon
 
-func update_info(move : Dictionary):
-	var current_pp = roundi((move.current_pp/EffectCalculation.move_table[str(move.id)]["pp"]) * 48)
-	move_name_label.text = TextManager.get_move_name(move.id, Settings.current_language)
-	max_pp_label.text = str(EffectCalculation.move_table[str(move.id)]["pp"])
-	current_pp_label.text = str(move.current_pp)
-	pp_bar.value = current_pp
-	if move.current_pp == 0:
+func _ready():
+	get_node("/root/Main/BattleManager").disable_buttons.connect(_on_disable.bind())
+	get_node("/root/Main/BattleManager").enable_buttons.connect(_on_enable.bind())
+
+func assign_move(user : Pokemon, move : int) -> void:
+	move_name_label.text = TextManager.get_move_name(str(user.moves[move].id), Settings.current_language)
+	assigned_move = move
+	pokemon = user
+	update_info()
+
+func update_info() -> void:
+	max_pp_label.text = str(pokemon.moves[assigned_move].max_pp)
+	current_pp_label.text = str(pokemon.current_pp[assigned_move])
+	pp_bar.value = roundi((float(pokemon.current_pp[assigned_move])/float(pokemon.moves[assigned_move].max_pp)) * 48)
+	if pokemon.current_pp[assigned_move] == 0:
 		disabled = true
 	else:
 		disabled = false
+
+func _on_disable():
+	disabled = true
+	
+func _on_enable():
+	disabled = false
+
+func _pressed():
+	emit_signal("pressed", assigned_move, self)

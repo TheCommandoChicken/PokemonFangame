@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://chtqlhsgbyhy7"]
+[gd_scene load_steps=5 format=3 uid="uid://chtqlhsgbyhy7"]
 
 [ext_resource type="Script" path="res://script/text_box.gd" id="2"]
 [ext_resource type="Script" path="res://script/battle_manager.gd" id="3"]
-[ext_resource type="PackedScene" uid="uid://bt5qf0yal4tpu" path="res://scene/pokemon.tscn" id="3_87dn1"]
 [ext_resource type="PackedScene" uid="uid://3iyymp1q81hd" path="res://scene/move_button.tscn" id="4_f4rqy"]
 
 [sub_resource type="Theme" id="1"]
@@ -11,10 +10,9 @@
 
 [node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("health_bar", "move_buttons")]
 script = ExtResource("3")
+pokemon = [null, null]
 health_bar = NodePath("../UI/Health")
 move_buttons = NodePath("../UI/MoveButtons")
-
-[node name="Pokemon" parent="." instance=ExtResource("3_87dn1")]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -36,8 +34,10 @@ grow_vertical = 0
 script = ExtResource("2")
 text_speed = 0.02
 
+[node name="ColorRect" type="ColorRect" parent="UI/TextBox"]
+layout_mode = 2
+
 [node name="Text" type="RichTextLabel" parent="UI/TextBox"]
-z_index = 1
 layout_mode = 2
 theme = SubResource("1")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -47,9 +47,6 @@ text = "
 scroll_active = false
 visible_characters = 0
 visible_ratio = 0.0
-
-[node name="ColorRect" type="ColorRect" parent="UI/TextBox"]
-layout_mode = 2
 
 [node name="Timer" type="Timer" parent="UI/TextBox"]
 
@@ -115,3 +112,4 @@ offset_right = -63.0
 offset_bottom = 126.0
 
 [connection signal="queue_text" from="BattleManager" to="UI/TextBox" method="_on_battle_manager_queue_text"]
+[connection signal="text_finished" from="UI/TextBox" to="BattleManager" method="_on_text_finished"]

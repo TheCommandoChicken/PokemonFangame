@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Move" load_steps=2 format=3 uid="uid://b6ndv2xfyii1b"]
+
+[ext_resource type="Script" path="res://script/resources/moves.gd" id="1_ndugv"]
+
+[resource]
+script = ExtResource("1_ndugv")
+id = 177
+category = 1
+type = 3
+power = 100
+accuracy = 0.95
+max_pp = 5
+contact = false
+priority = 0
+effects = Array[Resource("res://script/resources/move_effect.gd")]([])

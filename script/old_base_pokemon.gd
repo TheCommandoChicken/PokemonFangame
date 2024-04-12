@@ -1,3 +1,5 @@
+# !! DEPRECATED SCRIPT !!
+
 extends Node
 
 @export var pokemon_table: Dictionary

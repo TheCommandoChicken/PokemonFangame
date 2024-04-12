@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="BasePokemon" load_steps=2 format=3 uid="uid://bpy6be6cn4hbw"]
+
+[ext_resource type="Script" path="res://script/resources/base_pokemon.gd" id="1_mmf3u"]
+
+[resource]
+script = ExtResource("1_mmf3u")
+types = Array[int]([7, 0])
+base_stats = {
+"atk": 20,
+"def": 55,
+"hp": 50,
+"spa": 25,
+"spd": 25,
+"spe": 30
+}
+catch_rate = 120
+exp_yield = 72
+ev_yield = {
+"atk": 0,
+"def": 2,
+"hp": 0,
+"spa": 0,
+"spd": 0,
+"spe": 0
+}
+abilities = Array[int]([61])
+hidden_ability = 0
+leveling_group = 0
+base_friendship = 70
+nat_dex = 11
+reg_dex = 0
+new_dex = 0
+height = 0.7
+weight = 9.9
+gender_ratio = 4
+egg_groups = Array[int]([3, 0])
+egg_cycles = 15
+leveling_learnset = {}

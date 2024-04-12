@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Move" load_steps=2 format=3 uid="uid://cmi47jrss5i1c"]
+
+[ext_resource type="Script" path="res://script/resources/moves.gd" id="1_lyde7"]
+
+[resource]
+script = ExtResource("1_lyde7")
+id = 1
+category = 0
+type = 1
+power = 40
+accuracy = 1.0
+max_pp = 35
+contact = true
+priority = 0
+effects = []

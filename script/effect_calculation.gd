@@ -23,40 +23,36 @@ func _ready() -> void: # This entire thing is almost verbatim duplicated from ba
 	move_table = DataManager.generic_json_read(path)
 
 func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
-	var move = Dictionary(move_table[str(move_id)])
+	var move = user.moves[move_id]
 	var miss : bool
 	var power
 	
 	hits = 1
 	
-	match int(move["category"]): # There are moves that won't fit within this structure
-		0:
-			attack = user.stats["attack"]
-			defense = target.stats["defense"]
-			attack_id = "attack"
-			defense_id = "defense"
-		1:
-			attack = user.stats["sp_attack"]
-			defense = target.stats["sp_defense"]
-			attack_id = "sp_attack"
-			defense_id = "sp_defense"
+	match move.category:
+		Enums.Category.PHYSICAL:
+			attack = user.stats.atk
+			defense = target.stats.atk
+			attack_id = "atk"
+			defense_id = "def"
+		Enums.Category.SPECIAL:
+			attack = user.stats.spa
+			defense = target.stats.spd
+			attack_id = "spa"
+			defense_id = "spd"
 			
 			
-	match int(move["category"]):
-		0,1:
-			power = move["base_power"]
+	match move.category:
+		Enums.Category.PHYSICAL, Enums.Category.SPECIAL:
+			power = move.power
 			
-			effective = Types.type_matchup(move["type"], target.get_types())
+			effective = Types.type_matchup(move.type, target.base.types)
 			
-			miss = check_accuracy(move.accuracy, user.stages.accuracy, target.stages.evasiveness)
+			miss = check_accuracy(move.accuracy, user.stages.acc, target.stages.eva)
 			
-			stab = calc_stab(move["type"], user.get_types())
+			stab = calc_stab(move.type, user.base.types)
 			
-			effective_crit_stage = user.stages["crit"]
-			
-			if move.has("effects"):
-				get_effects(move)
-				check_effects_pre_damage(move, user, target)
+			effective_crit_stage = user.stages.crt
 			
 			for i in hits:
 				crit = check_crit(effective_crit_stage, user.affection)
@@ -67,16 +63,11 @@ func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
 				
 				print("Dealt ", damage)
 				
-				target.stats.current_health -= damage
+				target.stats.current_hp -= damage
 				
 				print("Miss: ", miss)
-		
-	for m in user.moves.size():
-		if user.moves[m].id == str(move_id):
-			user.moves[m].current_pp -= 1
-			break
 
-	await emit_signal("move_used", move_id, user.nickname, target.nickname, crit, effective, miss)
+	await emit_signal("move_used", move.id, user.nickname, target.nickname, crit, effective, miss)
 
 func check_accuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> bool:
 	var mstage = accuracy_stage - evasion_stage
@@ -95,7 +86,7 @@ func check_accuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) ->
 	
 	return false
 
-func calc_stab(move_type: String, user_types: Array) -> float:
+func calc_stab(move_type: Types.Type, user_types: Array[Types.Type]) -> float:
 	if move_type == user_types[0] || move_type == user_types[1]:
 		return 1.5
 	else:
@@ -184,7 +175,6 @@ func check_crit(stage: int, affection: int) -> float:
 	return 1.0
 
 func calculate_damage(tattack : float, tdefense : float, tlevel : int, tpower : int, teffectiveness : float, tstab : float, tcrit : float) -> int: # What the fuck
-	print(tattack)
 	return int(((((((((2 * tlevel) / 5) + 2) * tpower * (tattack / tdefense)) / 50) + 2) * randf_range(0.85, 1.0) * tstab) * tcrit) * teffectiveness)
 
 func hit_count() -> int:
