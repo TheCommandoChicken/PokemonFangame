@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://dgs1vbgfbheml" path="res://resource/pokemon/battle/assets/bulbasaur_front004.png" id="14_vnfu0"]
 [ext_resource type="Texture2D" uid="uid://gghyl3cpb80o" path="res://resource/pokemon/battle/assets/terastal-ornament-placeholder.png" id="15_go6h8"]
 
-
 [sub_resource type="Animation" id="Animation_i7skj"]
 length = 0.001
 tracks/0/type = "value"

@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_ndugv")
-id = 0
-category = 0
-type = 0
+id = 624
+category = 3
+type = 2
 power = 0
 accuracy = 0.0
 max_pp = 0

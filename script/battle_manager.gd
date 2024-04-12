@@ -9,11 +9,12 @@ var action_list : Array
 @export var move_buttons : Control
 
 func _ready() -> void:
-	pokemon = [Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load("res://resource/move/pound.tres"), load("res://resource/moves/pound.tres"), load("res://resource/moves/pound.tres"), load("res://resource/moves/pound.tres")]), Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load("res://resource/moves/pound.tres"), load("res://resource/moves/pound.tres"), load("res://resource/moves/pound.tres"), load("res://resource/moves/pound.tres")])]
+	var move1 = "res://resource/moves/aerial_ace.tres"
+	pokemon = [Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load("res://resource/moves/pound.tres"), load(move1), load(move1), load(move1)]), Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load(move1), load(move1), load(move1), load(move1)])]
 	EffectCalculation.connect("move_used", Callable(self, "_on_move_used"))
 	for button in move_buttons.get_children():
-		button.pressed.connect(_on_move_button_pressed.bind(button))
-		button.update_info(pokemon[0].moves[button.get_index()], pokemon[0].current_pp[button.get_index()])
+		button.pressed.connect(_on_move_button_pressed.bind())
+		button.assign_move(pokemon[0], button.get_index())
 	health_bar.max_value = pokemon[1].stats.max_hp
 	health_bar.value = pokemon[1].stats.current_hp
 
@@ -24,12 +25,14 @@ func _process(delta: float) -> void:
 		pokemon[0].update_stats()
 		pokemon[1].update_stats()
 
-func _on_move_button_pressed(button : TextureButton):
-	action_list.append({"action_type": "use_move", "user": pokemon[0], "target": pokemon[1], "move": pokemon[0].moves[button.get_index()]})
-	button.update_info(pokemon[0].moves[button.get_index()], pokemon[0].current_pp[button.get_index()])
+func _on_move_button_pressed(assigned_move : int, button : TextureButton):
+	action_list.append({"action_type": "use_move", "user": pokemon[0], "target": pokemon[1], "move": assigned_move})
+	pokemon[0].current_pp[assigned_move] -= 1
+	button.update_info()
+	print(action_list)
 
 func ai_choose_move(user : Pokemon, opposing_pokemon : Pokemon):
-	action_list.append({"action_type": "use_move", "user": user, "target": opposing_pokemon, "move": user.moves[randi_range(0, 3)]})
+	action_list.append({"action_type": "use_move", "user": user, "target": opposing_pokemon, "move": randi_range(0, 3)})
 	print(action_list)
 
 func queue_move(move, speed, priority, user, target):
@@ -68,7 +71,7 @@ func execute_turn():
 		var action = action_list[i]
 		match action.action_type:
 			"use_move":
-				queue_move(action.move.id, action.user.stats.spe, action.move.priority, action.user, action.target)
+				queue_move(action.move, action.user.stats.spe, action.user.moves[action.move].priority, action.user, action.target)
 			
 	
 	for move in moves:

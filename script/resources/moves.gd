@@ -16,5 +16,5 @@ class_name Move
 @export var effects : Array[MoveEffect]
 
 func _validate_property(property: Dictionary):
-	if property.name == "power" and category == Enums.Category.STATUS:
+	if property.name in ["power", "accuracy"] and category == Enums.Category.STATUS:
 		property.usage = PROPERTY_USAGE_NO_EDITOR

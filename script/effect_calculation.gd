@@ -30,12 +30,12 @@ func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
 	hits = 1
 	
 	match move.category:
-		move.Category.PHYSICAL:
+		Enums.Category.PHYSICAL:
 			attack = user.stats.atk
 			defense = target.stats.atk
 			attack_id = "atk"
 			defense_id = "def"
-		move.Category.SPECIAL:
+		Enums.Category.SPECIAL:
 			attack = user.stats.spa
 			defense = target.stats.spd
 			attack_id = "spa"
@@ -43,7 +43,7 @@ func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
 			
 			
 	match move.category:
-		move.Category.PHYSICAL, move.Category.SPECIAL:
+		Enums.Category.PHYSICAL, Enums.Category.SPECIAL:
 			power = move.power
 			
 			effective = Types.type_matchup(move.type, target.base.types)
@@ -66,10 +66,8 @@ func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
 				target.stats.current_hp -= damage
 				
 				print("Miss: ", miss)
-		
-	user.current_pp[move_id] -= 1
 
-	await emit_signal("move_used", move_id, user.nickname, target.nickname, crit, effective, miss)
+	await emit_signal("move_used", move.id, user.nickname, target.nickname, crit, effective, miss)
 
 func check_accuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> bool:
 	var mstage = accuracy_stage - evasion_stage
@@ -177,7 +175,6 @@ func check_crit(stage: int, affection: int) -> float:
 	return 1.0
 
 func calculate_damage(tattack : float, tdefense : float, tlevel : int, tpower : int, teffectiveness : float, tstab : float, tcrit : float) -> int: # What the fuck
-	print(tattack)
 	return int(((((((((2 * tlevel) / 5) + 2) * tpower * (tattack / tdefense)) / 50) + 2) * randf_range(0.85, 1.0) * tstab) * tcrit) * teffectiveness)
 
 func hit_count() -> int:
