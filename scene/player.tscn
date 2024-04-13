@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://mmpllphbllna"]
+
+[ext_resource type="Script" path="res://script/common/player.gd" id="1_empse"]
+[ext_resource type="Texture2D" uid="uid://c3i60xvbkehne" path="res://resource/pokemon/battle/assets/bulbasaur-front-idle1.png" id="2_t2m4o"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fn00r"]
+radius = 0.2
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_empse")
+
+[node name="Sprite" type="Sprite3D" parent="."]
+texture = ExtResource("2_t2m4o")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_fn00r")
