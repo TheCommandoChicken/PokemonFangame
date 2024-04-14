@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://ckd7coqqvn7ur"]
 
-[ext_resource path="res://resource/gridmap/test_world.tres" type="MeshLibrary" id=1]
+[ext_resource type="MeshLibrary" uid="uid://xnlf4ctvcscx" path="res://resource/gridmap/test_world.tres" id="1"]
+[ext_resource type="PackedScene" uid="uid://4obflpcvfugd" path="res://scene/player.tscn" id="2_nyp6r"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource( 1 )
-data = {
-"cells": PackedInt32Array(  )
-}
-__meta__ = {
-"_editor_clip_": 0
-}
+mesh_library = ExtResource("1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.40441, 1.58496)
+
+[node name="Player" parent="." instance=ExtResource("2_nyp6r")]
+walk_speed = 1.0
+run_speed = 2.0
