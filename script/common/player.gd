@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal entered_tile(player : CharacterBody3D)
+
 @export var walk_speed : float
 @export var run_speed : float
 const tile_size : float = 24
@@ -16,7 +18,7 @@ func _physics_process(delta):
 			dir_list.remove_at(dir_list.find(dir))
 	
 	if distance == 0.0:
-		if Input.is_action_pressed("secondary_button"):
+		if (Input.is_action_pressed("secondary_button") and !Settings.autorun) or (!Input.is_action_pressed("secondary_button") and Settings.autorun):
 			speed = run_speed
 		else:
 			speed = walk_speed

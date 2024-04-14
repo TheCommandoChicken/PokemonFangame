@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckd7coqqvn7ur"]
+[gd_scene load_steps=9 format=3 uid="uid://ckd7coqqvn7ur"]
 
 [ext_resource type="MeshLibrary" uid="uid://xnlf4ctvcscx" path="res://resource/gridmap/test_world.tres" id="1"]
 [ext_resource type="PackedScene" uid="uid://4obflpcvfugd" path="res://scene/player.tscn" id="2_nyp6r"]
+[ext_resource type="Script" path="res://script/encounter_area.gd" id="3_1h3vg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0ten"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1506t"]
+material = SubResource("StandardMaterial3D_m0ten")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vrb8d"]
+size = Vector3(1, 0.24, 1)
+
+[sub_resource type="Environment" id="Environment_ko560"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 10.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_s8w5k"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -12,5 +28,22 @@ mesh_library = ExtResource("1")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.40441, 1.58496)
 
 [node name="Player" parent="." instance=ExtResource("2_nyp6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24, 0)
+floor_constant_speed = true
 walk_speed = 1.0
 run_speed = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_1506t")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+script = ExtResource("3_1h3vg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
+shape = SubResource("BoxShape3D_vrb8d")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ko560")
+camera_attributes = SubResource("CameraAttributesPractical_s8w5k")
