@@ -25,7 +25,9 @@ func _physics_process(_delta):
 	for dir in ["up", "down", "left", "right"]:
 		if Input.is_action_just_pressed(dir):
 			dir_list.append(dir)
-			delay_frames = 7
+			if distance == 0.0:
+				facing_dir = get_input_direction(dir)
+				delay_frames = 7
 		elif Input.is_action_just_released(dir):
 			dir_list.remove_at(dir_list.find(dir))
 	
