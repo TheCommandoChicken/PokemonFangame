@@ -33,6 +33,6 @@ new_dex = null
 height = 0.7
 weight = 6.9
 gender_ratio = 2
-egg_groups = [1, 7]
+egg_groups = Array[int]([1, 7])
 egg_cycles = 20
 leveling_learnset = null

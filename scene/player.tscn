@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://4obflpcvfugd"]
+[gd_scene load_steps=7 format=3 uid="uid://4obflpcvfugd"]
 
 [ext_resource type="Script" path="res://script/common/player.gd" id="1_empse"]
 [ext_resource type="Texture2D" uid="uid://c3i60xvbkehne" path="res://resource/pokemon/battle/assets/bulbasaur-front-idle1.png" id="2_t2m4o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fn00r"]
 radius = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hxwyi"]
+size = Vector3(0.24, 0.24, 0.24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_580hq"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l4trb"]
+material = SubResource("StandardMaterial3D_580hq")
+top_radius = 0.01
+bottom_radius = 0.05
+height = 0.24
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_empse")
@@ -16,3 +27,12 @@ texture = ExtResource("2_t2m4o")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_fn00r")
+
+[node name="Area" type="Area3D" parent="."]
+
+[node name="Collider" type="CollisionShape3D" parent="Area"]
+shape = SubResource("BoxShape3D_hxwyi")
+
+[node name="DebugArrow" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_l4trb")
