@@ -14,7 +14,7 @@ func _on_player_stepped(areas : Array[Area3D], encounter_factor : int, player : 
 		print("these nutes")
 		var id = get_encounter()
 		player.encounter_factor = 0
-		emit_signal("triggered_encounter", encounters.pokemon[id], encounters.levels[id])
+		emit_signal("triggered_encounter", encounters.pokemon[id], encounters.levels[id], player)
 		print("You would have an encounter with ", encounters.pokemon[id], " here, but I haven't added that yet!")
 
 func get_encounter() -> int:

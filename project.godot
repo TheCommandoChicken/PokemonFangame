@@ -96,7 +96,7 @@ tertiary_button={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://resource/translation.en.translation", "res://resource/translation.ja.translation")
+locale/translations=PackedStringArray("res://resource/translation.en.translation")
 
 [layer_names]
 

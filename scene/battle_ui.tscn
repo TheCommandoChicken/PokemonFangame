@@ -1,17 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj0bl05y42els"]
+[gd_scene load_steps=5 format=3 uid="uid://bj0bl05y42els"]
 
+[ext_resource type="Script" path="res://script/battle/battle_ui.gd" id="1_7wohy"]
 [ext_resource type="Script" path="res://script/common/text_box.gd" id="1_bdgkq"]
 [ext_resource type="PackedScene" uid="uid://3iyymp1q81hd" path="res://scene/move_button.tscn" id="2_too1l"]
 
 [sub_resource type="Theme" id="1"]
 
-[node name="BattleUI" type="Control"]
+[node name="BattleUI" type="Control" node_paths=PackedStringArray("health_bar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("1_7wohy")
+health_bar = NodePath("Health")
 
 [node name="TextBox" type="PanelContainer" parent="."]
 layout_direction = 2
@@ -78,50 +81,26 @@ offset_top = -127.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="MoveButton1" parent="MoveButtons" node_paths=PackedStringArray("pp_bar", "max_pp_label", "current_pp_label", "move_name_label", "type_icon", "background") instance=ExtResource("2_too1l")]
+[node name="MoveButton1" parent="MoveButtons" instance=ExtResource("2_too1l")]
 layout_mode = 1
-pp_bar = NodePath("")
-max_pp_label = NodePath("")
-current_pp_label = NodePath("")
-move_name_label = NodePath("")
-type_icon = NodePath("")
-background = NodePath("")
 
-[node name="MoveButton2" parent="MoveButtons" node_paths=PackedStringArray("pp_bar", "max_pp_label", "current_pp_label", "move_name_label", "type_icon", "background") instance=ExtResource("2_too1l")]
+[node name="MoveButton2" parent="MoveButtons" instance=ExtResource("2_too1l")]
 layout_mode = 1
 offset_left = -166.0
 offset_top = 32.0
 offset_right = -21.0
 offset_bottom = 62.0
-pp_bar = NodePath("")
-max_pp_label = NodePath("")
-current_pp_label = NodePath("")
-move_name_label = NodePath("")
-type_icon = NodePath("")
-background = NodePath("")
 
-[node name="MoveButton3" parent="MoveButtons" node_paths=PackedStringArray("pp_bar", "max_pp_label", "current_pp_label", "move_name_label", "type_icon", "background") instance=ExtResource("2_too1l")]
+[node name="MoveButton3" parent="MoveButtons" instance=ExtResource("2_too1l")]
 layout_mode = 1
 offset_left = -187.0
 offset_top = 64.0
 offset_right = -42.0
 offset_bottom = 94.0
-pp_bar = NodePath("")
-max_pp_label = NodePath("")
-current_pp_label = NodePath("")
-move_name_label = NodePath("")
-type_icon = NodePath("")
-background = NodePath("")
 
-[node name="MoveButton4" parent="MoveButtons" node_paths=PackedStringArray("pp_bar", "max_pp_label", "current_pp_label", "move_name_label", "type_icon", "background") instance=ExtResource("2_too1l")]
+[node name="MoveButton4" parent="MoveButtons" instance=ExtResource("2_too1l")]
 layout_mode = 1
 offset_left = -208.0
 offset_top = 96.0
 offset_right = -63.0
 offset_bottom = 126.0
-pp_bar = NodePath("")
-max_pp_label = NodePath("")
-current_pp_label = NodePath("")
-move_name_label = NodePath("")
-type_icon = NodePath("")
-background = NodePath("")

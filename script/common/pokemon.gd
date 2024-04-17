@@ -25,7 +25,7 @@ class_name Pokemon
 @export var level : int
 @export var friendship : int
 @export var affection : int
-@export var moves : Array[Move]
+@export var moves : Array
 @export var current_pp : Array[int] = [10, 10, 10, 10]
 @export var pp_up : Array[int]
 @export var non_volatile_status : Enums.NonVolatileStatus
@@ -61,7 +61,7 @@ class_name Pokemon
 @export var invulnerable : bool
 @export var last_move : int
 
-func _init(init_base: BasePokemon, init_ivs: Dictionary, init_level: int, init_moves: Array[Move], init_nickname: String = "", init_shiny: bool = false, init_gender: Enums.Gender = Enums.Gender.NONE) -> void:
+func _init(init_base: BasePokemon, init_ivs: Dictionary, init_level: int, init_moves: Array[Move] = [], init_nickname: String = "", init_shiny: bool = false, init_gender: Enums.Gender = Enums.Gender.NONE) -> void:
 	base = init_base
 	nickname = init_nickname
 	shiny = init_shiny
@@ -84,3 +84,17 @@ func stat(stat: int, iv: int, ev: int) -> int:
 
 func health_stat(base: int, iv: int, ev: int):
 	return (((2 * base + iv + (ev / 4)) * level) / 100) + level + 10
+
+func get_moveset_at_level(temp_level : int) -> Array:
+	var moveset : Array
+	var i : int = base.learnset.size() - 1
+	while moveset.size() < 4:
+		if base.move_levels[i] <= temp_level:
+			moveset.append(base.learnset[i])
+		
+		i -= 1
+		
+		if i < 0:
+			while moveset.size() < 4:
+				moveset.append(load("res://resource/moves/struggle.tres"))
+	return moveset

@@ -8,26 +8,32 @@ signal enable_buttons()
 @export var pokemon : Array
 var moves : Array
 var action_list : Array
-@export var health_bar : ProgressBar
-@export var move_buttons : Control
+@export var ui : Control
+@export var encounter_areas : Node3D
 
 func _ready() -> void:
 	var move1 = "res://resource/moves/aerial_ace.tres"
 	pokemon = [Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load("res://resource/moves/pound.tres"), load(move1), load(move1), load(move1)]), Pokemon.new(load("res://resource/pokemon/bulbasaur.tres"),{"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, 100, [load(move1), load(move1), load(move1), load(move1)])]
 	EffectCalculation.connect("move_used", Callable(self, "_on_move_used"))
-	for button in move_buttons.get_children():
+	for area in encounter_areas.get_children():
+		area.connect("triggered_encounter", Callable(self, "_on_encounter_triggered"))
+	for button in ui.get_buttons():
 		button.pressed.connect(_on_move_button_pressed.bind())
 		button.assign_move(pokemon[0], button.get_index())
-	health_bar.max_value = pokemon[1].stats.max_hp
-	health_bar.value = pokemon[1].stats.current_hp
+	ui.health_bar.max_value = pokemon[1].stats.max_hp
+	ui.health_bar.value = pokemon[1].stats.current_hp
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_right"):
-		execute_turn()
-	if Input.is_action_just_pressed("ui_left"):
-		pokemon[0].update_stats()
-		pokemon[1].update_stats()
+	pass
 
+func _on_encounter_triggered(wild_pokemon : BasePokemon, level : int, player : CharacterBody3D):
+	print("dingus")
+	pokemon[0] = Pokemon.new(wild_pokemon, {"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, level)
+	pokemon[0].moves = pokemon[0].get_moveset_at_level(level)
+	print("dingus")
+	for button in ui.get_buttons():
+		button.assign_move(pokemon[0], button.get_index())
+	
 func _on_move_button_pressed(assigned_move : int, button : TextureButton):
 	action_list.append({"action_type": "use_move", "user": pokemon[0], "target": pokemon[1], "move": assigned_move})
 	pokemon[0].current_pp[assigned_move] -= 1
@@ -84,7 +90,7 @@ func execute_turn():
 	
 	for move in moves:
 		await EffectCalculation.calculate_move_effect(int(move[0]), move[3], move[4])
-		health_bar.value = pokemon[1].stats.current_hp
+		ui.health_bar.value = pokemon[1].stats.current_hp
 		
 	action_list.clear()
 	moves.clear()

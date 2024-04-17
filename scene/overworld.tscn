@@ -3,10 +3,10 @@
 [ext_resource type="MeshLibrary" uid="uid://xnlf4ctvcscx" path="res://resource/gridmap/test_world.tres" id="1_roeew"]
 [ext_resource type="PackedScene" uid="uid://4obflpcvfugd" path="res://scene/player.tscn" id="2_wgikr"]
 [ext_resource type="Script" path="res://script/overworld/encounter_area.gd" id="3_r8jwh"]
-[ext_resource type="Resource" uid="uid://bw4bbku07b42r" path="res://resource/pokemon/blastoise.tres" id="4_8eh0k"]
-[ext_resource type="Resource" uid="uid://c6l4b14gytxkk" path="res://resource/pokemon/bulbasaur.tres" id="5_3mhct"]
+[ext_resource type="Resource" uid="uid://i6416aojuvoi" path="res://resource/pokemon/blastoise.tres" id="4_8eh0k"]
 [ext_resource type="Script" path="res://script/resources/encounter_table.gd" id="6_cesmf"]
 [ext_resource type="PackedScene" uid="uid://bj0bl05y42els" path="res://scene/battle_ui.tscn" id="7_1e1xj"]
+[ext_resource type="Script" path="res://script/battle/battle_manager.gd" id="7_7bhkk"]
 
 [sub_resource type="Environment" id="Environment_ko560"]
 ambient_light_source = 3
@@ -22,9 +22,9 @@ material = SubResource("StandardMaterial3D_m0ten")
 
 [sub_resource type="Resource" id="Resource_k1382"]
 script = ExtResource("6_cesmf")
-pokemon = Array[Resource("res://script/resources/base_pokemon.gd")]([ExtResource("4_8eh0k"), ExtResource("5_3mhct")])
-weights = Array[int]([1, 2])
-levels = Array[int]([10, 5])
+pokemon = Array[Resource("res://script/resources/base_pokemon.gd")]([ExtResource("4_8eh0k")])
+weights = Array[int]([1])
+levels = Array[int]([10])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vrb8d"]
 size = Vector3(1, 0.24, 1)
@@ -35,9 +35,7 @@ size = Vector3(1, 0.24, 1)
 environment = SubResource("Environment_ko560")
 camera_attributes = SubResource("CameraAttributesPractical_s8w5k")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-
-[node name="PrimaryCamera" type="Camera3D" parent="SubViewport"]
+[node name="PrimaryCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.40441, 1.58496)
 cull_mask = 1023
 
@@ -63,20 +61,28 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 mesh = SubResource("PlaneMesh_1506t")
 skeleton = NodePath("../..")
 
-[node name="Area3D" type="Area3D" parent="Overworld" node_paths=PackedStringArray("player")]
+[node name="EncounterAreas" type="Node3D" parent="Overworld"]
+
+[node name="Area3D" type="Area3D" parent="Overworld/EncounterAreas" node_paths=PackedStringArray("player")]
 collision_mask = 2
 script = ExtResource("3_r8jwh")
 encounters = SubResource("Resource_k1382")
 encounter_rate = 50
-player = NodePath("../../Player")
+player = NodePath("../../../Player")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/EncounterAreas/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
 shape = SubResource("BoxShape3D_vrb8d")
 
+[node name="BattleUI" parent="." instance=ExtResource("7_1e1xj")]
+visibility_layer = 1024
+
 [node name="Battle" type="Node3D" parent="."]
 
-[node name="BattleManager" type="Node" parent="Battle"]
+[node name="BattleManager" type="Node" parent="Battle" node_paths=PackedStringArray("ui", "encounter_areas")]
+script = ExtResource("7_7bhkk")
+ui = NodePath("../../BattleUI")
+encounter_areas = NodePath("../../Overworld/EncounterAreas")
 
 [node name="BattleViewport" type="SubViewport" parent="Battle"]
 canvas_cull_mask = 4294966272
@@ -84,7 +90,3 @@ canvas_cull_mask = 4294966272
 [node name="BattleCamera" type="Camera3D" parent="Battle/BattleViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 cull_mask = 1047552
-
-[node name="BattleUI" parent="Battle" instance=ExtResource("7_1e1xj")]
-visible = false
-visibility_layer = 1024

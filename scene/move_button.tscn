@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://3iyymp1q81hd"]
+[gd_scene load_steps=11 format=3 uid="uid://3iyymp1q81hd"]
 
 [ext_resource type="Texture2D" uid="uid://dc1046gbapbul" path="res://aseprite/move_button_mockup.png" id="1_1ci84"]
+[ext_resource type="Script" path="res://script/battle/move_button.gd" id="2_1j5po"]
 [ext_resource type="Texture2D" uid="uid://dos65v4wv8kuh" path="res://assets/battle/ui/move_button_pp_bar_under.png" id="3_g421e"]
 [ext_resource type="Texture2D" uid="uid://bu3mtdm6er2sf" path="res://assets/battle/ui/move_button_pp_bar_progress.png" id="4_tbm70"]
 [ext_resource type="Texture2D" uid="uid://dp32j8yv5v6g4" path="res://assets/battle/ui/move_button_base_normal.png" id="5_juu5j"]
@@ -18,7 +19,7 @@ shadow_size = 0
 [sub_resource type="LabelSettings" id="LabelSettings_0i0on"]
 font = ExtResource("7_6slqg")
 
-[node name="TextureButton" type="TextureButton"]
+[node name="TextureButton" type="TextureButton" node_paths=PackedStringArray("pp_bar", "max_pp_label", "current_pp_label", "move_name_label", "type_icon", "background")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -27,6 +28,13 @@ offset_bottom = 30.0
 grow_horizontal = 0
 texture_normal = ExtResource("1_1ci84")
 stretch_mode = 3
+script = ExtResource("2_1j5po")
+pp_bar = NodePath("PPBar")
+max_pp_label = NodePath("MaxPP")
+current_pp_label = NodePath("CurrentPP")
+move_name_label = NodePath("Label")
+type_icon = NodePath("TypeIcon")
+background = NodePath("ButtonBase")
 
 [node name="PPBar" type="TextureProgressBar" parent="."]
 z_index = 1
