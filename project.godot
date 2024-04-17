@@ -11,17 +11,17 @@ config_version=5
 [application]
 
 config/name="Pokemon Fangame"
-run/main_scene="res://scene/test_world.tscn"
+run/main_scene="res://scene/overworld.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
 
 [autoload]
 
-EffectCalculation="*res://script/effect_calculation.gd"
-Settings="*res://script/settings.gd"
-TextManager="*res://script/text_manager.gd"
-DataManager="*res://script/data_manager.gd"
-Types="*res://script/types.gd"
+EffectCalculation="*res://script/battle/effect_calculation.gd"
+Settings="*res://script/common/settings.gd"
+TextManager="*res://script/common/text_manager.gd"
+DataManager="*res://script/common/data_manager.gd"
+Types="*res://script/common/types.gd"
 
 [display]
 

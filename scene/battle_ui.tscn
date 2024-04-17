@@ -1,0 +1,127 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj0bl05y42els"]
+
+[ext_resource type="Script" path="res://script/common/text_box.gd" id="1_bdgkq"]
+[ext_resource type="PackedScene" uid="uid://3iyymp1q81hd" path="res://scene/move_button.tscn" id="2_too1l"]
+
+[sub_resource type="Theme" id="1"]
+
+[node name="BattleUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextBox" type="PanelContainer" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 429.0
+grow_vertical = 0
+script = ExtResource("1_bdgkq")
+text_speed = 0.02
+
+[node name="ColorRect" type="ColorRect" parent="TextBox"]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="TextBox"]
+layout_mode = 2
+theme = SubResource("1")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "
+"
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Timer" type="Timer" parent="TextBox"]
+
+[node name="MoveSlider" type="HSlider" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 28.0
+offset_top = 236.0
+offset_right = 535.0
+offset_bottom = 417.0
+min_value = 1.0
+max_value = 18.0
+value = 1.0
+editable = false
+scrollable = false
+tick_count = 18
+ticks_on_borders = true
+
+[node name="Health" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -130.0
+offset_bottom = 27.0
+grow_horizontal = 0
+show_percentage = false
+
+[node name="MoveButtons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = -127.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MoveButton1" parent="MoveButtons" node_paths=PackedStringArray("pp_bar", "max_pp_label", "current_pp_label", "move_name_label", "type_icon", "background") instance=ExtResource("2_too1l")]
+layout_mode = 1
+pp_bar = NodePath("")
+max_pp_label = NodePath("")
+current_pp_label = NodePath("")
+move_name_label = NodePath("")
+type_icon = NodePath("")
+background = NodePath("")
+
+[node name="MoveButton2" parent="MoveButtons" node_paths=PackedStringArray("pp_bar", "max_pp_label", "current_pp_label", "move_name_label", "type_icon", "background") instance=ExtResource("2_too1l")]
+layout_mode = 1
+offset_left = -166.0
+offset_top = 32.0
+offset_right = -21.0
+offset_bottom = 62.0
+pp_bar = NodePath("")
+max_pp_label = NodePath("")
+current_pp_label = NodePath("")
+move_name_label = NodePath("")
+type_icon = NodePath("")
+background = NodePath("")
+
+[node name="MoveButton3" parent="MoveButtons" node_paths=PackedStringArray("pp_bar", "max_pp_label", "current_pp_label", "move_name_label", "type_icon", "background") instance=ExtResource("2_too1l")]
+layout_mode = 1
+offset_left = -187.0
+offset_top = 64.0
+offset_right = -42.0
+offset_bottom = 94.0
+pp_bar = NodePath("")
+max_pp_label = NodePath("")
+current_pp_label = NodePath("")
+move_name_label = NodePath("")
+type_icon = NodePath("")
+background = NodePath("")
+
+[node name="MoveButton4" parent="MoveButtons" node_paths=PackedStringArray("pp_bar", "max_pp_label", "current_pp_label", "move_name_label", "type_icon", "background") instance=ExtResource("2_too1l")]
+layout_mode = 1
+offset_left = -208.0
+offset_top = 96.0
+offset_right = -63.0
+offset_bottom = 126.0
+pp_bar = NodePath("")
+max_pp_label = NodePath("")
+current_pp_label = NodePath("")
+move_name_label = NodePath("")
+type_icon = NodePath("")
+background = NodePath("")

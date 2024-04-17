@@ -1,0 +1,203 @@
+[gd_resource type="SpriteFrames" load_steps=48 format=3 uid="uid://cs83ocoy3qon0"]
+
+[ext_resource type="Texture2D" uid="uid://7qkok6fffxyt" path="res://assets/battle/pokemon/ivysaur-front-fidget1.png" id="1_dyrd1"]
+[ext_resource type="Texture2D" uid="uid://c6hwwdokavfv7" path="res://assets/battle/pokemon/ivysaur-front-fidget2.png" id="2_wb6q4"]
+[ext_resource type="Texture2D" uid="uid://d15211cf3kp8k" path="res://assets/battle/pokemon/ivysaur-front-fidget3.png" id="3_a1l6h"]
+[ext_resource type="Texture2D" uid="uid://c8x36lno8wrpb" path="res://assets/battle/pokemon/ivysaur-front-fidget4.png" id="4_fe1et"]
+[ext_resource type="Texture2D" uid="uid://1dm33mfpkysf" path="res://assets/battle/pokemon/ivysaur-front-fidget5.png" id="5_i3le5"]
+[ext_resource type="Texture2D" uid="uid://dkql7uspqfkof" path="res://assets/battle/pokemon/ivysaur-front-fidget6.png" id="6_nuf4e"]
+[ext_resource type="Texture2D" uid="uid://c3ftnmpblpvxc" path="res://assets/battle/pokemon/ivysaur-front-fidget7.png" id="7_ya5ux"]
+[ext_resource type="Texture2D" uid="uid://du12rg3yytk44" path="res://assets/battle/pokemon/ivysaur-front-fidget8.png" id="8_j26s2"]
+[ext_resource type="Texture2D" uid="uid://c6474pc8mrl3u" path="res://assets/battle/pokemon/ivysaur-front-fidget9.png" id="9_qwt4w"]
+[ext_resource type="Texture2D" uid="uid://dhw3l4pirmmv6" path="res://assets/battle/pokemon/ivysaur-front-fidget10.png" id="10_s4hmj"]
+[ext_resource type="Texture2D" uid="uid://ba34obj3nyn1" path="res://assets/battle/pokemon/ivysaur-front-fidget11.png" id="11_fv3xt"]
+[ext_resource type="Texture2D" uid="uid://bgca8hhsx5wrv" path="res://assets/battle/pokemon/ivysaur-front-fidget12.png" id="12_fx6br"]
+[ext_resource type="Texture2D" uid="uid://cemu0qniwieb0" path="res://assets/battle/pokemon/ivysaur-front-fidget13.png" id="13_gqp4i"]
+[ext_resource type="Texture2D" uid="uid://cx28xolb61e13" path="res://assets/battle/pokemon/ivysaur-front-fidget14.png" id="14_1hg4y"]
+[ext_resource type="Texture2D" uid="uid://do5n4j06culwj" path="res://assets/battle/pokemon/ivysaur-front-fidget15.png" id="15_l1mh5"]
+[ext_resource type="Texture2D" uid="uid://den47k06rmx1a" path="res://assets/battle/pokemon/ivysaur-front-fidget16.png" id="16_vvsfu"]
+[ext_resource type="Texture2D" uid="uid://ds7jnbvk0la5u" path="res://assets/battle/pokemon/ivysaur-front-fidget17.png" id="17_2njiu"]
+[ext_resource type="Texture2D" uid="uid://ds80721wp8clo" path="res://assets/battle/pokemon/ivysaur-front-fidget18.png" id="18_3nh65"]
+[ext_resource type="Texture2D" uid="uid://b2j3lsr0143xr" path="res://assets/battle/pokemon/ivysaur-front-fidget19.png" id="19_25jqr"]
+[ext_resource type="Texture2D" uid="uid://b333t5dh3c6j8" path="res://assets/battle/pokemon/ivysaur-front-fidget20.png" id="20_wcen5"]
+[ext_resource type="Texture2D" uid="uid://dvrt7diplv5hv" path="res://assets/battle/pokemon/ivysaur-front-idle3.png" id="21_h0kpt"]
+[ext_resource type="Texture2D" uid="uid://by87obcdiin2q" path="res://assets/battle/pokemon/ivysaur-front-idle4.png" id="22_b8hej"]
+[ext_resource type="Texture2D" uid="uid://cwylvt2ir77ac" path="res://assets/battle/pokemon/ivysaur-front-idle5.png" id="23_14km0"]
+[ext_resource type="Texture2D" uid="uid://e8m6x8b7rlhn" path="res://assets/battle/pokemon/ivysaur-front-idle6.png" id="24_uw2r6"]
+[ext_resource type="Texture2D" uid="uid://djgplbni6qn1x" path="res://assets/battle/pokemon/ivysaur-front-idle7.png" id="25_8vlj1"]
+[ext_resource type="Texture2D" uid="uid://y5ace2tkrbvm" path="res://assets/battle/pokemon/ivysaur-front-idle8.png" id="26_x1t2j"]
+[ext_resource type="Texture2D" uid="uid://kycit2vrvmve" path="res://assets/battle/pokemon/ivysaur-front-idle9.png" id="27_jgccu"]
+[ext_resource type="Texture2D" uid="uid://dg4i4jxtikd13" path="res://assets/battle/pokemon/ivysaur-front-idle10.png" id="28_hoqbc"]
+[ext_resource type="Texture2D" uid="uid://cl5vkesi2sx62" path="res://assets/battle/pokemon/ivysaur-front-idle11.png" id="29_cy7w8"]
+[ext_resource type="Texture2D" uid="uid://ccln4nifeqxuj" path="res://assets/battle/pokemon/ivysaur-front-idle12.png" id="30_ea28d"]
+[ext_resource type="Texture2D" uid="uid://bojksdjf10qey" path="res://assets/battle/pokemon/ivysaur-front-idle13.png" id="31_nuoek"]
+[ext_resource type="Texture2D" uid="uid://djdoke08yuend" path="res://assets/battle/pokemon/ivysaur-front-idle14.png" id="32_4phty"]
+[ext_resource type="Texture2D" uid="uid://bfhev0gfgd2yl" path="res://assets/battle/pokemon/ivysaur-front-idle15.png" id="33_7lmk8"]
+[ext_resource type="Texture2D" uid="uid://dlbltmdq504jy" path="res://assets/battle/pokemon/ivysaur-front-idle16.png" id="34_q2h5n"]
+[ext_resource type="Texture2D" uid="uid://d1a06m43sdks6" path="res://assets/battle/pokemon/ivysaur-front-idle17.png" id="35_7jjv0"]
+[ext_resource type="Texture2D" uid="uid://dhrkbxo7wm2u" path="res://assets/battle/pokemon/ivysaur-front-idle18.png" id="36_ja65t"]
+[ext_resource type="Texture2D" uid="uid://dfgtrtc1e0fqp" path="res://assets/battle/pokemon/ivysaur-front-idle19.png" id="37_sd3wq"]
+[ext_resource type="Texture2D" uid="uid://d1nsct6m3knph" path="res://assets/battle/pokemon/ivysaur-front-idle20.png" id="38_ppe6x"]
+[ext_resource type="Texture2D" uid="uid://c1gb1ngf4mw2f" path="res://assets/battle/pokemon/ivysaur-front-idle21.png" id="39_u2vek"]
+[ext_resource type="Texture2D" uid="uid://n560jvyve1nm" path="res://assets/battle/pokemon/ivysaur-front-idle22.png" id="40_wqk50"]
+[ext_resource type="Texture2D" uid="uid://ctc724fomfkbf" path="res://assets/battle/pokemon/ivysaur-front-idle23.png" id="41_x8rve"]
+[ext_resource type="Texture2D" uid="uid://b0romvbplr87j" path="res://assets/battle/pokemon/ivysaur-front-idle24.png" id="42_f4xac"]
+[ext_resource type="Texture2D" uid="uid://dhtmgbcg1e0ad" path="res://assets/battle/pokemon/ivysaur-front-idle25.png" id="43_njrr8"]
+[ext_resource type="Texture2D" uid="uid://c5hjhbiryk8lo" path="res://assets/battle/pokemon/ivysaur-front-idle26.png" id="44_upqgg"]
+[ext_resource type="Texture2D" uid="uid://cj50vsav7ynoo" path="res://assets/battle/pokemon/ivysaur-front-idle27.png" id="45_hnbbr"]
+[ext_resource type="Texture2D" uid="uid://b21pp367l6vwy" path="res://assets/battle/pokemon/ivysaur-front-idle28.png" id="46_lo2qa"]
+[ext_resource type="Texture2D" uid="uid://bt35kyycuboo6" path="res://assets/battle/pokemon/ivysaur-front-idle29.png" id="47_3lkaq"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dyrd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wb6q4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a1l6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fe1et")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i3le5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nuf4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ya5ux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j26s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qwt4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_s4hmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_fv3xt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fx6br")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_gqp4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1hg4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_l1mh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vvsfu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2njiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_3nh65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_25jqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_wcen5")
+}],
+"loop": true,
+"name": &"fidget",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_h0kpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_b8hej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_14km0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_uw2r6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_8vlj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_x1t2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_jgccu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_hoqbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_cy7w8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_ea28d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_nuoek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_4phty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_7lmk8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_q2h5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_7jjv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_ja65t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_sd3wq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_ppe6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_u2vek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_wqk50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_x8rve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_f4xac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_njrr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_upqgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_hnbbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_lo2qa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_3lkaq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 9.0
+}]

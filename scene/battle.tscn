@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://chtqlhsgbyhy7"]
+
+[ext_resource type="Script" path="res://script/battle/battle_manager.gd" id="1_2sob2"]
+[ext_resource type="PackedScene" uid="uid://bj0bl05y42els" path="res://scene/battle_ui.tscn" id="2_72622"]
+
+[node name="Battle" type="Node3D"]
+
+[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("health_bar", "move_buttons")]
+script = ExtResource("1_2sob2")
+pokemon = [null, null]
+health_bar = NodePath("")
+move_buttons = NodePath("")
+
+[node name="BattleUI" parent="." instance=ExtResource("2_72622")]

@@ -1,0 +1,80 @@
+[gd_scene load_steps=14 format=3 uid="uid://ckd7coqqvn7ur"]
+
+[ext_resource type="MeshLibrary" uid="uid://xnlf4ctvcscx" path="res://resource/gridmap/test_world.tres" id="1_roeew"]
+[ext_resource type="PackedScene" uid="uid://4obflpcvfugd" path="res://scene/player.tscn" id="2_wgikr"]
+[ext_resource type="Script" path="res://script/overworld/encounter_area.gd" id="3_r8jwh"]
+[ext_resource type="Resource" uid="uid://bw4bbku07b42r" path="res://resource/pokemon/blastoise.tres" id="4_8eh0k"]
+[ext_resource type="Resource" uid="uid://c6l4b14gytxkk" path="res://resource/pokemon/bulbasaur.tres" id="5_3mhct"]
+[ext_resource type="Script" path="res://script/resources/encounter_table.gd" id="6_cesmf"]
+[ext_resource type="PackedScene" uid="uid://bj0bl05y42els" path="res://scene/battle_ui.tscn" id="7_1e1xj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0ten"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1506t"]
+material = SubResource("StandardMaterial3D_m0ten")
+
+[sub_resource type="Resource" id="Resource_k1382"]
+script = ExtResource("6_cesmf")
+pokemon = Array[Resource("res://script/resources/base_pokemon.gd")]([ExtResource("4_8eh0k"), ExtResource("5_3mhct")])
+weights = Array[int]([1, 2])
+levels = Array[int]([10, 5])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vrb8d"]
+size = Vector3(1, 0.24, 1)
+
+[sub_resource type="Environment" id="Environment_ko560"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 10.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_s8w5k"]
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_roeew")
+cell_size = Vector3(0.64, 0.64, 0.64)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="PrimaryCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.40441, 1.58496)
+cull_mask = 1023
+
+[node name="Player" parent="." instance=ExtResource("2_wgikr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24, 0)
+floor_constant_speed = true
+walk_speed = 1.0
+run_speed = 1.75
+max_encounter_factor = 50
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_1506t")
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("player")]
+collision_mask = 2
+script = ExtResource("3_r8jwh")
+encounters = SubResource("Resource_k1382")
+encounter_rate = 50
+player = NodePath("../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
+shape = SubResource("BoxShape3D_vrb8d")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ko560")
+camera_attributes = SubResource("CameraAttributesPractical_s8w5k")
+
+[node name="BattleViewport" type="SubViewport" parent="."]
+canvas_cull_mask = 4294966272
+
+[node name="BattleCamera" type="Camera3D" parent="BattleViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+cull_mask = 1047552
+
+[node name="BattleUI" parent="." instance=ExtResource("7_1e1xj")]
+visibility_layer = 1024

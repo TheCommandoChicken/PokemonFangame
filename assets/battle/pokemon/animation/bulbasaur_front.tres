@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://l5vdkjeabs0e"]
+
+[ext_resource type="Texture2D" uid="uid://c3i60xvbkehne" path="res://assets/battle/pokemon/bulbasaur-front-idle1.png" id="1_g3dhg"]
+[ext_resource type="Texture2D" uid="uid://conas0mhjh2iy" path="res://assets/battle/pokemon/bulbasaur-front-idle2.png" id="2_318y0"]
+[ext_resource type="Texture2D" uid="uid://b60el7fuhqtoq" path="res://assets/battle/pokemon/bulbasaur-front-idle3.png" id="3_ilbqp"]
+[ext_resource type="Texture2D" uid="uid://bu46hqx2vm8b6" path="res://assets/battle/pokemon/bulbasaur-front-idle4.png" id="4_l65w1"]
+[ext_resource type="Texture2D" uid="uid://dcdniihb5nand" path="res://assets/battle/pokemon/bulbasaur-front-idle5.png" id="5_dxswn"]
+[ext_resource type="Texture2D" uid="uid://dthiplirlmyn" path="res://assets/battle/pokemon/bulbasaur-front-idle6.png" id="6_c2xjp"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g3dhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_318y0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ilbqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l65w1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dxswn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c2xjp")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 9.0
+}]
