@@ -5,10 +5,8 @@
 
 [node name="Battle" type="Node3D"]
 
-[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("health_bar", "move_buttons")]
+[node name="BattleManager" type="Node" parent="."]
 script = ExtResource("1_2sob2")
 pokemon = [null, null]
-health_bar = NodePath("")
-move_buttons = NodePath("")
 
 [node name="BattleUI" parent="." instance=ExtResource("2_72622")]
