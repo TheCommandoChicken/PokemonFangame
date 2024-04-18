@@ -1,9 +1,6 @@
-[gd_resource type="Resource" script_class="BasePokemon" load_steps=6 format=3 uid="uid://bw4bbku07b42r"]
+[gd_resource type="Resource" script_class="BasePokemon" load_steps=3 format=3 uid="uid://bw4bbku07b42r"]
 
-[ext_resource type="Resource" uid="uid://b6ndv2xfyii1b" path="res://resource/moves/tackle.tres" id="1_0vb6y"]
 [ext_resource type="Script" path="res://script/resources/base_pokemon.gd" id="1_fgvc7"]
-[ext_resource type="Resource" uid="uid://b6ndv2xfyii1b" path="res://resource/moves/tail_whip.tres" id="2_nc1nc"]
-[ext_resource type="Resource" uid="uid://b6ndv2xfyii1b" path="res://resource/moves/water_gun.tres" id="3_2h8hv"]
 [ext_resource type="Resource" uid="uid://b6ndv2xfyii1b" path="res://resource/moves/withdraw.tres" id="4_x8tvv"]
 
 [resource]
@@ -39,5 +36,5 @@ weight = 85.5
 gender_ratio = 2
 egg_groups = Array[int]([1, 2])
 egg_cycles = 20
-learnset = Array[Resource("res://script/resources/moves.gd")]([ExtResource("1_0vb6y"), ExtResource("2_nc1nc"), ExtResource("3_2h8hv"), ExtResource("4_x8tvv")])
+learnset = Array[Resource("res://script/resources/move.gd")]([ExtResource("4_x8tvv"), ExtResource("4_x8tvv"), ExtResource("4_x8tvv"), ExtResource("4_x8tvv")])
 move_levels = Array[int]([1, 1, 1, 1])

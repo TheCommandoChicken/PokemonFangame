@@ -6,14 +6,9 @@ signal stepped(areas : Array[Area3D], encounter_factor : int, player : Character
 @export var walk_speed : float
 @export var run_speed : float
 @export var max_encounter_factor : int
-@export var pokemon : Array[Pokemon]
-@export var pokeballs : Array[Enums.Pokeball]
-@export var medicine : Array[Enums.Medicine]
-@export var battle_items : Array[Enums.BattleItem]
-@export var berries : Array[int]
-@export var tms : Array[int]
-@export var key_items : Array[bool]
-@export var treasures : Array[Enums.Treasure]
+@export var pokemon : Array
+@export var items : Array
+@export var stacks : Array[int]
 const tile_size : float = 24
 var last_dir : Vector3
 var distance : float = 0.0
@@ -23,6 +18,9 @@ var encounter_factor : int
 var delay_frames : int
 var buffer_frames : int
 var facing_dir : Vector3
+
+func _ready():
+	preload("res://aseprite/move_button_mockup.png")
 
 func _physics_process(_delta):
 	delay_frames -= 1 # Subtract from delay frames

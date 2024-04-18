@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name Pokemon
 
 @export var base : BasePokemon
@@ -18,7 +18,7 @@ class_name Pokemon
 @export var trainer : String
 @export var trainer_id : int
 @export var ball : Enums.Pokeball
-@export var region : int
+@export var region : Enums.Region
 @export var route : int
 @export var fateful : bool
 @export var exp : int
@@ -79,14 +79,14 @@ func update_stats():
 	
 	print(stats)
 
-func stat(stat: int, iv: int, ev: int) -> int:
-	return int((((2 * stat + iv + (ev / 4)) * level) / 100) + 5)
+func stat(base_stat: int, iv: int, ev: int) -> int:
+	return int((((2 * base_stat + iv + (ev / 4)) * level) / 100) + 5)
 
-func health_stat(base: int, iv: int, ev: int):
-	return (((2 * base + iv + (ev / 4)) * level) / 100) + level + 10
+func health_stat(base_hp: int, iv: int, ev: int):
+	return (((2 * base_hp + iv + (ev / 4)) * level) / 100) + level + 10
 
 func get_moveset_at_level(temp_level : int) -> Array:
-	var moveset : Array
+	var moveset : Array = []
 	var i : int = base.learnset.size() - 1
 	while moveset.size() < 4:
 		if base.move_levels[i] <= temp_level:

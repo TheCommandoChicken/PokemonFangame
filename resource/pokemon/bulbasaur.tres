@@ -35,4 +35,5 @@ weight = 6.9
 gender_ratio = 2
 egg_groups = Array[int]([1, 7])
 egg_cycles = 20
-leveling_learnset = null
+learnset = Array[Resource("res://script/resources/move.gd")]([])
+move_levels = Array[int]([])

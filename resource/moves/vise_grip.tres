@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="Move" load_steps=2 format=3 uid="uid://nooqwdan60op"]
 
-[ext_resource type="Script" path="res://script/resources/moves.gd" id="1_5xlme"]
+[ext_resource type="Script" path="res://script/resources/move.gd" id="1_5xlme"]
+
 
 [resource]
 script = ExtResource("1_5xlme")
