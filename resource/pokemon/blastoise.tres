@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="BasePokemon" load_steps=6 format=3 uid="uid://i6416aojuvoi"]
+[gd_resource type="Resource" script_class="BasePokemon" load_steps=6 format=3 uid="uid://bw4bbku07b42r"]
 
-[ext_resource type="Resource" path="res://resource/moves/tackle.tres" id="1_0vb6y"]
+[ext_resource type="Resource" uid="uid://b6ndv2xfyii1b" path="res://resource/moves/tackle.tres" id="1_0vb6y"]
 [ext_resource type="Script" path="res://script/resources/base_pokemon.gd" id="1_fgvc7"]
-[ext_resource type="Resource" path="res://resource/moves/tail_whip.tres" id="2_nc1nc"]
-[ext_resource type="Resource" path="res://resource/moves/water_gun.tres" id="3_2h8hv"]
-[ext_resource type="Resource" path="res://resource/moves/withdraw.tres" id="4_x8tvv"]
+[ext_resource type="Resource" uid="uid://b6ndv2xfyii1b" path="res://resource/moves/tail_whip.tres" id="2_nc1nc"]
+[ext_resource type="Resource" uid="uid://b6ndv2xfyii1b" path="res://resource/moves/water_gun.tres" id="3_2h8hv"]
+[ext_resource type="Resource" uid="uid://b6ndv2xfyii1b" path="res://resource/moves/withdraw.tres" id="4_x8tvv"]
 
 [resource]
 script = ExtResource("1_fgvc7")

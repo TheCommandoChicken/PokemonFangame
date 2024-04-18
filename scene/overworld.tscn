@@ -3,7 +3,7 @@
 [ext_resource type="MeshLibrary" uid="uid://xnlf4ctvcscx" path="res://resource/gridmap/test_world.tres" id="1_roeew"]
 [ext_resource type="PackedScene" uid="uid://4obflpcvfugd" path="res://scene/player.tscn" id="2_wgikr"]
 [ext_resource type="Script" path="res://script/overworld/encounter_area.gd" id="3_r8jwh"]
-[ext_resource type="Resource" uid="uid://i6416aojuvoi" path="res://resource/pokemon/blastoise.tres" id="4_8eh0k"]
+[ext_resource type="Resource" uid="uid://bw4bbku07b42r" path="res://resource/pokemon/blastoise.tres" id="4_8eh0k"]
 [ext_resource type="Script" path="res://script/resources/encounter_table.gd" id="6_cesmf"]
 [ext_resource type="PackedScene" uid="uid://bj0bl05y42els" path="res://scene/battle_ui.tscn" id="7_1e1xj"]
 [ext_resource type="Script" path="res://script/battle/battle_manager.gd" id="7_7bhkk"]
@@ -86,6 +86,7 @@ encounter_areas = NodePath("../../Overworld/EncounterAreas")
 
 [node name="BattleViewport" type="SubViewport" parent="Battle"]
 canvas_cull_mask = 4294966272
+size = Vector2i(640, 360)
 
 [node name="BattleCamera" type="Camera3D" parent="Battle/BattleViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)

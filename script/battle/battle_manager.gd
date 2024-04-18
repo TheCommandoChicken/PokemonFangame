@@ -27,10 +27,11 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_encounter_triggered(wild_pokemon : BasePokemon, level : int, player : CharacterBody3D):
-	print("dingus")
-	pokemon[0] = Pokemon.new(wild_pokemon, {"hp": 0,"atk": 0,"def": 0,"spa": 0,"spd": 0,"spe": 0}, level)
-	pokemon[0].moves = pokemon[0].get_moveset_at_level(level)
-	print("dingus")
+	pokemon[1] = Pokemon.new(wild_pokemon, {"hp": randi_range(0, 31),"atk": randi_range(0, 31),"def": randi_range(0, 31),"spa": randi_range(0, 31),"spd": randi_range(0, 31),"spe": randi_range(0, 31)}, level)
+	pokemon[1].moves = pokemon[1].get_moveset_at_level(level)
+	
+	
+	
 	for button in ui.get_buttons():
 		button.assign_move(pokemon[0], button.get_index())
 	

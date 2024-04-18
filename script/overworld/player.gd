@@ -1,10 +1,19 @@
 extends CharacterBody3D
+class_name Player
 
 signal stepped(areas : Array[Area3D], encounter_factor : int, player : CharacterBody3D)
 
 @export var walk_speed : float
 @export var run_speed : float
 @export var max_encounter_factor : int
+@export var pokemon : Array[Pokemon]
+@export var pokeballs : Array[Enums.Pokeball]
+@export var medicine : Array[Enums.Medicine]
+@export var battle_items : Array[Enums.BattleItem]
+@export var berries : Array[int]
+@export var tms : Array[int]
+@export var key_items : Array[bool]
+@export var treasures : Array[Enums.Treasure]
 const tile_size : float = 24
 var last_dir : Vector3
 var distance : float = 0.0
