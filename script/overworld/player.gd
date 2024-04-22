@@ -19,9 +19,6 @@ var delay_frames : int
 var buffer_frames : int
 var facing_dir : Vector3
 
-func _ready():
-	preload("res://aseprite/move_button_mockup.png")
-
 func _physics_process(_delta):
 	delay_frames -= 1 # Subtract from delay frames
 	$DebugArrow.rotation.y = atan2(facing_dir.x, facing_dir.z) # Set direction of debug arrow

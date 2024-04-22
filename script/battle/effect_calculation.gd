@@ -2,27 +2,27 @@ extends Node
 class_name Fucker # No idea why I called it that
 
 var move_table
-var effective_crit_stage: int
+var effective_crit_stage : int
 var strike_chances : Array
-var hits = 1
+var hits : int = 1
 var effects : Array
 var damage : int
 var stab : float
 var effective : float
 var crit : float
-var attack = 1
-var defense = 1
+var attack : int = 1
+var defense : int = 1
 var recoil : int
 var attack_id : String
 var defense_id : String
 
 signal move_used(move, user, target, crit, effective, miss)
 
-func _ready() -> void: # This entire thing is almost verbatim duplicated from base_pokemon.gd, consider making it a function?
+func _ready() -> void:
 	var path = "res://resource/moves.json"
 	move_table = DataManager.generic_json_read(path)
 
-func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
+func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon) -> void:
 	var move = user.moves[move_id]
 	var miss : bool
 	var power
@@ -58,7 +58,7 @@ func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon):
 				crit = check_crit(effective_crit_stage, user.affection)
 				damage = max(calculate_damage(attack * get_stage_multiplier(user.stages[attack_id]), defense * get_stage_multiplier(target.stages[defense_id]), user.level, power, effective, stab, crit), 1)
 				
-				if miss || effective == 0.0:
+				if miss or effective == 0.0:
 					damage = 0
 				
 				print("Dealt ", damage)

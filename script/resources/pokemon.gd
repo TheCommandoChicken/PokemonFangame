@@ -25,7 +25,7 @@ class_name Pokemon
 @export var level : int
 @export var friendship : int
 @export var affection : int
-@export var moves : Array
+@export var moves : Array[Move]
 @export var current_pp : Array[int] = [10, 10, 10, 10]
 @export var pp_up : Array[int]
 @export var non_volatile_status : Enums.NonVolatileStatus
@@ -61,7 +61,7 @@ class_name Pokemon
 @export var invulnerable : bool
 @export var last_move : int
 
-func _init(init_base: BasePokemon, init_ivs: Dictionary, init_level: int, init_moves: Array[Move] = [], init_nickname: String = "", init_shiny: bool = false, init_gender: Enums.Gender = Enums.Gender.NONE) -> void:
+func _init(init_base: BasePokemon = load("res://resource/pokemon/bulbasaur.tres"), init_ivs: Dictionary = {"hp": 0, "atk": 0, "def": 0, "spa": 0, "spd": 0, "spe": 0}, init_level: int = 1, init_moves: Array[Move] = [], init_nickname: String = "", init_shiny: bool = false, init_gender: Enums.Gender = Enums.Gender.NONE) -> void:
 	base = init_base
 	nickname = init_nickname
 	shiny = init_shiny

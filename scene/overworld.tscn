@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckd7coqqvn7ur"]
+[gd_scene load_steps=20 format=3 uid="uid://ckd7coqqvn7ur"]
 
 [ext_resource type="MeshLibrary" uid="uid://xnlf4ctvcscx" path="res://resource/gridmap/test_world.tres" id="1_roeew"]
 [ext_resource type="Script" path="res://script/resources/item.gd" id="2_8vked"]
 [ext_resource type="PackedScene" uid="uid://4obflpcvfugd" path="res://scene/player.tscn" id="2_wgikr"]
 [ext_resource type="Resource" uid="uid://c6l4b14gytxkk" path="res://resource/pokemon/bulbasaur.tres" id="2_yiv2f"]
+[ext_resource type="Resource" uid="uid://b6ndv2xfyii1b" path="res://resource/moves/tackle.tres" id="3_0hrji"]
 [ext_resource type="Script" path="res://script/resources/pokemon.gd" id="3_5p5ng"]
 [ext_resource type="Script" path="res://script/overworld/encounter_area.gd" id="3_r8jwh"]
 [ext_resource type="Resource" uid="uid://bw4bbku07b42r" path="res://resource/pokemon/blastoise.tres" id="4_8eh0k"]
@@ -18,12 +19,12 @@ ambient_light_energy = 10.0
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_s8w5k"]
 
-[sub_resource type="Resource" id="Resource_uoqyr"]
+[sub_resource type="Resource" id="Resource_ywqkc"]
 script = ExtResource("3_5p5ng")
 base = ExtResource("2_yiv2f")
 nickname = "Test"
 shiny = false
-gender = 1
+gender = 0
 ability = 0
 nature = 0
 ivs = {
@@ -37,14 +38,14 @@ ivs = {
 trainer = ""
 trainer_id = 0
 ball = 0
-region = 1
+region = 0
 route = 0
 fateful = false
 exp = 0
-level = 2
-friendship = 70
+level = 0
+friendship = 0
 affection = 0
-moves = []
+moves = Array[Resource("res://script/resources/move.gd")]([ExtResource("3_0hrji"), null, null, null])
 current_pp = Array[int]([10, 10, 10, 10])
 pp_up = Array[int]([])
 non_volatile_status = 0
@@ -115,7 +116,7 @@ floor_constant_speed = true
 walk_speed = 1.0
 run_speed = 1.75
 max_encounter_factor = 50
-pokemon = [SubResource("Resource_uoqyr")]
+pokemon = [SubResource("Resource_ywqkc")]
 items = [SubResource("Resource_yxbqm")]
 
 [node name="Overworld" type="Node3D" parent="."]
@@ -153,6 +154,7 @@ visibility_layer = 1024
 
 [node name="BattleManager" type="Node" parent="Battle" node_paths=PackedStringArray("ui", "encounter_areas")]
 script = ExtResource("7_7bhkk")
+pokemon = null
 ui = NodePath("../../BattleUI")
 encounter_areas = NodePath("../../Overworld/EncounterAreas")
 
