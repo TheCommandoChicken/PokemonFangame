@@ -6,7 +6,7 @@ signal stepped(areas : Array[Area3D], encounter_factor : int, player : Character
 @export var walk_speed : float
 @export var run_speed : float
 @export var max_encounter_factor : int
-@export var pokemon : Array
+@export var pokemon : Array[Pokemon]
 @export var items : Array
 @export var stacks : Array[int]
 const tile_size : float = 24

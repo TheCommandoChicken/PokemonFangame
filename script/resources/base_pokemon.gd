@@ -34,5 +34,5 @@ class_name BasePokemon
 @export var gender_ratio : Enums.GenderRatio
 @export var egg_groups : Array[Enums.EggGroup]
 @export var egg_cycles : int
-@export var learnset : Array[Move]
+@export var learnset : Array[Enums.Moves]
 @export var move_levels : Array[int]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckd7coqqvn7ur"]
+[gd_scene load_steps=20 format=3 uid="uid://ckd7coqqvn7ur"]
 
 [ext_resource type="MeshLibrary" uid="uid://xnlf4ctvcscx" path="res://resource/gridmap/test_world.tres" id="1_roeew"]
 [ext_resource type="Script" path="res://script/resources/item.gd" id="2_8vked"]
 [ext_resource type="PackedScene" uid="uid://4obflpcvfugd" path="res://scene/player.tscn" id="2_wgikr"]
 [ext_resource type="Resource" uid="uid://c6l4b14gytxkk" path="res://resource/pokemon/bulbasaur.tres" id="2_yiv2f"]
+[ext_resource type="Resource" uid="uid://b6ndv2xfyii1b" path="res://resource/moves/withdraw.tres" id="3_0hrji"]
 [ext_resource type="Script" path="res://script/resources/pokemon.gd" id="3_5p5ng"]
 [ext_resource type="Script" path="res://script/overworld/encounter_area.gd" id="3_r8jwh"]
 [ext_resource type="Resource" uid="uid://bw4bbku07b42r" path="res://resource/pokemon/blastoise.tres" id="4_8eh0k"]
@@ -44,14 +45,8 @@ exp = 0
 level = 0
 friendship = 0
 affection = 0
-moves = Array[int]([33, 45, 17, 0])
-current_pp = {
-"0": 0,
-"17": 20,
-"33": 35,
-"45": 40
-}
-debug_update_current_pp = "UPDATE"
+moves = Array[Resource("res://script/resources/move.gd")]([ExtResource("3_0hrji"), null, null, null])
+current_pp = Array[int]([10, 10, 10, 10])
 pp_up = Array[int]([])
 non_volatile_status = 0
 stats = {
@@ -121,7 +116,7 @@ floor_constant_speed = true
 walk_speed = 1.0
 run_speed = 1.75
 max_encounter_factor = 50
-pokemon = Array[ExtResource("3_5p5ng")]([SubResource("Resource_ywqkc")])
+pokemon = [SubResource("Resource_ywqkc")]
 items = [SubResource("Resource_yxbqm")]
 
 [node name="Overworld" type="Node3D" parent="."]

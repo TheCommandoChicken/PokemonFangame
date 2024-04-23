@@ -44,14 +44,8 @@ exp = 0
 level = 0
 friendship = 0
 affection = 0
-moves = Array[int]([33, 45, 17, 0])
-current_pp = {
-"0": 0,
-"17": 20,
-"33": 35,
-"45": 40
-}
-debug_update_current_pp = "UPDATE"
+moves = Array[int]([])
+current_pp = {}
 pp_up = Array[int]([])
 non_volatile_status = 0
 stats = {
@@ -121,7 +115,7 @@ floor_constant_speed = true
 walk_speed = 1.0
 run_speed = 1.75
 max_encounter_factor = 50
-pokemon = Array[ExtResource("3_5p5ng")]([SubResource("Resource_ywqkc")])
+pokemon = [SubResource("Resource_ywqkc")]
 items = [SubResource("Resource_yxbqm")]
 
 [node name="Overworld" type="Node3D" parent="."]

@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="BasePokemon" load_steps=3 format=3 uid="uid://bw4bbku07b42r"]
+[gd_resource type="Resource" script_class="BasePokemon" load_steps=2 format=3 uid="uid://bw4bbku07b42r"]
 
 [ext_resource type="Script" path="res://script/resources/base_pokemon.gd" id="1_fgvc7"]
-[ext_resource type="Resource" uid="uid://b6ndv2xfyii1b" path="res://resource/moves/withdraw.tres" id="4_x8tvv"]
 
 [resource]
 script = ExtResource("1_fgvc7")
@@ -36,5 +35,5 @@ weight = 85.5
 gender_ratio = 2
 egg_groups = Array[int]([1, 2])
 egg_cycles = 20
-learnset = Array[Resource("res://script/resources/move.gd")]([ExtResource("4_x8tvv"), ExtResource("4_x8tvv"), ExtResource("4_x8tvv"), ExtResource("4_x8tvv")])
+learnset = Array[int]([33, 39, 55, 110])
 move_levels = Array[int]([1, 1, 1, 1])

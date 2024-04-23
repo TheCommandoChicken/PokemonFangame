@@ -2,7 +2,7 @@
 extends Resource
 class_name Move
 
-@export var id : int
+@export var id : Enums.Moves
 @export var category := Enums.Category.PHYSICAL:
 	set(value):
 		category = value

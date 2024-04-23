@@ -13,16 +13,18 @@ func _ready():
 	pass
 
 func assign_move(user : Pokemon, move : int) -> void:
-	move_name_label.text = TextManager.get_move_name(str(user.moves[move].id), Settings.current_language)
+	move_name_label.text = TextManager.get_move_name(str(move), Settings.current_language)
 	assigned_move = move
 	pokemon = user
 	update_info()
 
 func update_info() -> void:
-	max_pp_label.text = str(pokemon.moves[assigned_move].max_pp)
-	current_pp_label.text = str(pokemon.current_pp[assigned_move])
-	pp_bar.value = roundi((float(pokemon.current_pp[assigned_move])/float(pokemon.moves[assigned_move].max_pp)) * 48)
-	if pokemon.current_pp[assigned_move] == 0:
+	print(DataManager.load_move(assigned_move))
+	var move = load(DataManager.load_move(assigned_move))
+	max_pp_label.text = str(move.max_pp)
+	current_pp_label.text = str(pokemon.current_pp[str(assigned_move)])
+	pp_bar.value = roundi((float(pokemon.current_pp[str(assigned_move)])/float(move.max_pp)) * 48)
+	if pokemon.current_pp[str(assigned_move)] == 0:
 		disabled = true
 	else:
 		disabled = false

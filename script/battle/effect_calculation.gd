@@ -22,8 +22,7 @@ func _ready() -> void:
 	var path = "res://resource/moves.json"
 	move_table = DataManager.generic_json_read(path)
 
-func calculate_move_effect(move_id: int, user: Pokemon, target: Pokemon) -> void:
-	var move = user.moves[move_id]
+func calculate_move_effect(move: Move, user: Pokemon, target: Pokemon) -> void:
 	var miss : bool
 	var power
 	

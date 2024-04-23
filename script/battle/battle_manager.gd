@@ -23,28 +23,28 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_encounter_triggered(species : BasePokemon, level : int, player : CharacterBody3D) -> void:
-	battle_participants.append(BattleParticipant.new())
+	battle_participants.append(BattleParticipant.new(player.pokemon))
 	
 	init_wild_pokemon(species, level)
 	
 	for button in ui.get_buttons():
-		button.assign_move(battle_participants[0].selected_pokemon.moves[button], button.get_index())
+		button.assign_move(battle_participants[0].selected_pokemon, battle_participants[0].selected_pokemon.moves[button.get_index()])
 	
 func _on_move_button_pressed(assigned_move : int, button : TextureButton) -> void:
 	var user = battle_participants[0].selected_pokemon
 	match battle_type:
 		Enums.BattleType.STANDARD, Enums.BattleType.ROTATION, Enums.BattleType.RAID:
-			action_list.append({"action_type": "use_move", "user": user, "target": battle_participants[1], "move": user.moves[assigned_move]})
+			action_list.append({"action_type": "use_move", "user": user, "target": battle_participants[1], "move": assigned_move})
 			emit_signal("player_turn_end")
 		Enums.BattleType.DOUBLE, Enums.BattleType.TRIPLE, Enums.BattleType.HORDE:
 			emit_signal("player_choose_target")
-	user.current_pp[assigned_move] -= 1
+	user.current_pp[str(assigned_move)] -= 1
 	button.update_info()
 	emit_signal("disable_buttons")
 	execute_turn()
 
-func ai_choose_move(user : Pokemon, opposing_pokemon : Pokemon) -> void:
-	action_list.append({"action_type": "use_move", "user": user, "target": opposing_pokemon, "move": randi_range(0, 3)})
+func ai_choose_move(user : Pokemon, opposing_pokemon : Array[Pokemon]) -> void:
+	action_list.append({"action_type": "use_move", "user": user, "target": opposing_pokemon.pick_random(), "move": user.moves.pick_random()})
 	print(action_list)
 
 func queue_move(move, speed, priority, user, target) -> void:
@@ -81,24 +81,25 @@ func _on_text_finished() -> void:
 	emit_signal("enable_buttons")
 
 func execute_turn() -> void:
-	ai_choose_move(pokemon[1], pokemon[0])
+	ai_choose_move(battle_participants[1].selected_pokemon, battle_participants[0].active_pokemon)
 	for i in action_list.size():
 		var action = action_list[i]
 		match action.action_type:
 			"use_move":
-				queue_move(action.move, action.user.stats.spe, action.user.moves[action.move].priority, action.user, action.target)
+				var move = load(DataManager.load_move(action.move))
+				queue_move(move, action.user.stats.spe, move.priority, action.user, action.target)
 			
 	
 	for move in moves:
-		await EffectCalculation.calculate_move_effect(int(move[0]), move[3], move[4])
-		ui.health_bar.value = pokemon[1].stats.current_hp
+		await EffectCalculation.calculate_move_effect(move[0], move[3], move[4])
+		ui.health_bar.value = battle_participants[1].active_pokemon[0].stats.current_hp
 		
 	action_list.clear()
 	moves.clear()
 
 func init_wild_pokemon(wild_pokemon : BasePokemon, level : int) -> void:
-	pokemon[1] = Pokemon.new(wild_pokemon, {"hp": randi_range(0, 31),"atk": randi_range(0, 31),"def": randi_range(0, 31),"spa": randi_range(0, 31),"spd": randi_range(0, 31),"spe": randi_range(0, 31)}, level)
-	pokemon[1].moves = pokemon[1].get_moveset_at_level(level)
-	pokemon[1].stats.current_hp = pokemon[1].stats.max_hp
-	ui.health_bar.max_value = pokemon[1].stats.max_hp
-	ui.health_bar.value = pokemon[1].stats.current_hp
+	battle_participants.append(BattleParticipant.new([Pokemon.new(wild_pokemon, {"hp": randi_range(0, 31),"atk": randi_range(0, 31),"def": randi_range(0, 31),"spa": randi_range(0, 31),"spd": randi_range(0, 31),"spe": randi_range(0, 31)}, level)]))
+	var enemy = battle_participants[1]
+	enemy.selected_pokemon.stats.current_hp = enemy.selected_pokemon.stats.max_hp
+	ui.health_bar.max_value = enemy.selected_pokemon.stats.max_hp
+	ui.health_bar.value = enemy.selected_pokemon.stats.current_hp
