@@ -159,6 +159,7 @@ visibility_layer = 1024
 
 [node name="BattleManager" type="Node" parent="Battle" node_paths=PackedStringArray("ui", "encounter_areas")]
 script = ExtResource("7_7bhkk")
+battle_type = null
 ui = NodePath("../../BattleUI")
 encounter_areas = NodePath("../../Overworld/EncounterAreas")
 

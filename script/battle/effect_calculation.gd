@@ -17,14 +17,39 @@ var attack_id : String
 var defense_id : String
 
 signal move_used(move, user, target, crit, effective, miss)
+signal gained_exp(user : Pokemon, amount : int, evs : Dictionary)
 
 func _ready() -> void:
 	var path = "res://resource/moves.json"
 	move_table = DataManager.generic_json_read(path)
 
-func calculate_move_effect(move: Move, user: Pokemon, target: Pokemon) -> void:
+func calculate_move_effect(battle_participants: Array[BattleParticipant], move: Move, user: Pokemon, battle_type: Enums.BattleType) -> void:
 	var miss : bool
 	var power
+	var active_pokemon : Array[Pokemon]
+	for participant in battle_participants:
+		active_pokemon.append_array(participant.active_pokemon)
+	var targets : Array = move.get_targets(active_pokemon, battle_type, active_pokemon.find(user))
+	
+	if not move.hit_friends: # All of this code exists only to remove friendly pokemon from the targets list
+		var user_parent = find_user_parent(battle_participants, user)
+		for pokemon in battle_participants[user_parent].active_pokemon:
+			targets.erase(pokemon)
+		
+		if battle_type == Enums.BattleType.MULTI:
+			match user_parent:
+				0:
+					for pokemon in battle_participants[1].active_pokemon:
+						targets.erase(pokemon)
+				1:
+					for pokemon in battle_participants[0].active_pokemon:
+						targets.erase(pokemon)
+				2:
+					for pokemon in battle_participants[3].active_pokemon:
+						targets.erase(pokemon)
+				3:
+					for pokemon in battle_participants[2].active_pokemon:
+						targets.erase(pokemon)
 	
 	hits = 1
 	
@@ -39,7 +64,6 @@ func calculate_move_effect(move: Move, user: Pokemon, target: Pokemon) -> void:
 			defense = target.stats.spd
 			attack_id = "spa"
 			defense_id = "spd"
-			
 			
 	match move.category:
 		Enums.Category.PHYSICAL, Enums.Category.SPECIAL:
@@ -65,7 +89,9 @@ func calculate_move_effect(move: Move, user: Pokemon, target: Pokemon) -> void:
 				target.stats.current_hp -= damage
 				
 				print("Miss: ", miss)
-
+			
+	if target.stats.current_hp <= 0:
+		emit_signal("gained_exp", user, calculate_exp(), target.base.ev_yield)
 	await emit_signal("move_used", move.id, user.nickname, target.nickname, crit, effective, miss)
 
 func check_accuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) -> bool:
@@ -86,7 +112,7 @@ func check_accuracy(accuracy: float, accuracy_stage: int, evasion_stage: int) ->
 	return false
 
 func calc_stab(move_type: Types.Type, user_types: Array[Types.Type]) -> float:
-	if move_type == user_types[0] || move_type == user_types[1]:
+	if move_type == user_types[0] or move_type == user_types[1]:
 		return 1.5
 	else:
 		return 1.0
@@ -193,3 +219,11 @@ func get_stage_multiplier(stage: int) -> float:
 		return min(stage + 2, 8) / 2.0
 	else:
 		return 2.0 / min(abs(stage) + 2, 8)
+
+func calculate_exp() -> int:
+	return 1
+
+func find_user_parent(battle_participants: Array[BattleParticipant], user: Pokemon) -> int:
+	for participant in battle_participants:
+		if user in participant.active_pokemon:
+			return battle_participants.find(participant)

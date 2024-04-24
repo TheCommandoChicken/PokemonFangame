@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 
 func _on_encounter_triggered(species : BasePokemon, level : int, player : CharacterBody3D) -> void:
 	battle_participants.append(BattleParticipant.new(player.pokemon))
+	player.in_battle = true
 	
 	init_wild_pokemon(species, level)
 	
@@ -34,7 +35,7 @@ func _on_move_button_pressed(assigned_move : int, button : TextureButton) -> voi
 	var user = battle_participants[0].selected_pokemon
 	match battle_type:
 		Enums.BattleType.STANDARD, Enums.BattleType.ROTATION, Enums.BattleType.RAID:
-			action_list.append({"action_type": "use_move", "user": user, "target": battle_participants[1], "move": assigned_move})
+			action_list.append({"action_type": "use_move", "user": user, "target": battle_participants[1].active_pokemon[0], "move": assigned_move})
 			emit_signal("player_turn_end")
 		Enums.BattleType.DOUBLE, Enums.BattleType.TRIPLE, Enums.BattleType.HORDE:
 			emit_signal("player_choose_target")
@@ -96,6 +97,14 @@ func execute_turn() -> void:
 		
 	action_list.clear()
 	moves.clear()
+	for participant in battle_participants:
+		for pokemon in participant.active_pokemon:
+			if pokemon.stats.current_hp <= 0:
+				if not participant.faint_pokemon(participant.active_pokemon.find(pokemon)):
+					if participant.type == Enums.BattleParticipant.PLAYER: emit_signal("player_out_of_usable_pokemon")
+					elif participant.type == Enums.BattleParticipant.WILD_POKEMON: emit_signal("player_defeated_wild_pokemon")
+					battle_participants.erase(participant)
+					end_battle()
 
 func init_wild_pokemon(wild_pokemon : BasePokemon, level : int) -> void:
 	battle_participants.append(BattleParticipant.new([Pokemon.new(wild_pokemon, {"hp": randi_range(0, 31),"atk": randi_range(0, 31),"def": randi_range(0, 31),"spa": randi_range(0, 31),"spd": randi_range(0, 31),"spe": randi_range(0, 31)}, level)]))
@@ -103,3 +112,6 @@ func init_wild_pokemon(wild_pokemon : BasePokemon, level : int) -> void:
 	enemy.selected_pokemon.stats.current_hp = enemy.selected_pokemon.stats.max_hp
 	ui.health_bar.max_value = enemy.selected_pokemon.stats.max_hp
 	ui.health_bar.value = enemy.selected_pokemon.stats.current_hp
+
+func end_battle() -> void:
+	pass
