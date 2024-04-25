@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Move" load_steps=4 format=3 uid="uid://d13khduobqphj"]
 
 [ext_resource type="Script" path="res://script/resources/move_effect.gd" id="1_umocf"]
-[ext_resource type="Script" path="res://script/resources/moves.gd" id="2_nrcph"]
+[ext_resource type="Script" path="res://script/resources/move.gd" id="2_nrcph"]
 
 [sub_resource type="Resource" id="Resource_pjtbm"]
 Resource = null

@@ -33,7 +33,7 @@ func calculate_move_effect(battle_participants: Array[BattleParticipant], move: 
 	var effective_crit_stage : int = user.stages.crt
 	
 	for effect in effects:
-		match effect.id:
+		match effect.effect:
 			Enums.MoveEffect.MULTIHIT:
 				hits = hit_count(effect)
 			Enums.MoveEffect.INCREASED_CRIT:
