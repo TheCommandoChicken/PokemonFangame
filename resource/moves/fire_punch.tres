@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="Move" load_steps=4 format=3 uid="uid://b3wd8a0clh2f5"]
 
 [ext_resource type="Script" path="res://script/resources/move_effect.gd" id="1_4krp6"]
-[ext_resource type="Script" path="res://script/resources/moves.gd" id="2_4sw3y"]
+[ext_resource type="Script" path="res://script/resources/move.gd" id="2_4sw3y"]
 
 [sub_resource type="Resource" id="Resource_4nkfb"]
 Resource = null
+resource_path = "res://resource/moves/fire_punch.tres::Resource_4nkfb"
 script = ExtResource("1_4krp6")
 effect = 3
 strike_chances = Array[float]([])
@@ -24,12 +25,16 @@ source = 0
 
 [resource]
 script = ExtResource("2_4sw3y")
-id = 6
+id = 7
 category = 0
-type = 1
+type = 10
 power = 40
 accuracy = 1.0
 max_pp = 20
 contact = true
 priority = 0
+range = 0
+hit_friends = false
+hit_enemies = false
+hit_all = false
 effects = Array[ExtResource("1_4krp6")]([SubResource("Resource_4nkfb")])

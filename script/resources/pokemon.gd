@@ -72,7 +72,7 @@ func _update_current_pp():
 	for move in moves:
 		current_pp[str(move)] = load(Data.new().load_move(move)).max_pp
 
-func _init(init_base: BasePokemon = load("res://resource/pokemon/bulbasaur.tres"), init_ivs: Dictionary = {"hp": 0, "atk": 0, "def": 0, "spa": 0, "spd": 0, "spe": 0}, init_level: int = 1, init_moves: Array[Enums.Moves] = [], init_nickname: String = "", init_shiny: bool = false, init_gender: Enums.Gender = Enums.Gender.NONE) -> void:
+func _init(init_base: BasePokemon = load("res://resource/pokemon/bulbasaur.tres"), init_ivs: Dictionary = {"hp": 0, "atk": 0, "def": 0, "spa": 0, "spd": 0, "spe": 0}, init_level: int = 10, init_moves: Array[Enums.Moves] = [], init_nickname: String = "", init_shiny: bool = false, init_gender: Enums.Gender = Enums.Gender.NONE) -> void:
 	base = init_base
 	nickname = init_nickname
 	shiny = init_shiny
@@ -89,6 +89,7 @@ func update_stats():
 		stats[i] = stat(base.base_stats[i], ivs[i], evs[i])
 	
 	print(stats)
+	print(level)
 
 func stat(base_stat: int, iv: int, ev: int) -> int:
 	return int((((2 * base_stat + iv + (ev / 4)) * level) / 100) + 5)

@@ -8,13 +8,17 @@ extends BaseButton
 @export var background : TextureRect
 @export var assigned_move : int
 @export var pokemon : Pokemon
+@export var type : Types.Type
 
 func _ready():
 	pass
 
-func assign_move(user : Pokemon, move : int) -> void:
+func assign_move(user : Pokemon, move : Enums.Moves) -> void:
 	move_name_label.text = TextManager.get_move_name(str(move), Settings.current_language)
 	assigned_move = move
+	type = load(DataManager.load_move(move)).type
+	type_icon.texture = load("res://assets/battle/ui/move_button_icon_" + Types.Type.keys()[type] + ".png")
+	background.texture = load("res://assets/battle/ui/move_button_base_" + Types.Type.keys()[type] + ".png")
 	pokemon = user
 	update_info()
 

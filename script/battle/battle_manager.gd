@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 
 func _on_encounter_triggered(species : BasePokemon, level : int, player : CharacterBody3D) -> void:
 	battle_participants.append(BattleParticipant.new(player.pokemon))
-	player.in_battle = true
+	player.lock_control = true
 	
 	init_wild_pokemon(species, level)
 	
@@ -92,19 +92,12 @@ func execute_turn() -> void:
 			
 	
 	for move in moves:
-		await EffectCalculation.calculate_move_effect(move[0], move[3], move[4])
+		await EffectCalculation.calculate_move_effect(battle_participants, move[0], move[3], battle_type)
 		ui.health_bar.value = battle_participants[1].active_pokemon[0].stats.current_hp
 		
 	action_list.clear()
 	moves.clear()
-	for participant in battle_participants:
-		for pokemon in participant.active_pokemon:
-			if pokemon.stats.current_hp <= 0:
-				if not participant.faint_pokemon(participant.active_pokemon.find(pokemon)):
-					if participant.type == Enums.BattleParticipant.PLAYER: emit_signal("player_out_of_usable_pokemon")
-					elif participant.type == Enums.BattleParticipant.WILD_POKEMON: emit_signal("player_defeated_wild_pokemon")
-					battle_participants.erase(participant)
-					end_battle()
+
 
 func init_wild_pokemon(wild_pokemon : BasePokemon, level : int) -> void:
 	battle_participants.append(BattleParticipant.new([Pokemon.new(wild_pokemon, {"hp": randi_range(0, 31),"atk": randi_range(0, 31),"def": randi_range(0, 31),"spa": randi_range(0, 31),"spd": randi_range(0, 31),"spe": randi_range(0, 31)}, level)]))
