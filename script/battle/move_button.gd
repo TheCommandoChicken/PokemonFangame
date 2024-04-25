@@ -27,7 +27,7 @@ func update_info() -> void:
 	var move = load(DataManager.load_move(assigned_move))
 	max_pp_label.text = str(move.max_pp)
 	current_pp_label.text = str(pokemon.current_pp[str(assigned_move)])
-	pp_bar.value = roundi((float(pokemon.current_pp[str(assigned_move)])/float(move.max_pp)) * 48)
+	pp_bar.value = roundi((float(pokemon.current_pp[str(assigned_move)])/float(move.max_pp)) * 72)
 	if pokemon.current_pp[str(assigned_move)] == 0:
 		disabled = true
 	else:

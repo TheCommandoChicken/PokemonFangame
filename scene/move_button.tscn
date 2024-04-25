@@ -1,22 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://3iyymp1q81hd"]
+[gd_scene load_steps=9 format=3 uid="uid://3iyymp1q81hd"]
 
 [ext_resource type="Script" path="res://script/battle/move_button.gd" id="2_1j5po"]
 [ext_resource type="Texture2D" uid="uid://dos65v4wv8kuh" path="res://assets/battle/ui/move_button_pp_bar_under.png" id="3_g421e"]
 [ext_resource type="Texture2D" uid="uid://bu3mtdm6er2sf" path="res://assets/battle/ui/move_button_pp_bar_progress.png" id="4_tbm70"]
 [ext_resource type="Texture2D" uid="uid://dp32j8yv5v6g4" path="res://assets/battle/ui/move_button_base_normal.png" id="5_juu5j"]
 [ext_resource type="Texture2D" uid="uid://cumtqwavv42h8" path="res://assets/battle/ui/move_button_icon_normal.png" id="6_e36fx"]
-[ext_resource type="FontFile" uid="uid://dyk5isvvwa8wu" path="res://assets/battle/ui/pp_font.png" id="7_6slqg"]
 
 [sub_resource type="SystemFont" id="SystemFont_4vdu6"]
 subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_6vshv"]
 font = SubResource("SystemFont_4vdu6")
-font_size = 9
+font_size = 10
+font_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_0i0on"]
-font = ExtResource("7_6slqg")
+font_size = 8
 
 [node name="TextureButton" type="TextureButton" node_paths=PackedStringArray("pp_bar", "max_pp_label", "current_pp_label", "move_name_label", "type_icon", "background")]
 anchors_preset = 1
@@ -42,13 +42,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 8.5
-offset_top = 5.0
-offset_right = 56.5
-offset_bottom = 13.0
+offset_left = -13.5
+offset_top = 6.0
+offset_right = 58.5
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
-max_value = 48.0
+max_value = 72.0
 value = 17.0
 texture_under = ExtResource("3_g421e")
 texture_progress = ExtResource("4_tbm70")
@@ -70,6 +70,7 @@ texture = ExtResource("5_juu5j")
 stretch_mode = 3
 
 [node name="TypeIcon" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -92,10 +93,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -34.5
-offset_top = -12.0
-offset_right = 61.5
-offset_bottom = 4.0
+offset_left = -39.5
+offset_top = -11.0
+offset_right = 56.5
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Pound"
@@ -110,10 +111,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.5
-offset_top = 5.0
-offset_right = -19.5
-offset_bottom = 13.0
+offset_left = -40.5
+offset_top = 3.5
+offset_right = -24.5
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "17"
@@ -128,10 +129,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -11.5
-offset_top = 5.0
-offset_right = 4.5
-offset_bottom = 13.0
+offset_left = -24.5
+offset_top = 4.0
+offset_right = -8.5
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "35"

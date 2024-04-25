@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj0bl05y42els"]
+[gd_scene load_steps=7 format=3 uid="uid://bj0bl05y42els"]
 
 [ext_resource type="Script" path="res://script/battle/battle_ui.gd" id="1_7wohy"]
 [ext_resource type="Script" path="res://script/common/text_box.gd" id="1_bdgkq"]
 [ext_resource type="PackedScene" uid="uid://3iyymp1q81hd" path="res://scene/move_button.tscn" id="2_too1l"]
+[ext_resource type="PackedScene" uid="uid://x545axakr7vv" path="res://scene/battle/ui/pokemon_info.tscn" id="4_bxw5q"]
+[ext_resource type="Texture2D" uid="uid://dsonxdjd85850" path="res://assets/battle/ui/pokemon_info_base_large.png" id="5_6kddh"]
 
 [sub_resource type="Theme" id="1"]
 
-[node name="BattleUI" type="Control" node_paths=PackedStringArray("health_bar")]
+[node name="BattleUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +16,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_7wohy")
-health_bar = NodePath("Health")
 
 [node name="TextBox" type="PanelContainer" parent="."]
 layout_direction = 2
@@ -59,48 +60,37 @@ scrollable = false
 tick_count = 18
 ticks_on_borders = true
 
-[node name="Health" type="ProgressBar" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -130.0
-offset_bottom = 27.0
-grow_horizontal = 0
-show_percentage = false
-
-[node name="MoveButtons" type="Control" parent="."]
+[node name="MoveButtons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -194.0
-offset_top = -127.0
+offset_left = -145.0
+offset_top = -132.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="MoveButton1" parent="MoveButtons" instance=ExtResource("2_too1l")]
-layout_mode = 1
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="MoveButton2" parent="MoveButtons" instance=ExtResource("2_too1l")]
-layout_mode = 1
-offset_left = -166.0
-offset_top = 32.0
-offset_right = -21.0
-offset_bottom = 62.0
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="MoveButton3" parent="MoveButtons" instance=ExtResource("2_too1l")]
-layout_mode = 1
-offset_left = -187.0
-offset_top = 64.0
-offset_right = -42.0
-offset_bottom = 94.0
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="MoveButton4" parent="MoveButtons" instance=ExtResource("2_too1l")]
-layout_mode = 1
-offset_left = -208.0
-offset_top = 96.0
-offset_right = -63.0
-offset_bottom = 126.0
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OpponentInfo" parent="." instance=ExtResource("4_bxw5q")]
+layout_mode = 0
+
+[node name="PokemonInfoBaseLarge" type="Sprite2D" parent="."]
+position = Vector2(575, 156)
+texture = ExtResource("5_6kddh")

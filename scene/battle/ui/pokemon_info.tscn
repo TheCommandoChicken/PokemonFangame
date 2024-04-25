@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://x545axakr7vv"]
+
+[node name="OpponentInfo" type="GridContainer"]
+offset_right = 150.0
+offset_bottom = 40.0
+columns = 2
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Test"
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Lv. 10"
+
+[node name="Health" type="ProgressBar" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+show_percentage = false
