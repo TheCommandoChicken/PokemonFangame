@@ -4,12 +4,16 @@
 
 [resource]
 script = ExtResource("1_ndugv")
-id = 0
+id = 15
 category = 0
-type = 0
-power = 0
-accuracy = 0.0
-max_pp = 0
-contact = false
+type = 1
+power = 50
+accuracy = 0.95
+max_pp = 30
+contact = true
 priority = 0
+range = 1
+hit_friends = true
+hit_enemies = true
+hit_all = false
 effects = Array[Resource("res://script/resources/move_effect.gd")]([])

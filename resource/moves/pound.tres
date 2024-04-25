@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://script/resources/move.gd" id="1_lyde7"]
 
-
 [resource]
 script = ExtResource("1_lyde7")
 id = 1
@@ -13,4 +12,8 @@ accuracy = 1.0
 max_pp = 35
 contact = true
 priority = 0
-effects = []
+range = 1
+hit_friends = false
+hit_enemies = true
+hit_all = false
+effects = Array[Resource("res://script/resources/move_effect.gd")]([])

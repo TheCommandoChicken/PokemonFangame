@@ -16,7 +16,7 @@ enum Source {FIXED, USER_MAX_HP, USER_CURRENT_HP, USER_LEVEL, TARGET_MAX_HP, TAR
 @export_range(0.0, 1.0) var chance : float
 @export var overwrite : bool
 @export var factors : Array[int]
-@export var moves_to_bypass : Array[int]
+@export var moves_to_bypass : Array[Enums.Moves]
 @export var power : int
 @export var duration : int
 @export var invulnerable : bool
