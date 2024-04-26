@@ -9,7 +9,7 @@ signal stepped(areas : Array[Area3D], encounter_factor : int, player : Character
 @export var pokemon : Array[Pokemon]
 @export var items : Array
 @export var stacks : Array[int]
-const tile_size : float = 24
+const tile_size : float = 64
 var last_dir : Vector3
 var distance : float = 0.0
 var speed : float
@@ -19,8 +19,9 @@ var delay_frames : int
 var buffer_frames : int
 var facing_dir : Vector3
 var lock_control : bool
+var virtual_position : Vector3
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if not lock_control:
 		delay_frames -= 1 # Subtract from delay frames
 		$DebugArrow.rotation.y = atan2(facing_dir.x, facing_dir.z) # Set direction of debug arrow
@@ -53,12 +54,14 @@ func _physics_process(_delta):
 				if last_dir != Vector3.ZERO: # Move if the last_dir isn't zero
 					distance = tile_size
 					facing_dir = last_dir
+					virtual_position += last_dir
 		
 		if distance > 0.0:
-			velocity = last_dir * speed # Set velocity
+			print(distance)
+			position += last_dir * speed/100 # Set velocity
 			move_and_slide()
 			distance -= speed # Reduce distance by speed
-			if distance <= 0.0: # If the distance is now less than or equal to 0 we know the player has completed one step and can update our variables accordingly
+			if distance <= 0.000001: # If the distance is now less than or equal to 0 we know the player has completed one step and can update our variables accordingly
 				emit_signal("stepped", $Area.get_overlapping_areas(), encounter_factor, self)
 				print("stepped")
 				print(encounter_factor)

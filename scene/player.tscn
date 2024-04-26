@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c3i60xvbkehne" path="res://assets/battle/pokemon/bulbasaur-front-idle1.png" id="2_t2m4o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fn00r"]
-radius = 0.2
+margin = 0.0
+radius = 0.32
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hxwyi"]
 size = Vector3(0.24, 0.24, 0.24)
@@ -26,6 +27,7 @@ run_speed = 0.04
 texture = ExtResource("2_t2m4o")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
 shape = SubResource("SphereShape3D_fn00r")
 
 [node name="Area" type="Area3D" parent="."]

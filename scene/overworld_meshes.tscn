@@ -1,3 +1,43 @@
-[gd_scene format=3 uid="uid://c4bx4ofjh4gbm"]
+[gd_scene load_steps=5 format=3 uid="uid://c4bx4ofjh4gbm"]
+
+[ext_resource type="ArrayMesh" uid="uid://dqfltetpynqbg" path="res://assets/overworld/mesh/gridmap/cliff_straight.obj" id="1_fkdt3"]
+[ext_resource type="ArrayMesh" uid="uid://k04k253n2esm" path="res://assets/overworld/mesh/gridmap/cliff-inner-corner.obj" id="2_j31p4"]
+[ext_resource type="ArrayMesh" uid="uid://dco1lcugyu52x" path="res://assets/overworld/mesh/gridmap/ground.obj" id="3_ycktx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1pefv"]
+size = Vector3(0.64, 0.64, 0.64)
 
 [node name="MeshLibrary" type="Node3D"]
+
+[node name="CliffStraight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32, 0)
+gi_lightmap_scale = 3
+mesh = ExtResource("1_fkdt3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CliffStraight"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CliffStraight/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32, 0)
+shape = SubResource("BoxShape3D_1pefv")
+
+[node name="CliffInnerCorner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32, 0)
+gi_lightmap_scale = 3
+mesh = ExtResource("2_j31p4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CliffInnerCorner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CliffInnerCorner/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32, 0)
+shape = SubResource("BoxShape3D_1pefv")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32, 0)
+gi_lightmap_scale = 3
+mesh = ExtResource("3_ycktx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32, 0)
+shape = SubResource("BoxShape3D_1pefv")
