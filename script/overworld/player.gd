@@ -58,7 +58,7 @@ func _physics_process(delta):
 		
 		if distance > 0.0:
 			print(distance)
-			position += last_dir * speed/100 # Set velocity
+			velocity = last_dir * speed/100 * 60 # Set velocity
 			move_and_slide()
 			distance -= speed # Reduce distance by speed
 			if distance <= 0.000001: # If the distance is now less than or equal to 0 we know the player has completed one step and can update our variables accordingly

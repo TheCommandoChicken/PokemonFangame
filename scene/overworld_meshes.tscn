@@ -1,11 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4bx4ofjh4gbm"]
+[gd_scene load_steps=9 format=3 uid="uid://c4bx4ofjh4gbm"]
 
 [ext_resource type="ArrayMesh" uid="uid://dqfltetpynqbg" path="res://assets/overworld/mesh/gridmap/cliff_straight.obj" id="1_fkdt3"]
+[ext_resource type="Texture2D" uid="uid://bl8dxr30not4g" path="res://assets/overworld/texture/placeholder/sourceimages/out57_futa.png" id="2_e6kve"]
 [ext_resource type="ArrayMesh" uid="uid://k04k253n2esm" path="res://assets/overworld/mesh/gridmap/cliff-inner-corner.obj" id="2_j31p4"]
 [ext_resource type="ArrayMesh" uid="uid://dco1lcugyu52x" path="res://assets/overworld/mesh/gridmap/ground.obj" id="3_ycktx"]
+[ext_resource type="Texture2D" uid="uid://dn4aeddcug1ps" path="res://assets/overworld/texture/placeholder/sourceimages/spring/grass01ax.png" id="5_md37x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lexay"]
+diffuse_mode = 1
+specular_mode = 1
+albedo_texture = ExtResource("2_e6kve")
+metallic_specular = 0.0
+texture_filter = 2
+proximity_fade_distance = 0.0
+distance_fade_mode = 2
+distance_fade_min_distance = 30.0
+distance_fade_max_distance = 20.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1pefv"]
 size = Vector3(0.64, 0.64, 0.64)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agnme"]
+shading_mode = 2
+diffuse_mode = 1
+specular_mode = 1
+albedo_texture = ExtResource("5_md37x")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+texture_filter = 2
+proximity_fade_distance = 0.0
+distance_fade_mode = 2
+distance_fade_min_distance = 30.0
+distance_fade_max_distance = 20.0
 
 [node name="MeshLibrary" type="Node3D"]
 
@@ -13,6 +38,7 @@ size = Vector3(0.64, 0.64, 0.64)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32, 0)
 gi_lightmap_scale = 3
 mesh = ExtResource("1_fkdt3")
+surface_material_override/0 = SubResource("StandardMaterial3D_lexay")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CliffStraight"]
 
@@ -35,6 +61,7 @@ shape = SubResource("BoxShape3D_1pefv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32, 0)
 gi_lightmap_scale = 3
 mesh = ExtResource("3_ycktx")
+surface_material_override/0 = SubResource("StandardMaterial3D_agnme")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
 

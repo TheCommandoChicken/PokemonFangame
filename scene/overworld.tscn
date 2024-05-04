@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckd7coqqvn7ur"]
+[gd_scene load_steps=20 format=3 uid="uid://ckd7coqqvn7ur"]
 
 [ext_resource type="Script" path="res://script/resources/item.gd" id="2_8vked"]
 [ext_resource type="PackedScene" uid="uid://4obflpcvfugd" path="res://scene/player.tscn" id="2_wgikr"]
@@ -13,11 +13,16 @@
 
 [sub_resource type="Environment" id="Environment_ko560"]
 ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 10.0
+reflected_light_source = 1
 tonemap_mode = 3
 ssao_enabled = true
+ssao_radius = 0.24
+ssao_light_affect = 1.0
+ssao_ao_channel_affect = 1.0
+ssil_intensity = 0.24
 sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_y_scale = 2
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_s8w5k"]
 
@@ -111,6 +116,8 @@ levels = Array[int]([10])
 [sub_resource type="BoxShape3D" id="BoxShape3D_vrb8d"]
 size = Vector3(1, 0.24, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xynv0"]
+
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -118,12 +125,11 @@ environment = SubResource("Environment_ko560")
 camera_attributes = SubResource("CameraAttributesPractical_s8w5k")
 
 [node name="PrimaryCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.623593, 0.781749, 0, -0.781749, 0.623593, 0, 2.08653, 1.70257)
+transform = Transform3D(1, 0, 0, 0, 0.623593, 0.781749, 0, -0.781749, 0.623593, 0.758323, 2.08653, 3.17143)
 cull_mask = 1023
 
 [node name="Player" parent="." instance=ExtResource("2_wgikr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0.24, 0.32)
-floor_constant_speed = true
 walk_speed = 2.0
 run_speed = 4.0
 max_encounter_factor = 50
@@ -133,12 +139,15 @@ items = [SubResource("Resource_yxbqm")]
 [node name="Overworld" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Overworld"]
-transform = Transform3D(-0.60403, -0.529293, 0.595815, 0.74231, -0.101571, 0.662313, -0.29004, 0.842337, 0.454252, 0, 1.93343, 0)
-light_energy = 1.241
-light_indirect_energy = 9.106
-light_angular_distance = 5.56
+transform = Transform3D(-0.575422, 0.475301, -0.665566, -0.080353, 0.777001, 0.62435, 0.8139, 0.412745, -0.408912, -0.0611892, 1.93343, 0)
+light_angular_distance = 4.97
+light_bake_mode = 1
 shadow_enabled = true
-shadow_blur = 0.5
+shadow_reverse_cull_face = true
+shadow_blur = 0.263
+directional_shadow_fade_start = 0.0
+directional_shadow_max_distance = 29.4
+directional_shadow_pancake_size = 1.0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Overworld"]
 transform = Transform3D(-0.955362, -0.22696, -0.189138, -0.0562207, -0.488833, 0.870564, -0.29004, 0.842337, 0.454252, 0, 1.93343, 0)
@@ -151,9 +160,9 @@ shadow_enabled = true
 mesh_library = ExtResource("5_8ul8u")
 cell_size = Vector3(0.64, 0.64, 0.64)
 data = {
-"cells": PackedInt32Array(0, 65534, 0, 65535, 65534, 0, 65534, 65534, 0, 1, 65534, 0, 2, 65534, 0, 65533, 65534, 0, 3, 65535, 1441792, 3, 0, 1441792, 3, 1, 1441792, 65532, 65535, 1048576, 65532, 0, 1048576, 65532, 1, 1048576, 3, 65534, 1441793, 65532, 65534, 1, 65533, 65535, 2, 65534, 65535, 2, 65535, 65535, 2, 0, 65535, 2, 1, 65535, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 1, 1, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65535, 1, 2, 0, 1, 2, 65534, 1, 2, 65534, 0, 2, 65533, 0, 2, 65533, 1, 2, 65540, 65534, 2, 65540, 65535, 2, 65540, 0, 2, 65540, 1, 2, 65541, 1, 2, 65541, 0, 2, 65541, 65535, 2, 65541, 65534, 2, 65541, 65533, 2, 65540, 65533, 2, 65539, 65533, 2, 65538, 65533, 2, 65537, 65533, 2, 65536, 65533, 2, 131070, 65533, 2, 131068, 65533, 2, 131067, 65533, 2, 131067, 65534, 2, 131067, 65535, 2, 131067, 0, 2, 131067, 1, 2, 131069, 65533, 2, 131071, 65533, 2, 65536, 65532, 0, 65537, 65532, 0, 131071, 65532, 0, 131070, 65532, 0, 131069, 65532, 0, 131068, 65532, 0, 131067, 65532, 0, 65538, 65532, 0, 65539, 65532, 0)
+"cells": PackedInt32Array(0, 65534, 0, 65535, 65534, 0, 65534, 65534, 0, 1, 65534, 0, 2, 65534, 0, 65533, 65534, 0, 3, 65535, 1441792, 3, 0, 1441792, 65532, 65535, 1048576, 65532, 0, 1048576, 65532, 1, 1048576, 3, 65534, 1441793, 65532, 65534, 1, 65533, 65535, 2, 65534, 65535, 2, 65535, 65535, 2, 0, 65535, 2, 1, 65535, 2, 2, 65535, 2, 2, 0, 2, 2, 1, 2, 1, 1, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65535, 1, 2, 0, 1, 2, 65534, 1, 2, 65534, 0, 2, 65533, 0, 2, 65533, 1, 2, 65540, 65534, 2, 65540, 65535, 2, 65540, 0, 2, 65540, 1, 2, 65541, 1, 2, 65541, 0, 2, 65541, 65535, 2, 65541, 65534, 2, 65541, 65533, 2, 65540, 65533, 2, 65539, 65533, 2, 65538, 65533, 2, 65537, 65533, 2, 65536, 65533, 2, 131070, 65533, 2, 131068, 65533, 2, 131067, 65533, 2, 131067, 65534, 2, 131067, 65535, 2, 131067, 0, 2, 131067, 1, 2, 131069, 65533, 2, 131071, 65533, 2, 65536, 65532, 0, 65537, 65532, 0, 131071, 65532, 0, 131070, 65532, 0, 131069, 65532, 0, 131068, 65532, 0, 131067, 65532, 0, 65538, 65532, 0, 65539, 65532, 0)
 }
-metadata/_editor_floor_ = Vector3(0, 1, 0)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Overworld"]
 visible = false
@@ -173,6 +182,12 @@ player = NodePath("../../../Player")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/EncounterAreas/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
 shape = SubResource("BoxShape3D_vrb8d")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Overworld"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Overworld/StaticBody3D"]
+transform = Transform3D(0.717956, -0.696088, 0, 0.696088, 0.717956, 0, 0, 0, 1, 2.54299, -0.0641317, 1.13632)
+shape = SubResource("BoxShape3D_xynv0")
 
 [node name="BattleUI" parent="." instance=ExtResource("7_1e1xj")]
 visible = false

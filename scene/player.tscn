@@ -24,6 +24,9 @@ walk_speed = 0.02
 run_speed = 0.04
 
 [node name="Sprite" type="Sprite3D" parent="."]
+cast_shadow = 2
+gi_mode = 2
+gi_lightmap_scale = 3
 texture = ExtResource("2_t2m4o")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
